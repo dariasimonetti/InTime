@@ -18,10 +18,16 @@ public class ProductBean {
            
     }
     
-    
-    
 
-    public ProductBean(int id, String nome, String descrizione, float prezzo, String materiale, int misura,
+    public ProductBean(String nome, String descrizione, int quadrante) {
+		super();
+		Nome = nome;
+		Descrizione = descrizione;
+		Quadrante = quadrante;
+	}
+
+
+	public ProductBean(int id, String nome, String descrizione, float prezzo, String materiale, int misura,
             String marca, int uomo, int donna, int quadrante, int cinturino, float sconto, int quantita) {
         this.id = id;
         Nome = nome;
