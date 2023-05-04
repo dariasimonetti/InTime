@@ -19,7 +19,13 @@ public class ProductBean {
     }
     
 
-    public ProductBean(String nome, String descrizione, int quadrante) {
+    @Override
+	public String toString() {
+		return "ProductBean [Nome=" + Nome + ", Descrizione=" + Descrizione + ", Quadrante=" + Quadrante + "]";
+	}
+
+
+	public ProductBean(String nome, String descrizione, int quadrante) {
 		super();
 		Nome = nome;
 		Descrizione = descrizione;

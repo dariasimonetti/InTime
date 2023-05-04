@@ -33,7 +33,7 @@ public class Catalogo extends HttpServlet {
 		products.add(new ProductBean("orologio1","bello",1));
 		products.add(new ProductBean("orologio2","bello",1));
 		products.add(new ProductBean("orologio3","bello",1));
-		request.setAttribute("styles", products);
+		request.setAttribute("prodotti", products);
 		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);
 	}
