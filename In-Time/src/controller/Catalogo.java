@@ -10,6 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 /**
  * Servlet implementation class Catalogo
  */
@@ -30,12 +37,29 @@ public class Catalogo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ProductBean> products = new ArrayList<>();
-		products.add(new ProductBean("orologio1","bello",1));
-		products.add(new ProductBean("orologio2","bello",1));
-		products.add(new ProductBean("orologio3","bello",1));
-		request.setAttribute("prodotti", products);
-		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
-		view.forward(request, response);
+		String url = "jdbc:mysql://localhost:3360/intime";
+		String password = "1234";
+		String user = "root";
+		try {
+			Connection connection = DriverManager.getConnection(url, user, password);
+			
+			Statement statemant = connection.createStatement();
+			ResultSet  rs = statemant.executeQuery("select *from articolo");
+			
+			while(rs.next()) {
+				products.add(new ProductBean(rs.getString("Nome"),rs.getString("Descrizione"),1));
+			}
+			
+			
+			request.setAttribute("prodotti", products);
+			
+			RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
+			view.forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
 	}
 
 	/**

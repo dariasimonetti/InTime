@@ -15,6 +15,7 @@
 			for (ProductBean p : products){
 			 
 	     %>		
+	     <>
 		     <div class="wrapper">
   <div class="container">
     <div class="top"></div>
