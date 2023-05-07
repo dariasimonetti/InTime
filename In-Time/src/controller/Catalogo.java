@@ -37,16 +37,17 @@ public class Catalogo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ProductBean> products = new ArrayList<>();
-		String url = "jdbc:mysql://localhost:3360/intime";
+		String url = "jdbc:mysql://localhost:3306/prova";
 		String password = "1234";
 		String user = "root";
 		try {
 			Connection connection = DriverManager.getConnection(url, user, password);
 			
 			Statement statemant = connection.createStatement();
-			ResultSet  rs = statemant.executeQuery("select *from articolo");
+			ResultSet  rs = statemant.executeQuery("SELECT * FROM articolo;");
 			
 			while(rs.next()) {
+				
 				products.add(new ProductBean(rs.getString("Nome"),rs.getString("Descrizione"),1));
 			}
 			
