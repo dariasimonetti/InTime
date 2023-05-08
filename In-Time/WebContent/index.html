@@ -1,100 +1,120 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>inTime</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href"Style/index.css">
-    <script src="JS/index.js"></script>
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>InTime</title>
+  <link rel="stylesheet" href="Style/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  
+
+</head>
+<body>
+
+  <header class="header">
+
+    <div class="header__content">
+      <a class="header__logo" href="">
+       <!-- <svg enable-background="new 0 0 14 44" height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg"></svg> --> 
+      LOGO
+      </a>
+      <ul class="header__menu">
+        <li><a href="">Catalogo Completo</a></li>
+        <li><a href="">Catalogo uomo</a></li>
+        <li><a href="">Catalogo Donna</a></li>
+        <li><a href="">Orologi</a></li>
+        <li><a href="">Cinturini</a></li>
+        
+      </ul>
+      <div class="header__icons">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="44" viewBox="0 0 15 44"><rect width="15" height="44" fill="none"/><path d="M13.98,27.343l-3.5-3.5a5.436,5.436,0,1,0-.778.777l3.5,3.5a.55.55,0,1,0,.778-.778ZM1.959,20.418a4.319,4.319,0,1,1,4.319,4.32A4.323,4.323,0,0,1,1.959,20.418Z" fill="#fff"/></svg>
+      
+          <div class="icon-hamburger">
+            <span></span>
+            <span></span>
+          </div>
+      </div>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
+
+    
+  </header>
+
+  <video class="video-bg" src="VideoSfondoOrizzontale.mp4" autoplay muted loop></video>
+  <div class="section watch">
+    <h1 class="title"> InTime</h1>
   </div>
-</nav>
-
-  </head>
-  <body>
-    <nav class="navbar navbar-toggleable-md fixed-top navbar-transparent" color-on-scroll="500">
-        <div class="container">
-            <div class="navbar-translate">
-                <button class="navbar-toggler navbar-toggler-right navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar"></span>
-                    <span class="navbar-toggler-bar"></span>
-                    <span class="navbar-toggler-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://www.example.com">LOGO</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                            <p class="hidden-lg-up">Twitter</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook-square"></i>
-                            <p class="hidden-lg-up">Facebook</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/" target="_blank">
-                            <i class="fa fa-instagram"></i>
-                            <p class="hidden-lg-up">Instagram</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/" target="_blank">
-                            <i class="fa fa-github"></i>
-                            <p class="hidden-lg-up">GitHub</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-						<a href="https://www.example.com" target="_blank" class="btn btn-danger btn-round">Login</a>
-					</li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="wrapper">
-        <div class="page-header section-dark" style="background-image: url('http://demos.creative-tim.com/paper-kit-2/assets/img/antoine-barres.jpg')">
-            <div class="filter"></div>
-    		<div class="content-center">
-    			<div class="container">
-    				<div class="title-brand">
-    					<h1 class="presentation-title">SITE TITLE</h1>
-    					<div class="fog-low">
-    						<img src="http://demos.creative-tim.com/paper-kit-2/assets/img/fog-low.png" alt="">
-    					</div>
-    					<div class="fog-low right">
-    						<img src="http://demos.creative-tim.com/paper-kit-2/assets/img/fog-low.png" alt="">
-    					</div>
-    				</div>
-
-    				<h2 class="presentation-subtitle text-center">Headline</h2>
-    			</div>
-    		</div>
-            <div class="moving-clouds" style="background-image: url('http://demos.creative-tim.com/paper-kit-2/assets/img/clouds.png'); ">
-
-            </div>
-    	</div>
+  <div class="section watch">
+    <h2 class="title"> L'Eleganza Al Passo Con Il Tempo</h2>
   </div>
+  <div class="section watch">
+    <h2 class="title"> Il Tempo Al Passo Con L'Eleganza</h2>
+  </div>
+
+  <div class="panel">
+    <div class="container">
+      <p class="watch fade-in intro">Design</p>
+      <h2 class="watch fade-in title-big">Ingegneria <br/>
+        estrema.</h2>
+      <img src="Sfondo 3.png" alt="" class="img-big-left">
+    </div>
+  </div>
+
+
+  <div class="panel panel--white">
+    <div class="container">
+   
+      <h2 class="watch fade-in title-med">Sembra un duro. <br>
+        Perché lo è. <br>
+        Estremo.</h2>
+      <p class="watch fade-in subtitle">Volevamo creare l'orologio assoluto, perciò abbiamo progettato ogni dettaglio con cura maniacale puntando a prestazioni ineguagliabili. Il titanio bilancia perfettamente peso, robustezza e resistenza alla corrosione. I bordi rialzati della nuova cassa proteggono dagli impatti laterali il vetro anteriore piatto, in cristallo di zaffiro. E la Digital Crown e il tasto laterale ora sono più grandi, comodi da usare anche con i guanti.</p>
+      
+      
+      <img src="Sfondo 3.png" alt="" class="img-big-center">
+    </div>
+  </div>
+
+
+  <footer>
+
+  </footer>
+
+
+
+
+   <script> 
+
+
+  let item = document.querySelector('.icon-hamburger');
+  item.addEventListener("click", function() {
+    document.body.classList.toggle('menu-open');
+  });
+
+   // elements
+   var elements_to_watch = document.querySelectorAll('.watch');
+
+   // callback 
+   var callback = function(items){
+     items.forEach((item) => {
+       if(item.isIntersecting){
+         item.target.classList.add("in-page");
+       } else{
+         item.target.classList.remove("in-page");
+       }
+     });
+   }
+
+   // observer
+   var observer = new IntersectionObserver(callback, { threshold: 0.6 } );
+
+   // apply
+   elements_to_watch.forEach((element) => {
+     observer.observe(element); 
+   });
+   
+   
+   
+   </script>
+
 </body>
+</html>
