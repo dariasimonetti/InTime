@@ -1,4 +1,5 @@
 package controller;
+import model.DriverManagerConnection;
 import model.ProductBean;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,35 +39,16 @@ public class Catalogo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ProductBean> products = new ArrayList<>();
 		Connection newConnection = null;
-		String ip = "localhost";
-		String port = "3306";
-		String db = "intime";
-		String username = "root";
-		String password = "root";
-  
 		try {
-			newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ 
-		port+"/"+ db + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", username, password);
-			 System.out.println("Create a new DB connection");
-		      newConnection.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
-			  newConnection.setAutoCommit(false);
-			Statement statemant = newConnection.createStatement();
-			ResultSet  rs = statemant.executeQuery("SELECT * FROM articolo;");
-			
-			while(rs.next()) {
-				
-				products.add(new ProductBean(rs.getString("Nome"),rs.getString("Descrizione"),1));
-			}
-			
-			
-			request.setAttribute("prodotti", products);
+        newConnection = DriverManagerConnection.getConnection();
+          String q = ""
+		};
+		
 			
 			RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 			view.forward(request, response);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+
 		 
 	}
 
@@ -79,3 +61,15 @@ public class Catalogo extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+/*jsp -> sarvlet -> model -> db 
+
+model -> interfaccia al db 
+classe java che si connette al db e svolge le funzioni 
+*/
+
+
