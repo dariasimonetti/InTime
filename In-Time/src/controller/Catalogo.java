@@ -41,12 +41,19 @@ public class Catalogo extends HttpServlet {
 		Connection newConnection = null;
 		try {
         newConnection = DriverManagerConnection.getConnection();
-          String q = ""
-		};
-		
+          String q = "SELECT * FROM intime.articolo;";
+          Statement s= newConnection.createStatement();
+          ResultSet rs=s.executeQuery(q);
+          while(rs.next()) {
+        	  products.add(new ProductBean(rs.getString("nome"), rs.getString("descrizione"), rs.getInt("quadrante")));
+          }
+		} catch (Exception e) {
 			
-			RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
-			view.forward(request, response);
+		}
+		
+		request.setAttribute("prodotti", products);
+		RequestDispatcher view = request.getRequestDispatcher("JSP/catalogo.jsp");
+		view.forward(request, response);
 
 
 		 
