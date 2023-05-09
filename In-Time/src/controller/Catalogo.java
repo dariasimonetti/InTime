@@ -38,12 +38,31 @@ public class Catalogo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ProductBean> products = new ArrayList<>();
+<<<<<<< Updated upstream
 		Connection newConnection = null;
 		try {
         newConnection = DriverManagerConnection.getConnection();
           String q = ""
 		};
 		
+=======
+		String url = "jdbc:mysql://localhost:3306/intime";
+		String password = "1234";
+		String user = "root";
+		try {
+			Connection connection = DriverManager.getConnection(url, user, password);
+			
+			Statement statemant = connection.createStatement();
+			ResultSet  rs = statemant.executeQuery("SELECT * FROM articolo;");
+			
+			while(rs.next()) {
+				
+				products.add(new ProductBean(rs.getString("Nome"),rs.getFloat("Prezzo"),1));
+			}
+			
+			
+			request.setAttribute("prodotti", products);
+>>>>>>> Stashed changes
 			
 			RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 			view.forward(request, response);

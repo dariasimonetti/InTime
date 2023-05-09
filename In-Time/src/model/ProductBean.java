@@ -25,10 +25,10 @@ public class ProductBean {
 	}
 
 
-	public ProductBean(String nome, String descrizione, int quadrante) {
+	public ProductBean(String nome,float prezzo, int quadrante) {
 		super();
 		Nome = nome;
-		Descrizione = descrizione;
+		Prezzo = prezzo;
 		Quadrante = quadrante;
 	}
 
