@@ -38,34 +38,22 @@ public class Catalogo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<ProductBean> products = new ArrayList<>();
-<<<<<<< Updated upstream
 		Connection newConnection = null;
 		try {
         newConnection = DriverManagerConnection.getConnection();
-          String q = ""
-		};
+          String q = "SELECT * FROM intime.articolo;";
+          Statement s= newConnection.createStatement();
+          ResultSet rs=s.executeQuery(q);
+          while(rs.next()) {
+        	  products.add(new ProductBean(rs.getString("nome"),rs.getFloat("prezzo"), rs.getInt("quadrante")));
+          }
+		} catch (Exception e) {
+			
+		}
 		
-=======
-		String url = "jdbc:mysql://localhost:3306/intime";
-		String password = "1234";
-		String user = "root";
-		try {
-			Connection connection = DriverManager.getConnection(url, user, password);
-			
-			Statement statemant = connection.createStatement();
-			ResultSet  rs = statemant.executeQuery("SELECT * FROM articolo;");
-			
-			while(rs.next()) {
-				
-				products.add(new ProductBean(rs.getString("Nome"),rs.getFloat("Prezzo"),1));
-			}
-			
-			
-			request.setAttribute("prodotti", products);
->>>>>>> Stashed changes
-			
-			RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
-			view.forward(request, response);
+		request.setAttribute("prodotti", products);
+		RequestDispatcher view = request.getRequestDispatcher("JSP/catalogo.jsp");
+		view.forward(request, response);
 
 
 		 
@@ -90,5 +78,3 @@ public class Catalogo extends HttpServlet {
 model -> interfaccia al db 
 classe java che si connette al db e svolge le funzioni 
 */
-
-
