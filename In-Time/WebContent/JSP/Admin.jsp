@@ -27,7 +27,7 @@
           <h1> <span class="fab fa-asymmetrik"> </span> <span>In Time</span>
           </h1>
         </div>
-        
+       
         <div class="sidebar-menu">
           <ul>
             <li>
@@ -36,11 +36,12 @@
                 <span>Dashboard</span>
               </a>
             </li>
-            <li>
-              <a href="JSP/InventoryAdmin.jsp" >
+            <li><form action="Inventory">
+              <a href="#" >
                 <span class="fas fa-boxes"></span>
-                <span>Inventory</span>
+                <button type="submit">Inventory</button>               
               </a>
+              </form>
             </li>
           </ul>
 

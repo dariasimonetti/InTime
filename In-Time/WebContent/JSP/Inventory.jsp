@@ -5,16 +5,16 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="JSP/Admin.css"/>
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard</title>
 <!--Material CDN-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-<link rel="stylesheet"
-        href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--STYLESHEET-->
+    <link rel="stylesheet" href="JSP/Admin.css"/>
 </head>
 <body>
 
@@ -29,7 +29,7 @@
         <div class="sidebar-menu">
           <ul>
             <li>
-              <a href="JSP/Admins">
+              <a href="#">
                 <span class="fas fa-tachometer-alt"></span>
                 <span>Dashboard</span>
               </a>
