@@ -52,7 +52,7 @@ public class Admin extends HttpServlet {
 		}
 		
 		request.setAttribute("prodotti", products);
-		RequestDispatcher view = request.getRequestDispatcher("JSP/catalogo.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("JSP/Admin.jsp");
 		view.forward(request, response);
 
 
