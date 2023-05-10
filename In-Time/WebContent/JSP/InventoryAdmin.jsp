@@ -2,21 +2,19 @@
     pageEncoding="ISO-8859-1"%>
  <%@ page import="model.ProductBean" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+
 <link rel="stylesheet" href="JSP/Admin.css"/>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <!--Material CDN-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet"
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<!--Material CDN-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+<link rel="stylesheet"
         href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <!--STYLESHEET-->
-    
- 
 </head>
 <body>
 
@@ -31,13 +29,13 @@
         <div class="sidebar-menu">
           <ul>
             <li>
-              <a href="#" class="active">
+              <a href="JSP/Admins">
                 <span class="fas fa-tachometer-alt"></span>
                 <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="JSP/InventoryAdmin.jsp" >
+              <a href="#" class="active">
                 <span class="fas fa-boxes"></span>
                 <span>Inventory</span>
               </a>
