@@ -1,11 +1,6 @@
 package controller;
 
-import model.AdminManager;
-import model.DriverManagerConnection;
-import model.OrderBean;
-import model.ProductBean;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,23 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import model.AdminManager;
 
 /**
- * Servlet implementation class Admin
+ * Servlet implementation class DeleteProduct
  */
-@WebServlet("/Admin")
-public class Admin extends HttpServlet {
+@WebServlet("/DeleteProduct")
+public class DeleteProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Admin() {
+    public DeleteProduct() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,24 +30,9 @@ public class Admin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		
 		
-		ArrayList<Double> info=new ArrayList<Double>();
-		ArrayList <OrderBean> ordini = new ArrayList<OrderBean>();
-		
-		AdminManager am = new AdminManager();
-		
-		info = am.getInfo();
-		ordini = am.getOrdini();
-		
-		request.setAttribute("informazioni", info);
-		request.setAttribute("ordini", ordini);
-		
-		RequestDispatcher view = request.getRequestDispatcher("Admin.jsp");
-		view.forward(request, response);
-
-
-		 
 	}
 
 	/**
@@ -64,7 +40,15 @@ public class Admin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		AdminManager am= new AdminManager();
+		String id= request.getParameter("idProdotto");
+		
+		System.out.println(id);
+		am.removeProduct(id);
+		
+		
+		RequestDispatcher view = request.getRequestDispatcher("Inventory");
+		view.forward(request, response);
 	}
 
 }

@@ -1,0 +1,118 @@
+:root{
+  --main-color: #11101d;
+  --color-dark: #1D2231;
+  --text-grey:  #8390A2;
+  --highlight-color: #ffd700;
+}
+
+::selection {
+  background: var(--highlight-color);
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Poppins' ,sans-serif;
+ 
+
+}
+
+a{
+	color: #ffd700;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+  
+  
+  
+}
+.card-single{
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+   box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+}
+.card-single div:last-child span{
+  color: var(--main-color);
+  font-size: 3rem;
+  
+
+}
+.card-single div:first-child span{
+  color: var(--text-grey);
+  
+
+}
+.card-single:last-child{
+  background: #ffd700;
+}
+.card-single:last-child h1,
+.card-single:last-child div:first-child span,
+.card-single:last-child div:last-child span
+{
+  color: #000;
+}
+
+.recent-grid{
+  margin-top: 3.5rem;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 100% auto;
+ 
+}
+.card{
+  background: #fff;
+  border-radius: 12px;
+   box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+  padding: 1rem;
+}
+.card-header
+{
+  padding: 1rem;
+}
+.card-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+.card-header button{
+  background: var(--main-color);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  padding: .5rem 1rem;
+  border:1px solid var(--main-color);
+}
+
+.bt{
+	background: transparent;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+  cursor: pointer;
+}
+
+.main-content{
+  transition: margin-left 300ms;
+  margin-left: 345px;
+}
+
+main{
+  margin-top: 85px;
+  padding: 2rem 1.5rem;
+  background: #f1f5f9;
+  min-height: calc(100vh - 90px);
+}

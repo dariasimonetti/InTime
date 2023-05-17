@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class DriverManagerConnection  {
-
+	
+	private DriverManagerConnection() {
+		
+	}
+	
 	private static List<Connection> freeDbConnections;
 
 	static {
-		freeDbConnections = new LinkedList<Connection>();
+		freeDbConnections = new LinkedList<>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -19,7 +23,8 @@ public class DriverManagerConnection  {
 		} 
 	}
 	
-	private static synchronized Connection createDBConnection() throws SQLException {
+	public static synchronized Connection createDBConnection() throws SQLException {
+		
 		Connection newConnection = null;
 		String ip = "localhost";
 		String port = "3306";
@@ -27,33 +32,18 @@ public class DriverManagerConnection  {
 		String username = "root";
 		String password = "root";
 
-		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
-
-		newConnection.setAutoCommit(false);
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", username, password);
+		
+		
 		return newConnection;
 	}
 
-
-	public static synchronized Connection getConnection() throws SQLException {
-		Connection connection;
-
-		if (!freeDbConnections.isEmpty()) {
-			connection = (Connection) freeDbConnections.get(0);
-			freeDbConnections.remove(0);
-
-			try {
-				if (connection.isClosed())
-					connection = getConnection();
-			} catch (SQLException e) {
-				connection.close();
-				connection = getConnection();
-			}
-		} else {
-			connection = createDBConnection();		
-		}
-
-		return connection;
-	}
 
 	public static synchronized void releaseConnection(Connection connection) throws SQLException {
 		if(connection != null) freeDbConnections.add(connection);

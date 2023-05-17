@@ -6,35 +6,18 @@ public class ProductBean {
     private String Descrizione;
     private float  Prezzo;
     private String Materiale;
-    private int Misura;
+    private String Misura;
     private String Marca;
-    private int Uomo;
-    private int Donna;
-    private int Quadrante;
-    private int Cinturino;
+    private String Genere;
+    private String Tipo;
     private float Sconto;
     private int Quantita;
-    public ProductBean() {
-           
-    }
     
+    
+   
 
-    @Override
-	public String toString() {
-		return "ProductBean [Nome=" + Nome + ", Descrizione=" + Descrizione + ", Quadrante=" + Quadrante + "]";
-	}
-
-
-	public ProductBean(String nome,float prezzo, int quadrante) {
-		super();
-		Nome = nome;
-		Prezzo = prezzo;
-		Quadrante = quadrante;
-	}
-
-
-	public ProductBean(int id, String nome, String descrizione, float prezzo, String materiale, int misura,
-            String marca, int uomo, int donna, int quadrante, int cinturino, float sconto, int quantita) {
+	public ProductBean(int id, String nome, String descrizione, float prezzo, String materiale, String misura,
+            String marca, String genere,String tipo, float sconto, int quantita) {
         this.id = id;
         Nome = nome;
         Descrizione = descrizione;
@@ -42,10 +25,8 @@ public class ProductBean {
         Materiale = materiale;
         Misura = misura;
         Marca = marca;
-        Uomo = uomo;
-        Donna = donna;
-        Quadrante = quadrante;
-        Cinturino = cinturino;
+        Genere = genere;
+        Tipo =tipo;
         Sconto = sconto;
         Quantita = quantita;
     }
@@ -79,10 +60,10 @@ public class ProductBean {
     public void setMateriale(String materiale) {
         Materiale = materiale;
     }
-    public int getMisura() {
+    public String getMisura() {
         return Misura;
     }
-    public void setMisura(int misura) {
+    public void setMisura(String misura) {
         Misura = misura;
     }
     public String getMarca() {
@@ -91,30 +72,19 @@ public class ProductBean {
     public void setMarca(String marca) {
         Marca = marca;
     }
-    public int getUomo() {
-        return Uomo;
+    public String getGenere() {
+        return Genere;
     }
-    public void setUomo(int uomo) {
-        Uomo = uomo;
+    public void setGenere(String genere) {
+        Genere = genere;
     }
-    public int getDonna() {
-        return Donna;
+    public String getTipo() {
+        return Tipo;
     }
-    public void setDonna(int donna) {
-        Donna = donna;
+    public void setTipo(String tipo) {
+        Tipo = tipo;
     }
-    public int getQuadrante() {
-        return Quadrante;
-    }
-    public void setQuadrante(int quadrante) {
-        Quadrante = quadrante;
-    }
-    public int getCinturino() {
-        return Cinturino;
-    }
-    public void setCinturino(int cinturino) {
-        Cinturino = cinturino;
-    }
+   
     public float getSconto() {
         return Sconto;
     }

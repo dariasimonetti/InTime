@@ -4,7 +4,13 @@
   --main-color: #11101d;
   --color-dark: #1D2231;
   --text-grey:  #8390A2;
+  --highlight-color: #ffd700;
 }
+
+::selection {
+  background: var(--highlight-color);
+}
+
 
 *{
   padding: 0;
@@ -13,13 +19,19 @@
   list-style: none;
   text-decoration: none;
   font-family: 'Poppins' ,sans-serif;
+ 
+
+}
+
+a{
+	color: #ffd700;
 }
 
 .sidebar{
   width: 345px;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 200;
   height: 100%;
   z-index: 100; 
   background: var(--main-color);
@@ -103,7 +115,7 @@ header{
   display: flex;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
   position: fixed;
   left: 345px;
   top:0;
@@ -174,15 +186,16 @@ main{
 }
 .card-single{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   background: #fff;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 12px;
    box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
 }
 .card-single div:last-child span{
   color: var(--main-color);
   font-size: 3rem;
+  
 
 }
 .card-single div:first-child span{
@@ -191,20 +204,20 @@ main{
 
 }
 .card-single:last-child{
-  background: var(--main-color);
+  background: #ffd700;
 }
 .card-single:last-child h1,
 .card-single:last-child div:first-child span,
 .card-single:last-child div:last-child span
 {
-  color: #fff;
+  color: #000;
 }
 
 .recent-grid{
   margin-top: 3.5rem;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: 65% auto;
+  grid-template-columns: 100% auto;
  
 }
 .card{
@@ -225,12 +238,44 @@ main{
 }
 .card-header button{
   background: var(--main-color);
-  border-radius: 10px;
+  border-radius: 5px;
   color: #fff;
-  font-size: .8rem;
+  font-size: 20px;
   padding: .5rem 1rem;
   border:1px solid var(--main-color);
 }
+
+.bt{
+	background: transparent;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+  cursor: pointer;
+}
+
+
+
+.modal-button-2{
+	background: transparent;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+}
+
+.modal-but-3{
+	background: transparent;
+    border-radius: 5px;
+    color: black;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+}
+
+
 table{
   border-collapse: collapse;
 }
@@ -250,7 +295,7 @@ td{
 }
 
 tr td:last-child{
-  display: flex;
+  
   align-items: center;
 
 
@@ -262,11 +307,11 @@ td .status{
   border-radius: 50%;
   margin-right: 1rem; 
 }
-.status.purple {
-  background: rebeccapurple;
+.status.green {
+  background: green;
 }
-.status.pink{
-  background: deeppink;
+.status.red{
+  background: red;
 }
 .status.orange{
   background: orangered;
@@ -306,7 +351,7 @@ td .status{
 
 }
 
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 560000000px){
 
   .sidebar{
     width: 70px ;
@@ -336,18 +381,8 @@ td .status{
     left:70px;
 
   }
-}
 
-@media only screen and (max-width: 960px){
-  .cards{
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .recent-grid{
-    grid-template-columns: 60% 40%;
-  }
-}
 
-@media only screen and (max-width: 768px){
   .cards{
     grid-template-columns: repeat(2, 1fr);
   }
@@ -394,6 +429,9 @@ td .status{
     width: 100% !important;
     left: 0 !important;
   }
+  
+  .header__logo{padding-top: 2px;padding-left:0px; height: 50px;}
+  
   #nav-toggle:checked + .sidebar{
     left: 0 !important;
     z-index: 100;
@@ -424,4 +462,260 @@ td .status{
   .cards{
     grid-template-columns: 100%;
   }
+}
+
+
+
+
+
+/*************/
+/*   MODAL   */
+/*************/
+/* The Modal (background) */
+
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.5);
+	/* Black w/ opacity */
+	transition: all 0.5s ease 0.06s;
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+	background-color: #fff;
+	margin: 10% auto;
+	/* 15% from the top and centered */
+	padding: 1.2rem;
+	max-width: 50%;
+	/* Could be more or less, depending on screen size */
+	visibility: hidden;
+	box-shadow: 2px 2px 10px 0px rgba(99, 106, 119, 0.6);
+	border-radius: 5px;
+}
+
+
+/* The Close Button */
+
+.close {
+	color: #dedede;
+	/*float: right;*/
+	font-size: 2rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.close:before {
+	content: "Close";
+	font-size: 1rem;
+	display: none;
+	text-decoration: none;
+	align-self: center;
+	margin-top: 0.2rem;
+	font-weight: 400;
+}
+
+.close:hover:before {
+	display: initial;
+	color: #ffd700;
+}
+
+.close:hover,
+.close:focus {
+	color: #ffd700;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.close:active,
+.close:before:active {
+	transition: all 60ms ease;
+	transform: scale(0.97);
+}
+
+.clos2 {
+	color: #dedede;
+	/*float: right;*/
+	font-size: 2rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.clos2:before {
+	content: "Close";
+	font-size: 1rem;
+	display: none;
+	text-decoration: none;
+	align-self: center;
+	margin-top: 0.2rem;
+	font-weight: 400;
+}
+
+.clos2:hover:before {
+	display: initial;
+	color: #ffd700;
+}
+
+.clos2:hover,
+.clos2:focus {
+	color: #ffd700;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.clos2:active,
+.clos2:before:active {
+	transition: all 60ms ease;
+	transform: scale(0.97);
+}
+
+
+.clos3{
+	color: #dedede;
+	/*float: right;*/
+	font-size: 2rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.clos3:before {
+	content: "Close";
+	font-size: 1rem;
+	display: none;
+	text-decoration: none;
+	align-self: center;
+	margin-top: 0.2rem;
+	font-weight: 400;
+}
+
+.clos3:hover:before {
+	display: initial;
+	color: #ffd700;
+}
+
+.clos3:hover,
+.clos3:focus {
+	color: #ffd700;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.clos3:active,
+.clos3:before:active {
+	transition: all 60ms ease;
+	transform: scale(0.97);
+}
+
+
+/***********************/
+/*  modal form layout  */
+/***********************/
+
+.modal-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-header {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.modal-footer {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+.modal-footer > input {
+	margin-top: 0.8rem;
+	margin-bottom: 0rem;
+	margin-left: 0rem;
+	margin-right: 0rem;
+}
+
+.modal-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-row {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding: 0.4rem 0.4rem;
+}
+
+.form-row:nth-child(odd) {
+	background: #f2f2f2;
+}
+
+.form-row label {
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: 50%;
+}
+
+.form-row input,
+.form-row select {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 50%;
+	border: 1px solid hsl(0, 0%, 90%);
+	padding: 0.2rem 0.2rem;
+	max-width: 50%;
+}
+
+.slideDown {
+	animation-name: slideDown;
+	-webkit-animation-name: slideDown;
+	animation-duration: 0.6s;
+	-webkit-animation-duration: 0.6s;
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+	visibility: visible !important;
+}
+@keyframes slideDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	50%{
+		transform: translateY(4%);
+	}
+	65%{
+		transform: translateY(-2%);
+	}
+	80%{
+		transform: translateY(2%);
+	}
+	95%{
+		transform: translateY(-1%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
 }

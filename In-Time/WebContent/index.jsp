@@ -26,13 +26,10 @@
         </li>
         <li><form action="Admin">
         <button type="submit">Admin</button>
-        </form>
-        </li>
-        <li><a href="">Catalogo uomo</a></li>
+        </form></li>
         <li><a href="">Catalogo Donna</a></li>
         <li><a href="">Orologi</a></li>
         <li><a href="">Cinturini</a></li>
-        
         
       </ul>
       <div class="header__icons">
