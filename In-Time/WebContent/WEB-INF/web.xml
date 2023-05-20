@@ -15,6 +15,16 @@
     <servlet-name>AddImages</servlet-name>
     <url-pattern>/uploadImage</url-pattern>
 </servlet-mapping>
+
+<servlet>
+    <servlet-name>GetImage</servlet-name>
+    <servlet-class>controller.GetImage</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>GetImage</servlet-name>
+    <url-pattern>/getImage</url-pattern>
+</servlet-mapping>
+
   
   
 </web-app>

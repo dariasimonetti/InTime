@@ -1,5 +1,11 @@
-/* Reset */
+ 
+  /* Reset */
+ 
   
+  /* reveal password bianco*/ 
+  ::-ms-reveal {
+    filter: invert(100%);
+	}
   
   /* ! Button System */
   button {
@@ -27,7 +33,7 @@
   height: 100%;
   background: transparent;
   z-index: -1;
-  border: 0.1px solid #ffd700;
+  border: 2px solid #ffd700;
 }
 
   button span::before {
@@ -56,8 +62,7 @@
   button:active span::before {
   background: #ffd700;
 }
-
-    .header{
+  .header{
     background-color: #1d1d1f;
     position: fixed;
     top:0; 
@@ -68,18 +73,277 @@
     
   }
   .header__content{max-width: 1500px;width: 100%;margin: 0 auto; display: flex;justify-content: space-between;}
-  .header__logo{padding-top: 2px;padding-left:0px; height: 50px;}
+  .header__logo{padding-top: 2px;padding-left:0px; height: 70px; width: 210px;}
   .header__menu{padding-bottom: 0;margin-bottom: 0;}
   .header__menu li{display: inline-block;}
-  .header__menu li a{color:#fff; opacity: 0.8;display: block;padding: 16px;font-size: 15px;}
+  .header__menu li a{color:#fff; opacity: 1;display: block;padding: 16px;font-size: 20px;}
   .header__icons{width: 50px;}
-  .header__accesso {color:#fff; opacity: 0.8;display: block;padding-top: 16px;padding-left: 50px;padding-bottom: 16px;font-size: 15px;}
-  .header__registrazione {color:#fff; opacity: 0.8;display: block;padding-top: 16px;padding-left: 0px;padding-bottom: 16px;font-size: 15px;}
+  
 
-  @media (max-width: 1280px) {
+	
+  /*****/
+/*   MODAL   */
+/*****/
+/* The Modal (background) */
+
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.5);
+	/* Black w/ opacity */
+	transition: all 0.5s ease 0.06s;
+	
+	color: #fff;
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+	background-color: #1d1d1f;
+	margin: 15% auto;
+	/* 15% from the top and centered */
+	padding: 1.2rem;
+	max-width: 30%;
+	/* Could be more or less, depending on screen size */
+	visibility: hidden;
+	box-shadow: 2px 2px 10px 0px rgba(99, 106, 119, 0.6);
+	border-radius: 5px;
+}
+
+
+
+/* The Close Button */
+
+.close {
+	color: #dedede;
+	/float: right;/
+	font-size: 2rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.close:before {
+	content: "Close";
+	font-size: 1rem;
+	display: none;
+	text-decoration: none;
+	align-self: center;
+	margin-top: 0.2rem;
+	font-weight: 400;
+}
+
+.close:hover:before {
+	display: initial;
+	color: #ffd700;
+}
+
+.close:hover,
+.close:focus {
+	color: #ffd700;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.close:active,
+.close:before:active {
+	transition: all 60ms ease;
+	transform: scale(0.97);
+}
+
+/* The Clos2 Button */
+
+.clos2 {
+	color: #dedede;
+	/float: right;/
+	font-size: 2rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+.clos2:before {
+	content: "Close";
+	font-size: 1rem;
+	display: none;
+	text-decoration: none;
+	align-self: center;
+	margin-top: 0.2rem;
+	font-weight: 400;
+}
+
+.clos2:hover:before {
+	display: initial;
+	color: #ffd700;
+}
+
+.clos2:hover,
+.clos2:focus {
+	color: #ffd700;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.clos2:active,
+.clos2:before:active {
+	transition: all 60ms ease;
+	transform: scale(0.97);
+}
+
+
+/*********/
+/*  modal form layout  ------------------- */
+/*********/
+
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	
+    background-color: rgba(0,0,0,0.9);
+    background-blend-mode: lighten;
+	
+}
+
+.modal-header {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-size: 2em;
+	font-weight: bold;
+	
+}
+
+.modal-footer {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+.modal-footer > input {
+	margin-top: 0.8rem;
+	margin-bottom: 0rem;
+	margin-left: 0rem;
+	margin-right: 0rem;
+}
+
+.modal-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.slideDown {
+	animation-name: slideDown;
+	-webkit-animation-name: slideDown;
+	animation-duration: 0.6s;
+	-webkit-animation-duration: 0.6s;
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+	visibility: visible !important;
+}
+@keyframes slideDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	50%{
+		transform: translateY(4%);
+	}
+	65%{
+		transform: translateY(-2%);
+	}
+	80%{
+		transform: translateY(2%);
+	}
+	95%{
+		transform: translateY(-1%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+
+
+
+.form-box{
+    position: relative;
+    width: 450px;
+    height: 500px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fada5e;
+
+}
+.h2{
+    font-size: 2em;
+    color: #ffd700;
+    text-align: center;
+}
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff8e7;
+}
+.inputbox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fada5e;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+input:focus ~ label,
+input:valid ~ label{
+top: -5px;
+}
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding:0 35px 0 5px;
+    color: #fff8e7;
+}
+.inputbox ion-icon{
+    position: absolute;
+    right: 8px;
+    color: #fada5e;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+
+  /* MEDIA --------------------------------------- */
+    @media (max-width: 1400px) {
     .header__menu{
       position: absolute;
-      top:50px;
+      top:70px;
       background-color: #1d1d1f;
       width: 100%;
       height: 100vh;
@@ -87,10 +351,12 @@
       overflow: hidden;
       transition: all 1s cubic-bezier(.215, .61, .355, 1);
     }
-
+	
+	
     .header__menu li{width: 100%;border-bottom: 1px solid #444}
     .menu-open .header__menu{height: 100vh;padding: 3%;}
     
+ 
 
     .icon-hamburger{height: 50px;width: 50px;margin-left: 20px;padding-top: 5px;}
     .icon-hamburger span{height: 1px; width: 30px;background: #fff;position: relative;display: block;margin-top: 12px;transition: all 0.2s cubic-bezier(.215, .61, .355, 1);}
@@ -99,5 +365,16 @@
     .menu-open .icon-hamburger span:nth-child(2){transform: rotate(-45deg) translateY(-9px);}
 
     .header__icons{display: flex;width: 80px;}
-
+	
+	.modal-content {
+	
+	margin: 15% auto;
+	/* 15% from the top and centered */
+	padding: 1.2rem;
+	max-width: 50%;
+	/* Could be more or less, depending on screen size */
+	visibility: hidden;
+	box-shadow: 2px 2px 10px 0px rgba(99, 106, 119, 0.6);
+	border-radius: 5px;
+	}
   }

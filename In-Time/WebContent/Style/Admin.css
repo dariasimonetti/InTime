@@ -251,7 +251,7 @@ main{
     color: black;
     font-size: 20px;
     padding: 0.5rem 1rem;
-    border: 1px solid white;
+    border: 0px solid white;
   cursor: pointer;
 }
 

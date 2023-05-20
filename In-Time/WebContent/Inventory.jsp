@@ -50,7 +50,7 @@
            <label for="nav-toggle" style="cursor:pointer">
             <ion-icon name="list"></ion-icon>
           </label>
-          Menu
+          Men&ugrave;
         </h2>
 
         <!--  <div class="search-wrapper">
@@ -59,7 +59,7 @@
 
         </div>-->
         
-         <a class="header__logo" href="index.html">
+         <a class="header__logo" href="index.jsp">
         <img class="header__logo" src="logo.png" alt="logo In Time" width="150" height="200">
       </a>
 
@@ -94,7 +94,7 @@
 			<form action="AddProduct" class="modal-form" method="post">
 			
 				<div class="form-row">
-					<label for="">Name</label>
+					<label for="">Nome</label>
                   <input  placeholder="Inserisci il nome..." name="nome"></input>
 				</div>
 				
@@ -139,7 +139,7 @@
 				</div>
 				
 				<div class="form-row">
-					<label for="">Quantità</label>
+					<label for="">Quantit&agrave;</label>
                   <input  placeholder="Inserisci la quantità..." name="quantita"></input>
 				</div>
 				
@@ -170,7 +170,7 @@
                       <td>Genere</td>
                       <td>Tipo</td>
                       <td>Sconto</td>
-                      <td>Quantità</td>
+                      <td>Quantit&agrave;</td>
                       <td style="color: #6b6e70">Immagini</td>
                       <td style="color: #6b6e70">Modifica</td>
                       <td style="color: #6b6e70">Elimina</td>
@@ -291,7 +291,7 @@
 				</div>
 				
 				<div class="form-row">
-					<label for="">Quantità</label>
+					<label for="">Quantit&agrave;</label>
                   <input  placeholder="Inserisci la quantità se vuoi modificarla..." name="quantita"></input>
 				</div>
 				

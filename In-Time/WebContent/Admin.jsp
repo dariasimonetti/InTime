@@ -51,7 +51,7 @@
           <label for="nav-toggle" style="cursor:pointer">
             <ion-icon name="list"></ion-icon>
           </label>
-          Menu
+          Men&ugrave;
         </h2>
 
         <!-- <div class="search-wrapper">
@@ -59,7 +59,7 @@
           <input type="search" placeholder="Search..." />
 
         </div> -->
-        <a class="header__logo" href="index.html">
+        <a class="header__logo" href="index.jsp">
         <img class="header__logo" src="logo.png" alt="logo In Time" width="150" height="200">
       </a>
 
@@ -79,7 +79,7 @@
         int cust=(int) n; int it= (int) n2; int ord=(int) n3;%>
           <div class="card-single">
             <div style="text-align:center">
-              <h1>Customer <ion-icon name="people"></ion-icon></h1>
+              <h1>Clienti <ion-icon name="people"></ion-icon></h1>
               <span><%=cust%></span>
             </div>
             <div>
@@ -88,7 +88,7 @@
           </div>
           <div class="card-single">
             <div style="text-align:center">
-              <h1>Items <ion-icon name="time"></ion-icon></h1>
+              <h1>Prodotti <ion-icon name="time"></ion-icon></h1>
               <span><%=it%></span>
             </div>
             <div>
@@ -97,7 +97,7 @@
           </div>
           <div class="card-single">
             <div style="text-align:center">
-              <h1>Orders <ion-icon name="card"></ion-icon></h1>
+              <h1>Ordini <ion-icon name="card"></ion-icon></h1>
               <span><%=ord%></span>
             </div>
             <div>
@@ -106,7 +106,7 @@
           </div>
           <div class="card-single">
             <div style="text-align:center">
-              <h1>Income <ion-icon name="diamond"></ion-icon></h1>
+              <h1>Guadagno <ion-icon name="diamond"></ion-icon></h1>
               <span><%=info.get(3)%>&euro;</span>
             </div>
             <div>
@@ -121,7 +121,7 @@
             <div class="card" >
               <div class="card-header">
               	<h2></h2>
-                <h2 >Recent Orders</h2>
+                <h2 >Ordini Recenti</h2>
                 <h2></h2>
               </div>
               <div class="card-body">
