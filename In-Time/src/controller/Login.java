@@ -8,20 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.AdminManager;
+import model.LoginManager;
+
 
 /**
- * Servlet implementation class DeleteProduct
+ * Servlet implementation class Login
  */
-@WebServlet("/DeleteProduct")
-public class DeleteProduct extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteProduct() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +33,7 @@ public class DeleteProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -40,15 +41,18 @@ public class DeleteProduct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		AdminManager am= new AdminManager();
-		String id= request.getParameter("idProdotto");
+		String email= request.getParameter("email");
+		String password= request.getParameter("password");
+		HttpSession session = request.getSession();
+		
+		LoginManager LM = new LoginManager();
+		
+		LM.Accedi(email, password,session); 
+		response.setContentType("text/html");
+			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+			view.forward(request, response);
 		
 		
-		am.removeProduct(id);
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher("Inventory");
-		view.forward(request, response);
 	}
 
 }

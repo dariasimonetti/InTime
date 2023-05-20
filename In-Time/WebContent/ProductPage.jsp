@@ -25,21 +25,18 @@
       <div class="container">
         <div>
           <h1><%= p.getNome()%></h1>
-          
+          <h4><%=p.getMarca() %></h4>
           <%if (p.getSconto()!=0.0){ %>
-          <h2><del style="color: grey"><%= p.getPrezzo() %> &euro;</del> &ensp;<%= (p.getPrezzo()*p.getSconto())/100 %> &euro;</h2>
-  
+          <h2><del style="color: grey"><%= p.getPrezzo() %> &euro;</del> &ensp;<%= p.getPrezzo()-((p.getPrezzo()*p.getSconto())/100) %> &euro;</h2>
           <h5 style="color :#90ee90"><%= p.getSconto() %>% di sconto</h5>
           <% } else{ %>
           <h2><%=p.getPrezzo() %>&euro;</h2>
           <%} %>
-          <p>
-            <%= p.getDescrizione() %>
-          </p>
+          
            <form action="AddCart" method="post">
-           <div data-tooltip="Compra" class="button">
+           <div data-tooltip="Carrello" class="button">
 <button class="button-wrapper" value="<%= p.getId()%>" name="Id">
-  <div class="text">Compra</div>
+  <div class="text">Aggiungi al</div>
     <span class="icon" style="color: black; border-radius: 5px;"><ion-icon name="cart"></ion-icon>
     </span>
   </button>
@@ -49,52 +46,49 @@
 			
            </form>
         </div>
-        <img src="Sfondo 3.png" style="border-radius:50px" alt="" />
+        <img id="immagineSopra" src="Sfondo 3.png" style="border-radius:50px" alt="" />
       </div>
     </section>
-
+    <ul class="cont">
+    <li class="img_outer watch fade-in"> <img src="p/sfondo4.png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <img src="p/sfondo5.png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <img src="p/Sfondo6.png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <img src="p/Sfondo7.png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <img src="p/Sfondo9.png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <img src="Sfondo2 .png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <img src="Sfondo 3.png" onclick="scambiaImmagine(this)"/></li>
+    <li class="img_outer watch fade-in"> <video src="VideoSfondoOrizzontale.mp4" autoplay muted loop ></video></li>
+  </ul>
+    
+	<br>
+	<hr color="#c3c3c3">
+	
     <!-- Large Text -->
     <section id="about" class="section-b">
       <div class="overlay">
         <div class="section-b-inner py-5">
-          <h3 class="text-2">Loud & Clear</h3>
-          <h2 class="text-5 mt-1">People Aren't Hearing All the Music</h2>
-          <p class="mt-1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-            repudiandae laboriosam quia, error tempore porro ducimus voluptate
-            laborum nostrum iure.
+          <h3 class="text-2">Preziosi istanti:</h3>
+          <h2 class="text-5 mt-1">Trova l'orologio che ti fa sentire straordinario ogni giorno.</h2>
+          <p class="mt-1"><b>Descrizione prodotto:</b> <%=p.getDescrizione()%>; <br>
+          <b>Materiali:</b> <%=p.getMateriale() %><br>
+          <b>Genere:</b> <%=p.getGenere() %><br>
+          <b>Tipo:</b> <%=p.getTipo() %><br>
+          <b>Misura:</b> <%=p.getMisura() %><br>
           </p>
         </div>
       </div>
     </section>
-
-    <!-- Gallery -->
-    <section class="section-c">
-      <div class="gallery">
-        <a href="https://i.ibb.co/CHLBZnp/gal2323.jpg" class="big"
-          ><img src="https://i.ibb.co/CHLBZnp/gal2323.jpg" alt=""
-        /></a>
-        <a href="https://i.ibb.co/4pBbhfY/gal39834.jpg" class="big"
-          ><img src="https://i.ibb.co/4pBbhfY/gal39834.jpg" alt=""
-        /></a>
-        <a href="https://i.ibb.co/xSnHP7g/gal43884.jpg" class="big"
-          ><img src="https://i.ibb.co/xSnHP7g/gal43884.jpg" alt=""
-        /></a>
-        <a href="" class="big"
-          ><img src="Sfondo 2.png" alt=""
-        /></a>
-        <a href="https://i.ibb.co/dGZvj75/gal4545.jpg" class="big">
-          <img src="https://i.ibb.co/dGZvj75/gal4545.jpg" alt=""
-        /></a>
-        <a href="https://i.ibb.co/S6FVFNt/gal74744.jpg" class="big"
-          ><img src="https://i.ibb.co/S6FVFNt/gal74744.jpg" alt=""
-        /></a>
-      </div>
-    </section>
+    
+    <hr color="#c3c3c3">
+    
+    <br>
 
 
 <script src="JS/productpage.js"></script>
+<script src="JS/index.js"></script>
 
 
 </body>
+
+<%@ include file="Footer.jsp" %>
 </html>

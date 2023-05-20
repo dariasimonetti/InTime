@@ -1,6 +1,5 @@
- 
-  /* Reset */
- 
+/* Reset */
+  body, html{color:black; font-family: 'Catamaran', sans-serif; font-size: 16px; box-sizing: border-box;margin: 0;padding: 0;},:before,*:after{ box-sizing: border-box; }h1,h2,h3,h4,h5,h6, .p, ol, ul{margin: 0 0 1rem 0;padding: 0;}ol,ul{list-style-type: none;}img{height: auto;}h1{font-size: 4rem;} h2{font-size: 3rem;} h3{font-size: 2rem;} h4{font-size: 1rem;} h5{font-size: 0.8rem;} h6{font-size: 0.6rem;}a{text-decoration:none}
   
   /* reveal password bianco*/ 
   ::-ms-reveal {
@@ -81,9 +80,9 @@
   
 
 	
-  /*****/
+  /***/
 /*   MODAL   */
-/*****/
+/***/
 /* The Modal (background) */
 
 .modal {
@@ -101,7 +100,7 @@
 	/* Full height */
 	overflow: auto;
 	/* Enable scroll if needed */
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.4);
 	/* Black w/ opacity */
 	transition: all 0.5s ease 0.06s;
 	
@@ -204,9 +203,9 @@
 }
 
 
-/*********/
+/***/
 /*  modal form layout  ------------------- */
-/*********/
+/***/
 
 .modal-content {
 	display: flex;
@@ -340,7 +339,7 @@ top: -5px;
 
 
   /* MEDIA --------------------------------------- */
-    @media (max-width: 1400px) {
+    @media (max-width: 1420px) {
     .header__menu{
       position: absolute;
       top:70px;
@@ -351,8 +350,9 @@ top: -5px;
       overflow: hidden;
       transition: all 1s cubic-bezier(.215, .61, .355, 1);
     }
-	
-	
+    
+
+
     .header__menu li{width: 100%;border-bottom: 1px solid #444}
     .menu-open .header__menu{height: 100vh;padding: 3%;}
     
@@ -377,4 +377,8 @@ top: -5px;
 	box-shadow: 2px 2px 10px 0px rgba(99, 106, 119, 0.6);
 	border-radius: 5px;
 	}
+	
+	.modal {
+	overflow: auto;
+}
   }

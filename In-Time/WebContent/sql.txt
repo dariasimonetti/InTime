@@ -1,0 +1,95 @@
+CREATE SCHEMA inTime;
+
+USE inTime;
+
+CREATE TABLE Utente(
+	Id int not null auto_increment primary key,
+	isAdmin bool,
+	Nome varchar(50) NOT NULL,
+	Cognome varchar (50) NOT NULL,
+	Telefono char (10) NOT NULL,
+	Email VARCHAR(100) NOT NULL,
+	Pass VARCHAR(100) NOT NULL
+);
+ 
+CREATE TABLE DatiSpedizione (
+	Id int not null AUTO_INCREMENT,
+    IdUtente int not null,
+	Nome varchar(50) not null, 
+	Cognome varchar(50) not null,
+	Civico varchar(10) not null,
+	Via varchar (30) not null,
+	CAP int not null,
+	Citta varchar(50) not null,
+    
+    Primary Key (Id),
+    
+    Foreign Key (IdUtente) references Utente(Id)
+);
+
+CREATE TABLE MetodoPagamento (
+
+	Id int not null AUTO_INCREMENT,
+    IdUtente int not null,
+	NumeroCarta char(16) not null,
+	Scadenza char(4) not null,
+    
+    Primary Key (Id),
+    
+    Foreign Key (IdUtente) references Utente(Id)
+);
+ 
+CREATE TABLE Ordine (
+
+	Id int not null AUTO_INCREMENT,
+    IdCliente int not null,
+	PrezzoTotale double not null,
+	DataO date not null,
+    
+    Primary Key (Id),
+    
+    Foreign Key (IdCliente) references Utente(Id)
+);
+ 
+ CREATE TABLE Articolo (
+
+	Id int not null AUTO_INCREMENT,
+	Prezzo float not null,
+	Descrizione varchar(512) not null,
+    Nome varchar(50) not null,
+    Materiale varchar(50) not null,
+    Misura varchar(50) not null,
+    Marca varchar(50) not null,
+    Quantita int not null,
+    Sconto float,
+    Genere varchar(10) not null,
+    Tipo varchar(30) not null,
+    
+    Primary Key (Id)
+    
+);
+
+CREATE TABLE Recensione (
+
+	Id int not null AUTO_INCREMENT,
+    Id_Utente int not null,
+    Id_Articolo int not null,
+	Voto double not null,
+	Testo varchar(512) not null,
+    
+    Primary Key (Id),
+    
+    Foreign Key (Id_Utente) references Utente(Id),
+    Foreign Key (Id_Articolo) references Articolo(Id)
+);
+
+
+
+Create Table Contiene (
+	Id_Ordine int not null,
+    Id_Articolo int not null,
+	Quantita_ordinata int not null,
+    
+    Foreign key (Id_Ordine) references Ordine (Id), 
+    Foreign key (Id_Articolo) references Articolo (Id)
+);

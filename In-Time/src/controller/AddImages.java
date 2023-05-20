@@ -16,12 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-
-
-
 /**
  * Servlet implementation class AddImages
  */
+
 @MultipartConfig
 public class AddImages extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -82,7 +80,7 @@ public class AddImages extends HttpServlet {
 		    String filePath = fullSavePath + File.separator + fileName;
 		    Files.copy(imageInputStream, Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
 
-		    RequestDispatcher view = request.getRequestDispatcher("Inventory");
+		    RequestDispatcher view = request.getRequestDispatcher("Inventory.jsp");
 			view.forward(request, response);
 		}
 

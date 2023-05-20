@@ -8,20 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.AdminManager;
+import model.UserManager;
 
 /**
- * Servlet implementation class DeleteProduct
+ * Servlet implementation class UserRegister
  */
-@WebServlet("/DeleteProduct")
-public class DeleteProduct extends HttpServlet {
+@WebServlet("/UserRegister")
+public class UserRegister extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteProduct() {
+    public UserRegister() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +32,7 @@ public class DeleteProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	}
 
@@ -40,15 +41,21 @@ public class DeleteProduct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		AdminManager am= new AdminManager();
-		String id= request.getParameter("idProdotto");
 		
+		String nome= request.getParameter("nome");
+		String cognome= request.getParameter("cognome");
+		String email= request.getParameter("email");
+		String password= request.getParameter("password");
+		String cellulare= request.getParameter("cellulare");
+		HttpSession session = request.getSession();
 		
-		am.removeProduct(id);
+		UserManager UM = new UserManager();
 		
+		UM.Registrati(nome, cognome, false, cellulare, email, password,session);
 		
-		RequestDispatcher view = request.getRequestDispatcher("Inventory");
-		view.forward(request, response);
+			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+			view.forward(request, response);
+		
 	}
 
 }

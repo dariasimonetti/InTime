@@ -1,27 +1,30 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AdminManager;
+import model.CookieManager;
+import model.ProductBean;
 
 /**
- * Servlet implementation class DeleteProduct
+ * Servlet implementation class Cart
  */
-@WebServlet("/DeleteProduct")
-public class DeleteProduct extends HttpServlet {
+@WebServlet("/Cart")
+public class Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteProduct() {
+    public Cart() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,25 +33,32 @@ public class DeleteProduct extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Cookie[] cookies = request.getCookies();
+		CookieManager cm = new CookieManager();	 
+		Cookie cartCookie = cm.findCookie(cookies, "cart");
+		
+		if (cartCookie != null) {
+		String encodedValue = cartCookie.getValue();
+		
+   	    ArrayList<ProductBean> cart = cm.JSONStringToList(encodedValue);
+   	    
+   	    request.setAttribute("carrello",cart);
+		} else {
+			request.setAttribute("carrello", null);
+			};
+   	    RequestDispatcher view = request.getRequestDispatcher("cart.jsp");
+		view.forward(request, response);
 		
 		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		AdminManager am= new AdminManager();
-		String id= request.getParameter("idProdotto");
+       doGet(request,response);
+ 
 		
-		
-		am.removeProduct(id);
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher("Inventory");
-		view.forward(request, response);
+	
 	}
 
 }

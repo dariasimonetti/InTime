@@ -59,4 +59,5 @@
  <script src="JS/index2.js"></script>
 
 </body>
+<%@ include file="Footer.jsp" %>
 </html>

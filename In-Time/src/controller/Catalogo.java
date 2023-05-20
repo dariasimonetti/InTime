@@ -1,6 +1,8 @@
 package controller;
 import model.DriverManagerConnection;
 import model.ProductBean;
+import model.ProductManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.CatalogoBean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,22 +39,11 @@ public class Catalogo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ProductBean> products = new ArrayList<>();
-		Connection newConnection = null;
-		try {
-        newConnection = DriverManagerConnection.getConnection();
-          String q = "SELECT * FROM intime.articolo;";
-          Statement s= newConnection.createStatement();
-          ResultSet rs=s.executeQuery(q);
-          while(rs.next()) {
-        	  products.add(new ProductBean(rs.getString("nome"),rs.getFloat("prezzo"), rs.getInt("quadrante")));
-          }
-		} catch (Exception e) {
-			
-		}
-		
-		request.setAttribute("prodotti", products);
-		RequestDispatcher view = request.getRequestDispatcher("JSP/catalogo.jsp");
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		ProductManager Pm = new ProductManager();
+		catalogo = Pm.getCatalogo();
+		request.setAttribute("prodotti", catalogo);
+		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);
 
 
@@ -68,13 +59,3 @@ public class Catalogo extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-/*jsp -> sarvlet -> model -> db 
-
-model -> interfaccia al db 
-classe java che si connette al db e svolge le funzioni 
-*/

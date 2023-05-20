@@ -25,15 +25,11 @@ body {
 	background: linear-gradient(135deg, #1d1d1f,#eee) no-repeat;
 }
 
-.scroll{
-	overflow: auto;
-}
-
 h1,
 h2,
 h3,
 h4 {
-  line-height: 1.3;
+  line-height: 1;
 }
 
 a {
@@ -72,6 +68,7 @@ img {
 }
 
 .section-a h1 {
+	margin-bottom: 5px;
   font-size: 4rem;
   color: #c3c3c3;
 }
@@ -87,23 +84,23 @@ img {
 
 .section-b {
   position: relative;
-  background: url('Sfondo 3.png') no-repeat bottom center/cover;
-  height: 600px;
+  height: 700px;
+  display: in-line block;
 }
 
 .section-b-inner {
-	 background: -webkit-linear-gradient(180deg,#ffd700,#fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: auto;
-  max-width: 860px;
-  padding: 5rem 0;
+	background: -webkit-linear-gradient(180deg,#ffd700,#fff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: auto;
+	max-height: fit-content;
+	padding: 5px;
 }
 
 .section-b-inner h3 {
@@ -144,6 +141,8 @@ img {
 
 
 
+
+
 /* // .form-control-wrap {
 // 	position: relative;
 // 	display: inline-block;
@@ -173,10 +172,10 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--overlay-color);
+  background-color: var(--transparent-color);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
   .section-a .container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -194,6 +193,10 @@ img {
     width: 80%;
     margin: auto;
   }
+  
+  .section-b {
+  height: 1000px;
+}
 
   .section-c .gallery {
     display: grid;
@@ -337,3 +340,62 @@ img {
 .button:hover:before {
   bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
 }
+
+.cont {
+	
+
+  list-style-type:none;
+  margin-left: 51%;
+  max-width: 50%;
+  min-height: 200px;
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+}
+
+.cont img:hover{
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.img_outer {
+  min-width: 300px;
+  margin: 10px;
+}
+
+img {
+	
+	border-radius: 20px;
+  width:100%;
+  height:100%;
+  object-fit: center;
+}
+
+
+
+
+
+.video-outer{
+	min-width: 300px;
+  margin: 10px;
+}
+
+video {
+	border-radius: 20px;
+  width:100%;
+  height:100%;
+  object-fit: scale-down;
+}
+
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent;
+}
+
+.fade-in{opacity: 0;transform: translateY(10vh); transition: all 1s cubic-bezier(.215, .61, .355, 1);}
+  .fade-in.in-page{opacity: 1;transform: translateY(0vh);}

@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AdminManager;
+import model.ProductBean;
+import model.ProductManager;
 
 /**
- * Servlet implementation class DeleteProduct
+ * Servlet implementation class Product
  */
-@WebServlet("/DeleteProduct")
-public class DeleteProduct extends HttpServlet {
+@WebServlet("/Product")
+public class Product extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteProduct() {
+    public Product() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,9 +31,9 @@ public class DeleteProduct extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		
+		 
 	}
 
 	/**
@@ -40,14 +41,14 @@ public class DeleteProduct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		AdminManager am= new AdminManager();
-		String id= request.getParameter("idProdotto");
-		
-		
-		am.removeProduct(id);
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher("Inventory");
+		ProductManager pm = new ProductManager();
+		 
+		int id = Integer.parseInt(request.getParameter("Id"));
+	 
+		ProductBean p = pm.getProduct(id);
+		 
+		request.setAttribute("product", p);
+		RequestDispatcher view = request.getRequestDispatcher("ProductPage.jsp");
 		view.forward(request, response);
 	}
 
