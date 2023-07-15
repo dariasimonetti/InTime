@@ -61,11 +61,7 @@
           Men&ugrave;
         </h2>
 
-        <!-- <div class="search-wrapper">
-          <span class="fas fa-search"> </span>
-          <input type="search" placeholder="Search..." />
-
-        </div> -->
+       
         
         <a class="header__logo" href="index.jsp">
         <img class="header__logo" src="logo.png" alt="logo In Time" width="150" height="200">
