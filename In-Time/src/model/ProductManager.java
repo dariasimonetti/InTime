@@ -6,9 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 public class ProductManager {
+	private static final Logger logger = Logger.getLogger(ProductManager.class.getName());
+
 	public ArrayList<CatalogoBean> getCatalogo(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
@@ -71,7 +76,7 @@ public class ProductManager {
               catalogo.add(new CatalogoBean(rs.getInt("id"), rs.getString("nome"), rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			e.printStackTrace();
+			 logger.log(Level.SEVERE, "Si è verificato un errore", e);
 		}  finally {
 			
 			DriverManagerConnection.releaseConnection(newConnection);
