@@ -55,10 +55,14 @@ public class RemoveCart extends HttpServlet {
 		cart.remove(removedProduct);
 		if(cart.isEmpty()) {
 			cartCookie.setMaxAge(0);
+		}else {
+			encodedValue = cm.ListToStringJSON(cart);
+	   	    cartCookie = new Cookie("cart", encodedValue);
+	   	    
 		}
-		encodedValue = cm.ListToStringJSON(cart);
-   	    cartCookie = new Cookie("cart", encodedValue);
-   	    response.addCookie(cartCookie);
+		
+		response.addCookie(cartCookie);
    	    response.sendRedirect(request.getContextPath() + "/Cart");
+		
 	}
 	}

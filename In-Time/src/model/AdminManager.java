@@ -49,7 +49,7 @@ public class AdminManager {
 	
 	public void removeProduct(String id) {
 		Connection con = null;
-		PreparedStatement ps = null;
+		PreparedStatement ps = null, ps2=null;
 
 		try {
 		    con = DriverManagerConnection.createDBConnection();
@@ -60,12 +60,25 @@ public class AdminManager {
 		    ps = con.prepareStatement(query);
 		    ps.setInt(1, idd);
 
-		    ps.executeUpdate();
+		    int i=ps.executeUpdate();
 
 		    
 
 		} catch (SQLException e) {
 		    System.out.println("Error executing query: " + e.getMessage());
+		    try {
+
+			    
+			    int idd = Integer.parseInt(id);
+			    String query = "UPDATE articolo set Quantita = 0 WHERE Id = ?";
+			    ps2 = con.prepareStatement(query);
+			    ps2.setInt(1, idd);
+
+			    ps2.executeUpdate();
+			    } catch(Exception e1) {
+			    	e1.printStackTrace();
+			    }
+		    
 		} catch (NumberFormatException e) {
 		    System.out.println("Invalid id format: " + e.getMessage());
 		} finally {
@@ -130,6 +143,7 @@ public class AdminManager {
 	public void changeProduct(String id, String nome, String descrizione, String prezzo, String materiale, String misura,
             String marca, String genere,String tipo, String sconto, String quantita) {
 		
+		
 		Connection con=null;
 		PreparedStatement ps=null;
 		
@@ -187,10 +201,7 @@ public class AdminManager {
 			
 			
 			ps.executeUpdate();
-			
-			
-			
-			
+
 			
 		} catch (Exception e){
 			System.out.println(e);
@@ -209,9 +220,9 @@ public class AdminManager {
 	}
 	
 	
-	public ArrayList<Double> getInfo() {
+	public ArrayList<Float> getInfo() {
 		
-		ArrayList <Double> info=new ArrayList<Double>();
+		ArrayList <Float> info=new ArrayList<Float>();
 		Connection con=null;
 		PreparedStatement s=null;
 		try {
@@ -224,7 +235,7 @@ public class AdminManager {
 			ResultSet rs=s.executeQuery();
 			
 			while(rs.next()) {
-			info.add(rs.getDouble("Conteggio"));
+			info.add(rs.getFloat("Conteggio"));
 			
 			}
 		
@@ -233,7 +244,7 @@ public class AdminManager {
 			s=con.prepareStatement(query2);
 			rs=s.executeQuery(query2);
 			while(rs.next()) {
-				info.add(rs.getDouble("c"));
+				info.add(rs.getFloat("c"));
 				}
 			
 			//orders
@@ -241,7 +252,7 @@ public class AdminManager {
 			s=con.prepareStatement(query3);
 			rs=s.executeQuery(query3);
 			while(rs.next()) {
-				info.add(rs.getDouble("cc"));
+				info.add(rs.getFloat("cc"));
 				}
 			
 			
@@ -250,7 +261,7 @@ public class AdminManager {
 			s=con.prepareStatement(query4);
 			rs=s.executeQuery();
 			while(rs.next()) {
-				info.add(rs.getDouble("somma"));
+				info.add(rs.getFloat("somma"));
 				}
 			
 			
@@ -288,7 +299,7 @@ public class AdminManager {
 			ResultSet rs= s.executeQuery(query);
 			
 			while (rs.next()) {
-				ordini.add(new OrderBean(rs.getInt("id"), rs.getInt("idCliente"), rs.getDouble("prezzototale")));
+				ordini.add(new OrderBean(rs.getInt("id"), rs.getInt("id_Cliente"), rs.getFloat("prezzototale"), rs.getDate("DataO")));
 			}
 			
 			
@@ -311,6 +322,39 @@ public class AdminManager {
 		}
 		
 		return ordini;
+	}
+	
+	public ArrayList<UserBean> getUtenti(){
+		ArrayList<UserBean> utenti= new ArrayList<UserBean>();
+		Connection con=null;
+		Statement s= null;
+		
+		try {
+			
+			con=DriverManagerConnection.createDBConnection();
+			String query="SELECT * FROM utente";
+			s= con.createStatement();
+			ResultSet rs= s.executeQuery(query);
+			
+			while(rs.next()) {
+				utenti.add(new UserBean(rs.getInt("Id"), rs.getString("Nome"), rs.getString("Cognome"), rs.getBoolean("isAdmin"), rs.getString("Telefono"), rs.getString("Email"), ""));
+			}
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}finally {
+		    try {
+		        if (s != null) {
+		            s.close();
+		        }
+		        if (con != null) {
+		            con.close();
+		        }
+		    } catch (SQLException e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
+		}
+		return utenti;
 	}
 	
 }

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginManager;
+import model.UserBean;
+import model.UserManager;
 
 
 /**
@@ -47,12 +49,26 @@ public class Login extends HttpServlet {
 		
 		LoginManager LM = new LoginManager();
 		
-		LM.Accedi(email, password,session); 
+		
+		int admin=LM.Accedi(email, password,session);
+		
+		
+
 		response.setContentType("text/html");
+		
+		
+		if(admin==1){
+			String referer = request.getHeader("referer");
+
+			response.sendRedirect(referer);
+		} else if(admin==2) {
+			RequestDispatcher view = request.getRequestDispatcher("Admin");
+			view.forward(request, response);
+		} else if(admin==0) {
+			request.setAttribute("nologin", 0);
 			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);
-		
-		
+		}
 	}
 
 }

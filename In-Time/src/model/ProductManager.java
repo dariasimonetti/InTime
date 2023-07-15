@@ -26,6 +26,128 @@ public class ProductManager {
 		
 		return catalogo;
 	}
+	
+	public ArrayList<CatalogoBean> getCatalogoFiltrato(float partire, float fino, String tipo, String genere){
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		Connection newConnection = null;
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          String q = null;
+          PreparedStatement ps = null;
+
+          if (tipo != null && genere != null) {
+              q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ? AND Tipo = ? AND Genere = ?";
+              ps = newConnection.prepareStatement(q);
+              ps.setFloat(1, partire);
+              ps.setFloat(2, fino);
+              ps.setString(3, tipo);
+              ps.setString(4, genere);
+          } else if (tipo != null && genere == null) {
+              q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ? AND Tipo = ?";
+              ps = newConnection.prepareStatement(q);
+              ps.setFloat(1, partire);
+              ps.setFloat(2, fino);
+              ps.setString(3, tipo);
+          } else if (genere != null && tipo == null) {
+              q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ? AND Genere = ?";
+              ps = newConnection.prepareStatement(q);
+              ps.setFloat(1, partire);
+              ps.setFloat(2, fino);
+              ps.setString(3, genere);
+          } else {
+              q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ?";
+              ps = newConnection.prepareStatement(q);
+              ps.setFloat(1, partire);
+              ps.setFloat(2, fino);
+          }
+
+          ResultSet rs = ps.executeQuery();
+
+          while (rs.next()) {
+              catalogo.add(new CatalogoBean(rs.getInt("id"), rs.getString("nome"), rs.getFloat("prezzo")));
+          }
+		} catch (Exception e) {
+			
+		}
+		
+		return catalogo;
+	}
+	
+	public ArrayList<CatalogoBean> getCatalogoUomo(){
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		Connection newConnection = null;
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          String q = "SELECT Id,Prezzo,Nome FROM intime.articolo WHERE Genere='Uomo' Or Genere='Unisex'";
+          Statement s= newConnection.createStatement();
+          ResultSet rs=s.executeQuery(q);
+          while(rs.next()) {
+        	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
+          }
+		} catch (Exception e) {
+			
+		}
+		
+		return catalogo;
+	}
+	
+	public ArrayList<CatalogoBean> getCatalogoDonna(){
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		Connection newConnection = null;
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          String q = "SELECT Id,Prezzo,Nome FROM intime.articolo WHERE Genere='Donna' or Genere='Unisex'";
+          Statement s= newConnection.createStatement();
+          ResultSet rs=s.executeQuery(q);
+          while(rs.next()) {
+        	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
+          }
+		} catch (Exception e) {
+			
+		}
+		
+		return catalogo;
+	}
+	
+	public ArrayList<CatalogoBean> getCatalogoCinturino(){
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		Connection newConnection = null;
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          String q = "SELECT Id,Prezzo,Nome FROM intime.articolo WHERE Tipo='Cinturino'";
+          Statement s= newConnection.createStatement();
+          ResultSet rs=s.executeQuery(q);
+          while(rs.next()) {
+        	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
+          }
+		} catch (Exception e) {
+			
+		}
+		
+		return catalogo;
+	}
+	
+	
+	public ArrayList<CatalogoBean> getCatalogoOrologio(){
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		Connection newConnection = null;
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          String q = "SELECT Id,Prezzo,Nome FROM intime.articolo WHERE Tipo='Orologio'";
+          Statement s= newConnection.createStatement();
+          ResultSet rs=s.executeQuery(q);
+          while(rs.next()) {
+        	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
+          }
+		} catch (Exception e) {
+			
+		}
+		
+		return catalogo;
+	}
+	
+	
+	
 	public ProductBean getProduct(int id) {
 		Connection c = null;
 		try {
@@ -45,5 +167,47 @@ public class ProductManager {
 		
 		
 		return null;
+	}
+	public ArrayList<OrderBean> getOrdini(int id){
+		ArrayList<OrderBean> ordini= new ArrayList<>();
+		Connection newConnection = null;
+		PreparedStatement ps=null;
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          String q = "SELECT * FROM ordine where Id_cliente=?";
+          
+          ps= newConnection.prepareStatement(q);
+          ps.setInt(1, id);
+          
+          ResultSet rs=ps.executeQuery();
+          while(rs.next()) {
+        	   
+        	   ordini.add(new OrderBean(rs.getInt("Id"),rs.getInt("Id_Cliente"), rs.getFloat("PrezzoTotale"),rs.getDate("DataO")));
+      		   }
+		} catch (Exception e) {
+			
+		}
+		
+		return ordini;
+	}
+	
+	public ArrayList<CatalogoBean> getCatalogoSearch(String cerca){
+		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
+		Connection newConnection = null;
+		PreparedStatement s = null;
+		String q = "select *  from Articolo where Nome LIKE ?";
+		try {
+          newConnection = DriverManagerConnection.createDBConnection();
+          s = newConnection.prepareStatement(q);
+          s.setString(1, cerca + "%");
+          ResultSet rs= s.executeQuery();
+          while(rs.next()) {
+        	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
+          }
+		} catch (Exception e) {
+			
+		}
+		
+		return catalogo;
 	}
 }

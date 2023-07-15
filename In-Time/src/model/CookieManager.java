@@ -34,6 +34,7 @@ public class CookieManager {
 		}
 	 return null;
 	}
+	
 	public ArrayList<ProductBean> JSONStringToList(String Cart){
 		 
     	 String cartString;
@@ -51,12 +52,6 @@ public class CookieManager {
     	 return null;
 		
 	}
-	
-	
-	
-	
-	
-	
 	
 	public Cookie findCookie(Cookie[] cookies, String name) {
         if (cookies != null) {

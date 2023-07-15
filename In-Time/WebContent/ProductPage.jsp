@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@ page import="model.ProductBean" %>
 
@@ -32,33 +32,41 @@
           <% } else{ %>
           <h2><%=p.getPrezzo() %>&euro;</h2>
           <%} %>
-          
-           <form action="AddCart" method="post">
-           <div data-tooltip="Carrello" class="button">
-<button class="button-wrapper" value="<%= p.getId()%>" name="Id">
+          <% if (p.getQuantita()!=0){ %>
+           
+           <div data-tooltip="Carrello" class="bt">
+<button class="button-wrapper" value="<%= p.getId()%>" id="bottonecarrello" name="Id" onclick="CartAjaxFunction()">
   <div class="text">Aggiungi al</div>
     <span class="icon" style="color: black; border-radius: 5px;"><ion-icon name="cart"></ion-icon>
     </span>
   </button>
-</div>
+  
+</div> <%} else{%>
+<h3 style="color: #dd1b38;">Prodotto Esaurito</h3>
+<%} %>
+          <p id="messaggioConferma"></p>
 
-           
+           <% List<String> imagePaths = (List<String>) request.getAttribute("imagePaths"); %>
 			
-           </form>
+          <!--   </form>-->
         </div>
-        <img id="immagineSopra" src="Sfondo 3.png" style="border-radius:50px" alt="" />
+        <img class="immagines" id="immagineSopra" src="<%=imagePaths.get(0) %>" style="border-radius:50px" alt="" />
       </div>
     </section>
     <ul class="cont">
-    <li class="img_outer watch fade-in"> <img src="p/sfondo4.png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <img src="p/sfondo5.png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <img src="p/Sfondo6.png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <img src="p/Sfondo7.png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <img src="p/Sfondo9.png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <img src="Sfondo2 .png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <img src="Sfondo 3.png" onclick="scambiaImmagine(this)"/></li>
-    <li class="img_outer watch fade-in"> <video src="VideoSfondoOrizzontale.mp4" autoplay muted loop ></video></li>
+   
+    <% if (imagePaths != null) {
+           for (String imagePath : imagePaths) { %>
+               <li class=" watch fade-in">
+                   <img class="img_outer"src="<%= imagePath %>" onclick="scambiaImmagine(this)"/>
+               </li>
+    <%     }
+       } %>
+                
+    
   </ul>
+  
+  
     
 	<br>
 	<hr color="#c3c3c3">
@@ -82,13 +90,35 @@
     <hr color="#c3c3c3">
     
     <br>
+   <table id= "reviews-container">
+   <tbody>
+   
+   </tbody>
+   </table>
+   <script >
+   $(function() {
+       const $gallery = $('.gallery a').simpleLightbox();
+     });
 
-
+function scambiaImmagine(imgCliccata) {
+	  const immagineSopra = document.getElementById('immagineSopra');
+	  const srcCliccata = imgCliccata.src;
+	  
+	  imgCliccata.src = immagineSopra.src;
+	  immagineSopra.src = srcCliccata;
+	}
+	
+    var bottne= document.getElementById("bottonecarrello");
+    var id= bottne.value;
+    
+    createReviewsTable(1);
+	</script>
+	
 <script src="JS/productpage.js"></script>
 <script src="JS/index.js"></script>
 
 
 </body>
 
-<%@ include file="Footer.jsp" %>
+
 </html>

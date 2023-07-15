@@ -4,7 +4,7 @@
 }
 
 .button{
-	padding-left: 15px
+	padding-right: 0px;
 }
 
 img {
@@ -170,7 +170,7 @@ img {
   font-weight: bold;
   font-size: 1.25em;
 }
-.cart .items .cartSection input.qty {
+.cart .items .cartSection {
   width: 2em;
   text-align: center;
   font-size: 1em;
@@ -183,8 +183,17 @@ img {
   padding-right: 1em;
 }
 
+.bt{
+	background: black;
+    border-radius: 30px;
+    color: white;
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+    border: 0px solid white;
+  cursor: pointer;
+}
 
-.btn:link, .btn:visited {
+.btn:link, .btn:visited{
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.015em;
@@ -202,7 +211,7 @@ img {
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
-.btn:after {
+.btn:after, .bt:after {
   content: "❯";
   padding: 0.5em;
   position: relative;
@@ -213,11 +222,11 @@ img {
   -o-transition: all 0.15s linear;
   transition: all 0.15s linear;
 }
-.btn:hover, .btn:focus, .btn:active {
+.btn:hover, .btn:focus, .btn:active, .bt:hover, .bt:focus, .bt:active{
   background: #ffd700;
   color: black;
 }
-.btn:hover:after, .btn:focus:after, .btn:active:after {
+.btn:hover:after, .btn:focus:after, .btn:active:after, .bt:hover:after {
   right: -10px;
 }
 

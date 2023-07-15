@@ -1,8 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,44 +18,60 @@ import javax.servlet.http.HttpServletResponse;
 import model.ProductBean;
 import model.ProductManager;
 
-/**
- * Servlet implementation class Product
- */
 @WebServlet("/Product")
 public class Product extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private static final long serialVersionUID = 1L;
+
     public Product() {
         super();
-        // TODO Auto-generated constructor stub
+    }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ProductManager pm = new ProductManager();
+
+        int id = Integer.parseInt(request.getParameter("Id"));
+
+        ProductBean p = pm.getProduct(id);
+
+        request.setAttribute("product", p);
+
+        // Retrieve the subdirectory name
+        String subdirectory = request.getParameter("nomeSub");
+        
+
+        // Get the image paths based on the subdirectory
+        List<String> imagePaths = getImagePaths(subdirectory);
+
+        // Set the imagePaths as a request attribute
+        request.setAttribute("imagePaths", imagePaths);
+
+        // Forward the request to the ProductPage.jsp
+        RequestDispatcher view = request.getRequestDispatcher("ProductPage.jsp");
+        view.forward(request, response);
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		 
-	}
+    private List<String> getImagePaths(String subdirectory) throws IOException {
+        List<String> imagePaths = new ArrayList<>();
+        ServletContext servletContext = getServletContext();
+        String contextPath = servletContext.getContextPath();
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ProductManager pm = new ProductManager();
-		 
-		int id = Integer.parseInt(request.getParameter("Id"));
-	 
-		ProductBean p = pm.getProduct(id);
-		 
-		request.setAttribute("product", p);
-		RequestDispatcher view = request.getRequestDispatcher("ProductPage.jsp");
-		view.forward(request, response);
-	}
+        String basePath = servletContext.getRealPath("/");
+        Path directoryPath = Paths.get(basePath, "img", subdirectory);
 
+        if (Files.isDirectory(directoryPath)) {
+            Files.walk(directoryPath)
+                    .filter(Files::isRegularFile)
+                    .map(Path::toString)
+                    .map(path -> path.replace(basePath, contextPath + "/"))
+                    .forEach(imagePaths::add);
+        }
+
+        return imagePaths;
+    }
 }

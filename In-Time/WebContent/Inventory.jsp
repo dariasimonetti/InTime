@@ -17,59 +17,186 @@
     <link rel="stylesheet" href="Style/Admin.css"/>
 </head>
 <body>
-
-    
+<!-- Header -->
     <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
-        
-        
-        <div class="sidebar-menu">
-          <ul>
-            <li>
-              
-              <a href="http://localhost/In-Time/Admin?" >
+    <div class="sidebar-menu">
+    	<ul>
+    		<li>
+    			<a>
+                <form action="Admin"><button class="bt" style="margin:0; padding:0; color: #ffd700">
                 <span class="fas fa-boxes"></span>
-                Dashboard          
-              </a>
-              
+                Dashboard
+                </button> </form>
             </li>
             <li>
-              <a href="#" class="active">
+            	<a href="#" class="active">
                 <span class="fas fa-boxes"></span>
                 <span>Inventario</span>
-              </a>
+            	</a>
             </li>
-          </ul>
+        </ul>
+	</div>
+    </div>
 
-        </div>
-    </div>    
+	<div class="main-content">
+		<header>
+			<h2>
+				<label for="nav-toggle" style="cursor: pointer"> <ion-icon name="list"></ion-icon>
+				</label> Men&ugrave;
+			</h2>
 
-    <div class="main-content">
-      <header>
-        <h2>
-           <label for="nav-toggle" style="cursor:pointer">
-            <ion-icon name="list"></ion-icon>
-          </label>
-          Men&ugrave;
-        </h2>
+			<a class="header__logo" href="index.jsp">
+        	<img class="header__logo" src="logo.png" alt="logo In Time" width="150" height="200">
+			</a>
 
-        <!--  <div class="search-wrapper">
-          <span class="fas fa-search"> </span>
-          <input type="search" placeholder="Search..." />
+			<%
+				response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+				response.setHeader("Pragma", "no-cache");
+				response.setHeader("Expires", "0");
+				if (session.getAttribute("name") != null) {
+			%>
+			<div class="profile-dropdown">
+				<div onclick="toggle()" class="profile-dropdown-btn">
+					<div class="profile-img">
+						<i class="fa-solid fa-circle"></i>
+					</div>
 
-        </div>-->
-        
-         <a class="header__logo" href="index.jsp">
-        <img class="header__logo" src="logo.png" alt="logo In Time" width="150" height="200">
-      </a>
+					<span><%= session.getAttribute ("name") %> <i class="fa-solid fa-angle-down"></i>
+					</span>
+				</div>
+			<%} %>
 
-        <div class="user-wrapper">
-         <div class="">
-            <h4>DAAC</h4>
-            <small>Super Admin</small>
-         </div>
-        </div>
-      </header>
+				<ul class="profile-dropdown-list">
+					<li class="profile-dropdown-list-item">
+            <a> <button id="modal-button-4">
+              <i class="fa-regular fa-user"></i>
+              Modifica Profilo
+            </button> </a>
+            
+          </li>
+
+
+          <li class="profile-dropdown-list-item">
+            <a> <button id="modal-button-5">
+              <i class="fa-regular fa-circle-question"></i>
+              Registra Admin
+            </button> </a>
+          </li>
+
+          <li class="profile-dropdown-list-item">
+            <form action="Logout"><a><button>
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              Log out
+            </button>
+            </a></form>
+          </li>
+				</ul>
+			</div>
+		</header>
+		
+		
+		<!--CambiaProfilo Modal--> 
+      <div id="myModal4" class="modal">
+   <div class="modal-content slideDown">
+	
+
+		<div class="modal-header">
+			<span class="clos4" id="closeModal">&times;</span>
+			<h2 >Modifica Profilo <%= session.getAttribute ("name") %></h2>
+		</div>
+		<div class="modal-body">
+		
+			<form action="ChangeUser" class="modal-form" method="post">
+			
+			
+			<div class="form-row">
+					<label for="">Nome</label>
+                  <input  placeholder="Inserisci il nome..." name="nome"></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Cognome</label>
+                  <input  placeholder="Inserisci il cognome..." name="cognome"></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Email</label>
+                  <input  placeholder="Inserisci l'email..." name="email"></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Password</label>
+                  <input type="password" placeholder="Inserisci la password..." name="password"></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Cellulare</label>
+                  <input  placeholder="Inserisci il cellulare..." name="cellulare"></input>
+				</div>
+				
+				<br>
+			
+	
+			<button id="altro-bottone" class="bt" style="background-color: black; color: white;" type="submit" >Salva</button>
+		
+		</form>
+		</div>
+	
+</div>
+	</div>
+      
+      
+      
+    <!--Registrazione Modal--> 
+    <div id="myModal5" class="modal">
+    
+	<div class="modal-content slideDown">
+
+		<div class="modal-header">
+			<span class="clos5" id="closeModal">&times;</span>
+			<h2>Nuovo Admin</h2>
+		</div>
+		<div class="modal-body">
+			<form action="UserRegister" class="modal-form" method="post">
+			
+				<div class="form-row">
+					<label for="">Nome</label>
+                  <input  placeholder="Inserisci il nome..." name="nome" required></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Cognome</label>
+                  <input  placeholder="Inserisci il nome..." name="cognome" required></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Email</label>
+                  <input  placeholder="Inserisci il nome..." name="email" required></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Password</label>
+                  <input type="password" placeholder="Inserisci il nome..." name="password" required></input>
+				</div>
+				
+				<div class="form-row">
+					<label for="">Cellulare</label>
+                  <input  placeholder="Inserisci il nome..." name="cellulare" required></input>
+				</div>
+				
+				<br>
+		
+			<button class="bt" style="background-color: black; color: white;"  type="submit" name="admin" value="true">Salva</button>
+	
+		
+		</form>
+		</div>
+	
+</div>
+	</div>
+
+<!-- Main -->
 
       <main>
       
@@ -197,40 +324,27 @@
                       <td><%= p.getTipo() %></td>
                       <td><%= p.getSconto() %>%</td>
                       <td><%= p.getQuantita() %></td>
-                      <td><button class=" modal-but-3 bt" type="submit"><ion-icon name="images"></ion-icon></button></td>
+                      <td><button class=" modal-but-3 bt" type="submit" value="<%=p.getId() %>" name="idP" onclick="getImages('<%=p.getId() %>'); setSavePath(this);"><ion-icon name="images"></ion-icon></button></td>
                       <td>
-                      <button class="modal-button-2 bt"  name="idProd" value="<%= p.getId() %>"><ion-icon name="pencil"></ion-icon></button></td>
+                      <button class="modal-button-2 bt"  name="idProd" value="<%= p.getId() %>" data-id="<%= p.getId() %>"><ion-icon name="pencil"></ion-icon></button></td>
                       
                       <td ><form action="DeleteProduct" method="post">
                       <button id="bs" class="bt" type="submit"  value="<%= p.getId() %>" name="idProdotto"><ion-icon name="trash-bin"></ion-icon></button></form></td>
 					  
 					
                     </tr>
-                   
-                    
-                  
                   <% } %>
-      
-      
-	
-	     
-	     </tbody>
-	     
-
-                </table>
+                  </tbody>
+                  </table>
                 
                 
                 
                 
                 
                 
-                <div id="myModal2" class="modal">
-                
-                
-
-	<!-- Modal content -->
-	
-	<div class="modal-content slideDown">
+   <div id="myModal2" class="modal">
+   <!-- Modal content -->
+   <div class="modal-content slideDown">
 	
 
 		<div class="modal-header">
@@ -298,14 +412,9 @@
 				<br>
 			
 	
-			<button id="altro-bottone" class="bt" style="background-color: black; color: white;  " type="submit" name="idProd" >Save</button>
-			<script>
-    			const modalButton = document.querySelector(".modal-button-2");
-    			const altroBottone = document.querySelector("#altro-bottone");
-
-    			altroBottone.value = modalButton.value;
-   				
-  				</script>
+			<button id="salva" class="bt" style="background-color: black; color: white;" type="submit" name="idProd" data-id="">Save</button>
+			
+			
 		
 		</form>
 		</div>
@@ -329,40 +438,103 @@
 			<h4></h4>
 		</div>
 		<div class="modal-body" style="text-align:center; ">
-		
 		<form action="uploadImage" method="post" enctype="multipart/form-data" >
         <input type="file" name="image" accept="image/*" required class="bt">
         <br>
-        <label for="savePath">Percorso di salvataggio:</label>
-        <input type="text" id="savePath" name="savePath" required>
-        <br><br>
-		<button class="bt" style="background-color: black; color: white;" type="submit" value="Carica">Save</button>
+        <br>
+		<button class="bt" style="background-color: black; color: white;" name="savePath" type="submit" id="altro-b">Aggiungi</button>
 		
+		
+  		</form>
+  		<br><br>
+  		
+  		<div class="modal-header">
+  		<h4></h4>
+  		<h2 >Cancella Immagini</h2>
+		<h4></h4>	
+  		</div>
+  		<form action="deleteImages" method="post" id="">
+  		<div id="imageContainer" class="image"></div>
+  		
+		<button class="bt" style="background-color: black; color: white; margin-top: 3%;" type="submit" >Rimuovi</button>
 		</form>
-		</div>
 	
 </div>
 	</div>
-                
-                
-                
-                
-                
-                
                 </div>
               </div>
 
             </div>
 
           </div>
-     
-          
         </div>  
  
 
       </main>
     </div>
+    
+    
+  <script>
+  const modalButtons = document.querySelectorAll('.modal-button-2');
+  const salvaButton = document.getElementById('salva');
+
+  modalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const id = button.getAttribute('data-id');
+      salvaButton.setAttribute('value', id);
+    });
+  });
+</script>
+
+    
+    <script>function setSavePath(button) {
+  const modalBut = button;
+  const altroBott = document.querySelector("#altro-b");
+  const selectedId = modalBut.value;
+  altroBott.value = selectedId;
+}</script>
+    
+    <script>
+    // Funzione per ottenere l'elenco di immagini dalla sottodirectory specificata
+    function getImages(subdirectory) {
+    
+    fetch("getImages?subdirectory=" + subdirectory)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            displayImages(data.imagePaths);
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+}
+
+function displayImages(imagePaths) {
+    var imageContainer = document.getElementById("imageContainer");
+    imageContainer.innerHTML = "";
+
+    for (var i = 0; i < imagePaths.length; i++) {
+        var imageElement = document.createElement("img");
+        imageElement.src = imagePaths[i];
+        imageElement.alt = "Image " + (i + 1);
+        imageElement.className = "imges";
+        
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = imagePaths[i];
+        checkbox.name = "selectedImages";
+        checkbox.style="width: 20px; height: 20px;"
+        
+        imageContainer.appendChild(checkbox);
+        imageContainer.appendChild(imageElement);
+    }
+}
+
+</script>
+    
 
 <script src="JS/admin.js"></script>
+
 </body>
 </html>

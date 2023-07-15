@@ -52,8 +52,9 @@ public class ChangeProduct extends HttpServlet {
 		String sconto= request.getParameter("sconto");
 		String quantita= request.getParameter("quantita");
 		
-		
-		
+		System.out.println("prova");
+		System.out.println(id);
+		System.out.println("prova");
 		
 		am.changeProduct(id, nome, descrizione, prezzo, materiale, misura, marca, genere, tipo, sconto, quantita);
 		RequestDispatcher view = request.getRequestDispatcher("Inventory");

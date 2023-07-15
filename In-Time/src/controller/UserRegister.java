@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.UserBean;
 import model.UserManager;
 
 /**
@@ -47,11 +48,22 @@ public class UserRegister extends HttpServlet {
 		String email= request.getParameter("email");
 		String password= request.getParameter("password");
 		String cellulare= request.getParameter("cellulare");
+		boolean admin=false;
+		String adminValue = request.getParameter("admin");
+	    if (adminValue != null && adminValue.equals("true")) {
+	        admin = true;
+	    }
 		HttpSession session = request.getSession();
 		
-		UserManager UM = new UserManager();
+UserManager UM = new UserManager();
+
 		
-		UM.Registrati(nome, cognome, false, cellulare, email, password,session);
+		if (UM.Registrati(nome, cognome, admin, cellulare, email, password,session)!= -2) {
+			session.setAttribute("name", nome);
+			session.setAttribute("cognome", cognome);
+			session.setAttribute("email", email);
+			
+		}
 		
 			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);

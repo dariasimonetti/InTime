@@ -21,7 +21,7 @@
   <div class="heading cf">
   <% if (request.getAttribute("carrello") == null){
 	  %>
-	  <h1>Il Mio Carrello &Egrave; Ancora Vuoto</h1>
+	  <h1>Il Mio Carrello &egrave; Ancora Vuoto</h1>
     <a href="index.jsp" class="continue">Continua lo Shopping</a>
    <% } else {%>
     <h1>Il Mio Carrello</h1>
@@ -33,7 +33,7 @@
     <%
     		float sum = 0;
             ArrayList<ProductBean> products = new ArrayList<>();
-             products = (ArrayList<ProductBean>)  request.getAttribute("carrello");
+             products = (ArrayList<ProductBean>) request.getAttribute("carrello");
 			for (ProductBean p : products){
 			 sum=sum+ p.getPrezzo();
  %>	
@@ -44,8 +44,6 @@
         <img src="Sfondo 3.png" alt="" class="itemImg" />
           <p class="itemNumber">#<%= p.getId() %></p>
           <h3><%= p.getNome() %></h3>
-        
-           <p> <input type="text"  class="qty" placeholder="3"/>&times; $5.00</p>
         
           <p class="stockStatus"> In Stock</p>
         </div>  
@@ -76,17 +74,28 @@
   
   <div class="subtotal cf">
     <ul>
-      <li class="totalRow"><span class="label">Subtotal</span><span class="value"><%= sum %></span></li>
+      <li class="totalRow"><span class="label">Subtotale:</span><span class="value"><%= sum %> &euro;</span></li>
       
-          <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
+          <li class="totalRow"><span class="label">Spedizione:</span><span class="value">5.00 &euro;</span></li>
       
-            <li class="totalRow"><span class="label">Tax</span><span class="value"></span></li>
-            <li class="totalRow final"><span class="label">Total</span><span class="value"><%= sum+5 %></span></li>
-      <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+            <li class="totalRow"><span class="label">Di cui Iva:</span><span class="value">22%</span></li>
+            <li class="totalRow final"><span class="label">Totale:</span><span class="value"><%= sum+5 %> &euro;</span></li>
+      <li class="totalRow"><form action="Checkout" method="post"><button class="bt">Checkout</button></form></li>
     </ul>
     <% } %>
   </div>
 </div>
- <script src="JS/Carrello.js"></script>
+<%if(request.getAttribute("errore")!=null){ if ((Integer)request.getAttribute("errore")==0){%>
+	<script>
+	window.alert("Ordine completato con successo");
+	</script>
+<%} else if((Integer)request.getAttribute("errore")==0) {%>
+
+	<script>
+	window.alert("Qualcosa è andato storto. Il tuo ordine non è andato a buon fine");
+	</script>
+
+<%}} %>
+
 </body>
 </html>

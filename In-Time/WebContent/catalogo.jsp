@@ -18,23 +18,110 @@
 
 <body class="bg-body">
 
-<div class="scroll">
+
+
+
 <p class="projTitle textGradient">Catalogo Per i Tuoi Acquisti!</p>
 <div class="search-container watch fade-in">
-	<form action="" class="search-bar">
-		<input id="ricerca" type="text" placeholder="cerca..." name="search">
-		<div id="risultati"></div>
+	<form action="Search" class="search-bar">
+		<input name="cerca" type="text" placeholder="cerca..." name="search">
 	<lord-icon
     src="https://cdn.lordicon.com/msoeawqm.json"
     trigger="hover"
-    colors="primary:#121331,secondary:#ffd700"
+    colors="primary:#eee,secondary:#ffd700"
     style="width:45px;height:45px">
 </lord-icon>
  
 	</form>
-	<ion-icon name="filter-circle-outline" style="width:45px;height:45px"></ion-icon>
+	
+	<button id="modal-button2">
+	<ion-icon name="filter-circle-outline" style="width:45px;height:45px; color:#eee;"></ion-icon>
+	</button>
+	
 </div>
 
+ <div id="myModal2" class="modal2">
+	<div class="modal-content2 slideDown">
+
+		<div class="modal-header2">
+			<span class="close" id="closeModal2">&times;</span>
+			
+		</div>
+		<h2 class="h2">Filtri</h2>
+		<div>
+			<form action="Filtri" class="modal-form2" method="post">
+			
+				
+             <div class="filtri">      
+             	<div class="left-column">
+             		<div class="inputbox2">
+                        <label for="">A partire da:</label>                    
+                        <input class="size" name="partire" required>
+                        <ion-icon name="logo-euro"></ion-icon>
+                    </div>   
+                </div>                     
+                    
+                <div class="right-column">
+                   	<div class="inputbox2">                        
+                        <label for="">Fino a:</label>
+                        <input class="size" name="fino" required>
+                        <ion-icon name="logo-euro"></ion-icon>
+                    </div>    
+                </div>
+             </div>           
+                    <br> <br>
+                    
+     <div class="radio-buttons-container">
+    <div class="radio-button">
+        <input name="tipo" id="Orologio" class="radio-button__input" type="radio" value="Orologio">
+        <label for="Orologio" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            Orologio
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="tipo" id="Cinturino" class="radio-button__input" type="radio" value="Cinturino">
+        <label for="Cinturino" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            Cinturino
+        </label>
+    </div>               
+</div>
+
+<div class="radio-buttons-container">
+    <div class="radio-button">
+        <input name="genere" id="Uomo" class="radio-button__input" type="radio" value="Uomo">
+        <label for="Uomo" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            Uomo
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="genere" id="Donna" class="radio-button__input" type="radio" value="Donna">
+        <label for="Donna" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            Donna
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="genere" id="Unisex" class="radio-button__input" type="radio" value="Unisex">
+        <label for="Unisex" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            Unisex
+        </label>
+    </div>
+</div>
+
+				<br>	
+
+			<button class="button btn-bot"> Applica <span></span><ion-icon name="filter-circle-outline" style="width:25px;height:25px;;"></ion-icon>  </button>
+		   </form>
+		 </div>
+		  </div>
+		 </div>
 
 
 <div class="grid-container">
@@ -54,14 +141,15 @@
    
     <div class="card">
       <div class="front">
-      <img src="Prova.png"/>
+      <img src="scatola.png"/>
       </div>
       <div class="back">
         <h3><%= p.getNome() %></h3>
         
         <h3><%= p.getPrezzo()%>&euro;</h3>
         <form action="Product" method="post">
-                 <button class="button" type= "submit" value="<%= p.getId() %>" name = "Id">Visualizza</button>
+                 <button class="box b" type= "submit" value="<%= p.getId() %>" name = "Id">Visualizza</button>
+                  <input type="hidden" name="nomeSub" value="<%=p.getId()%>">
         </form>
       </div>
     </div>
@@ -72,8 +160,12 @@
     
     </div>
     </div>	
-    <script src="JS/index.js"></script>
-    	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    	</div>
+      	
+    
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>	
+	<script src="JS/catalogo.js"></script>
+	<script src="JS/catalogo2.js"></script>
+    	
 	</body>
+	<%@ include file="Footer.jsp" %>
 </html>

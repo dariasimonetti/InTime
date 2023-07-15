@@ -25,6 +25,20 @@ public class UserBean {
 
 
 
+	public UserBean(int id, String nome, String cognome, boolean isAdmin, String telefono, String email,
+			String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.isAdmin = isAdmin;
+		this.telefono = telefono;
+		this.email = email;
+		this.password = password;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}

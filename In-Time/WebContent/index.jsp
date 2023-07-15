@@ -36,7 +36,7 @@
   </div>
   <div class="panel">
     <div class="container">
-      <p class="watch fade-in intro">Design</p>
+      <p class="p watch fade-in intro">Design</p>
       <h2 class="watch fade-in title-big">Ingegneria <br/>
         estrema.</h2>
       <img src="Sfondo 3.png" alt="" class="img-big-left">
@@ -48,7 +48,7 @@
       <h2 class="watch fade-in title-med">Sembra un duro. <br>
         Perch&egrave; lo &egrave;. <br>
         Estremo.</h2>
-      <p class="watch fade-in subtitle">Volevamo creare l'orologio assoluto, perci&ograve; abbiamo progettato ogni dettaglio con cura maniacale puntando a prestazioni ineguagliabili. Il titanio bilancia perfettamente peso, robustezza e resistenza alla corrosione. I bordi rialzati della nuova cassa proteggono dagli impatti laterali il vetro anteriore piatto, in cristallo di zaffiro. E la Digital Crown e il tasto laterale ora sono pi&ugrave; grandi, comodi da usare anche con i guanti.</p>
+      <p class="p watch fade-in subtitle">Volevamo creare l'orologio assoluto, perci&ograve; abbiamo progettato ogni dettaglio con cura maniacale puntando a prestazioni ineguagliabili. Il titanio bilancia perfettamente peso, robustezza e resistenza alla corrosione. I bordi rialzati della nuova cassa proteggono dagli impatti laterali il vetro anteriore piatto, in cristallo di zaffiro. E la Digital Crown e il tasto laterale ora sono pi&ugrave; grandi, comodi da usare anche con i guanti.</p>
       
       
       <img src="Sfondo 3.png" alt="" class="img-big-center">
@@ -56,7 +56,7 @@
   </div>
 
  <script src="JS/index.js"></script>
- <script src="JS/index2.js"></script>
+ 
 
 </body>
 <%@ include file="Footer.jsp" %>

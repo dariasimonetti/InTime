@@ -9,7 +9,7 @@ CREATE TABLE Utente(
 	Cognome varchar (50) NOT NULL,
 	Telefono char (10) NOT NULL,
 	Email VARCHAR(100) NOT NULL,
-	Pass VARCHAR(100) NOT NULL
+	Pass VARCHAR(512) NOT NULL
 );
  
 CREATE TABLE DatiSpedizione (
@@ -31,8 +31,10 @@ CREATE TABLE MetodoPagamento (
 
 	Id int not null AUTO_INCREMENT,
     IdUtente int not null,
+    NomeTitolare varchar(50) not null,
+    CognomeTitolare varchar(50) not null,
 	NumeroCarta char(16) not null,
-	Scadenza char(4) not null,
+	Scadenza char(5) not null,
     
     Primary Key (Id),
     
@@ -42,13 +44,13 @@ CREATE TABLE MetodoPagamento (
 CREATE TABLE Ordine (
 
 	Id int not null AUTO_INCREMENT,
-    IdCliente int not null,
-	PrezzoTotale double not null,
+    Id_Cliente int not null,
+	PrezzoTotale float not null,
 	DataO date not null,
     
     Primary Key (Id),
     
-    Foreign Key (IdCliente) references Utente(Id)
+    Foreign Key (Id_Cliente) references Utente(Id)
 );
  
  CREATE TABLE Articolo (
@@ -88,8 +90,129 @@ CREATE TABLE Recensione (
 Create Table Contiene (
 	Id_Ordine int not null,
     Id_Articolo int not null,
+    Id_Cliente int not null,
 	Quantita_ordinata int not null,
+    Prezzo_Articolo float not null,
     
     Foreign key (Id_Ordine) references Ordine (Id), 
+    Foreign key (Id_Cliente) references Ordine (Id_Cliente), 
     Foreign key (Id_Articolo) references Articolo (Id)
 );
+
+
+INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
+VALUES (1, 'Daria', 'Simonetti', '1234567890', 'd', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
+
+INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
+VALUES (0, 'Antonio', 'Ferraro', '0987654321', 'a', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
+
+INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
+VALUES (0, 'Angelo', 'DeLuca', '5555555555', 'a', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
+
+INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
+VALUES (0, 'Carmine', 'Iaucci', '7777777777', 'c', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
+
+INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
+VALUES (0, 'Anna', 'Gialli', '9999999999', 'anna@email.com', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
+
+
+INSERT INTO DatiSpedizione (IdUtente, Nome, Cognome, Civico, Via, CAP, Citta)
+VALUES (1, 'Daria', 'Simonetti', '10', 'Via Roma', 00100, 'Roma');
+
+INSERT INTO DatiSpedizione (IdUtente, Nome, Cognome, Civico, Via, CAP, Citta)
+VALUES (2, 'Antonio', 'Ferraro', '20', 'Via Milano', 20100, 'Milano');
+
+INSERT INTO DatiSpedizione (IdUtente, Nome, Cognome, Civico, Via, CAP, Citta)
+VALUES (3, 'Angelo', 'DeLuca', '30', 'Via Napoli', 80100, 'Napoli');
+
+INSERT INTO DatiSpedizione (IdUtente, Nome, Cognome, Civico, Via, CAP, Citta)
+VALUES (4, 'Carmine', 'Iaucci', '40', 'Via Firenze', 50100, 'Firenze');
+
+INSERT INTO DatiSpedizione (IdUtente, Nome, Cognome, Civico, Via, CAP, Citta)
+VALUES (5, 'Anna', 'Gialli', '50', 'Via Torino', 10100, 'Torino');
+
+
+
+INSERT INTO MetodoPagamento (IdUtente, NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
+VALUES (1, '1234567890123456', 'Daria','Simonetti', '12/25');
+
+INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
+VALUES (2, '9876543210987654','Antonio','Ferraro', '06/24');
+
+INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
+VALUES (3, '1111222233334444','Carmine','Iaucci', '09/23');
+
+INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
+VALUES (4, '5555666677778888','Angelo','DeLuca', '03/26');
+
+INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
+VALUES (5, '9999000011112222','Rita','Francese', '07/27');
+
+
+
+
+INSERT INTO Ordine (Id_Cliente, PrezzoTotale, DataO)
+VALUES (1, 299.99, '2023-06-01');
+
+INSERT INTO Ordine (Id_Cliente, PrezzoTotale, DataO)
+VALUES (2, 79.99, '2023-06-02');
+
+INSERT INTO Ordine (Id_Cliente, PrezzoTotale, DataO)
+VALUES (3, 389.97, '2023-06-03');
+
+INSERT INTO Ordine (Id_Cliente, PrezzoTotale, DataO)
+VALUES (4, 99.99, '2023-06-04');
+
+INSERT INTO Ordine (Id_Cliente, PrezzoTotale, DataO)
+VALUES (5, 39998.99, '2023-06-05');
+
+
+
+
+
+INSERT INTO Articolo (Prezzo, Descrizione, Nome, Materiale, Misura, Marca, Quantita, Genere, Tipo)
+VALUES (149.99, 'Orologio da polso elegante', 'Rolex', 'Acciaio inossidabile', '40mm', 'Rolex', 10, 'Unisex', 'Orologio');
+
+INSERT INTO Articolo (Prezzo, Descrizione, Nome, Materiale, Misura, Marca, Quantita, Genere, Tipo)
+VALUES (129.99, 'Orologio da polso sportivo', 'Casio', 'Acciaio', '42mm', 'Casio', 5, 'Uomo', 'Orologio');
+
+INSERT INTO Articolo (Prezzo, Descrizione, Nome, Materiale, Misura, Marca, Quantita, Genere, Tipo)
+VALUES (79.99, 'Orologio da polso casual', 'NoWatch', 'Pelle', '38mm', 'NoWatch', 8, 'Donna', 'Orologio');
+
+INSERT INTO Articolo (Prezzo, Descrizione, Nome, Materiale, Misura, Marca, Quantita, Genere, Tipo)
+VALUES (199.99, 'Orologio da polso di lusso', 'Cinturino Universale Rolex', 'Oro', '44mm', 'Rolex', 3, 'Uomo', 'Cinturino');
+
+INSERT INTO Articolo (Prezzo, Descrizione, Nome, Materiale, Misura, Marca, Quantita, Genere, Tipo)
+VALUES (99.99, 'Orologio da polso minimalista', 'Cinturino Universale Casio', 'Acciaio inossidabile', '36mm', 'Casio', 6, 'Donna', 'Cinturino');
+
+
+INSERT INTO Recensione (Id_Utente, Id_Articolo, Voto, Testo)
+VALUES (1, 1, 4.5, 'Ottimo orologio, design elegante e funzionalità perfette.');
+
+INSERT INTO Recensione (Id_Utente, Id_Articolo, Voto, Testo)
+VALUES (2, 3, 3.8, 'Lorologio è carino, ma la qualità non è eccezionale.');
+
+INSERT INTO Recensione (Id_Utente, Id_Articolo, Voto, Testo)
+VALUES (3, 2, 4.2, 'Sono molto soddisfatto di questo orologio sportivo.');
+
+INSERT INTO Recensione (Id_Utente, Id_Articolo, Voto, Testo)
+VALUES (4, 5, 4.9, 'Questo orologio minimalista è semplicemente fantastico.');
+
+INSERT INTO Recensione (Id_Utente, Id_Articolo, Voto, Testo)
+VALUES (5, 4, 3.5, 'Lorologio di lusso è bello, ma un po troppo costoso per la qualità offerta.');
+
+
+INSERT INTO Contiene (Id_Ordine, Id_Articolo, Id_Cliente, Quantita_ordinata, Prezzo_Articolo)
+VALUES (1, 1, 1, 2, 149.99);
+
+INSERT INTO Contiene (Id_Ordine, Id_Articolo, Id_Cliente, Quantita_ordinata, Prezzo_Articolo)
+VALUES (2, 3, 2, 1, 79.99);
+
+INSERT INTO Contiene (Id_Ordine, Id_Articolo, Id_Cliente, Quantita_ordinata, Prezzo_Articolo)
+VALUES (3, 2, 3, 3, 129.99);
+
+INSERT INTO Contiene (Id_Ordine, Id_Articolo, Id_Cliente, Quantita_ordinata, Prezzo_Articolo)
+VALUES (4, 5, 4, 1, 99.99);
+
+INSERT INTO Contiene (Id_Ordine, Id_Articolo, Id_Cliente, Quantita_ordinata, Prezzo_Articolo)
+VALUES (5, 4, 5, 2, 199.99);

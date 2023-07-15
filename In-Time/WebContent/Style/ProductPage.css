@@ -14,7 +14,7 @@
 
 body {
 	overflow:auto;
-	margin-top:250px;
+	margin-top:10%;
   font-family: 'Catamaran', sans-serif;
   line-height: 1.6;
   color: #c3c3c3;
@@ -55,7 +55,7 @@ img {
 
 
 .section-a {
-  margin: 2rem 0;
+  margin: 10% 0 2rem;
 }
 
 .section-a .container {
@@ -135,8 +135,8 @@ img {
 
 .section-c .gallery img,
 .section-c .gallery a {
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 300px;
 }
 
 
@@ -231,8 +231,8 @@ img {
 }
 
 
-.button {
-  --width: 100px;
+.bt {
+  --width: 80px;
   --height: 35px;
   --tooltip-height: 35px;
   --tooltip-width: 90px;
@@ -245,11 +245,12 @@ img {
   position: relative;
   text-align: center;
   border-radius: 0.45em;
-  font-family: "Arial";
+  
   transition: background 0.3s;
+  cursor:pointer;
 }
 
-.button::before {
+.bt::before {
   position: absolute;
   content: attr(data-tooltip);
   width: var(--tooltip-width);
@@ -259,22 +260,23 @@ img {
   color: #fff;
   border-radius: .25em;
   line-height: var(--tooltip-height);
-  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  top: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
   left: calc(50% - var(--tooltip-width) / 2);
+  
 }
 
-.button::after {
+.bt::after {
   position: absolute;
   content: '';
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-top-color: #555;
+  border-bottom-color: #555;
   left: calc(50% - 10px);
-  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+  top: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
 }
 
-.button::after,.button::before {
+.bt::after,.bt::before {
   opacity: 0;
   visibility: hidden;
   transition: all 0.5s;
@@ -289,10 +291,14 @@ img {
 .button-wrapper,.text,.icon {
   overflow: hidden;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 90px;
+  height: 35px;
   left: 0;
   color: #c3c3c3;
+  align-items: center;
+  justify-content: center;
+  border-radius: .45em;
+  cursor:pointer;
 }
 
 .text {
@@ -316,37 +322,42 @@ img {
   height: 24px;
 }
 
-.button:hover {
+.bt:hover {
   background: #222;
 }
 
-.button:hover .text {
+.bt:hover .text {
   top: -100%;
 }
 
-.button:hover .icon {
+.bt:hover .icon {
+	background-color:#ffd700;
   top: 0;
 }
 
-.button:hover:before,.button:hover:after {
+.bt:hover:before,.bt:hover:after {
   opacity: 1;
   visibility: visible;
+ 
 }
 
-.button:hover:after {
-  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+.bt:hover:after {
+  top: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+  
 }
 
-.button:hover:before {
-  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+.bt:hover:before {
+  top: calc(var(--height) + var(--gap-between-tooltip-to-button));
 }
+
+
 
 .cont {
 	
 
   list-style-type:none;
-  margin-left: 51%;
-  max-width: 50%;
+  
+  
   min-height: 200px;
   display:flex;
   overflow-x:auto;
@@ -359,11 +370,13 @@ img {
 }
 
 .img_outer {
-  min-width: 300px;
+  width: 450px;
+  height: 450px;
+  border-radius: 15px;
   margin: 10px;
 }
 
-img {
+.immagines{
 	
 	border-radius: 20px;
   width:100%;
@@ -399,3 +412,284 @@ video {
 
 .fade-in{opacity: 0;transform: translateY(10vh); transition: all 1s cubic-bezier(.215, .61, .355, 1);}
   .fade-in.in-page{opacity: 1;transform: translateY(0vh);}
+  
+  
+  
+  @import "compass/css3";
+
+/* Libs */
+@import url("//fonts.googleapis.com/css?family=Lato:400,300,100");
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css");
+
+
+
+
+
+/* General */
+*{
+  box-sizing:border-box;  
+  outline:none;
+}
+
+
+body{
+  background: #bdc3c7 url("http://www.subirimagenes.com/imagedata.php?url=http://s2.subirimagenes.com/otros/9067576mar.jpg") 0 0 no-repeat;
+  background-size:cover 100%;  
+  color:#7f8c8d;
+  font-size:16px;
+  font-weight:300;
+  font-family:'Lato';
+  
+  height:100%;  
+  padding:20px 0;
+}
+
+
+a{
+  @include transition(all .100s ease-out);
+  color:#e74c3c;
+  
+  &:hover{
+    color:#4BD3F4;
+  }
+}
+
+
+
+
+
+/* Card */
+.card{
+  @include background-image(linear-gradient(to bottom, #fff 0%, #ecf0f1 100%));
+  @include box-shadow(0 3px 10px rgba(0,0,0,0.5));
+  
+  display:block;
+  position:relative;
+  padding:20px;
+}
+
+.card{
+  .card-modal{
+    @include transition(all .3s cubic-bezier(.19, 1, .22, 1));
+    @include border-radius(10px);
+    background-color:#bdc3c7;
+    color:white;
+
+    display:none;
+    position:absolute;
+    top:40px;
+    left:130px;
+    z-index:2;
+    padding:20px;
+    
+    &.active{      
+      left:140px;
+    }
+   
+    
+    &:before{
+      
+      content: "";
+            
+      border-style: solid;
+      border-width: 15px 15px 15px 0;
+      border-color: transparent #bdc3c7 transparent transparent;
+      
+      width: 0;
+      height: 0;
+      display:block;
+      
+      position:absolute;
+      top:20%;
+      left:-15px;
+    }
+  }
+}
+
+
+.card{
+  .card-image{
+    position:absolute;
+    top:20px;
+    left:20px;           
+  }
+  
+  .card-image{
+    .btn{
+      @include border-radius(50px);
+
+      background-position: -45px 0;
+      background-repeat:no-repeat;
+      background-size:cover;
+      border:0;    
+      cursor:pointer;
+
+      width:100px;
+      height:100px;
+      overflow:hidden;
+      position:absolute;
+      padding:0;      
+      
+      &:after{
+        content: "";
+        
+        @include transition(all .3s cubic-bezier(.19, 1, .22, 1));
+        @include border-radius(50px);
+        
+        border:rgba(255, 255, 255, 0.4) 50px solid;
+        
+        width:100%;
+        height:100%;
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:5;
+      }
+      
+      &:hover{
+        &:after{
+          border-width:0;
+        }
+      }
+    }
+    
+    .btn{
+      img{
+        display:none;
+      }
+    }
+  }
+}
+
+
+.card{
+  .card-info{    
+    margin-left:120px;    
+  }
+}
+
+
+.card{
+  .card-info{
+    .name{
+      
+      font-size:28px;
+      font-weight:100;        
+
+      display:inline-block;
+      vertical-align:top;
+      position:relative;            
+    }    
+  }
+}
+
+
+.card{
+  .card-info{
+
+    .social-network{
+      font-size:0;
+      
+      display:inline-block;
+      vertical-align:top;  
+      overflow:hidden;
+      margin-bottom:15px;
+        
+      @media(min-width:639px){
+        float:right;        
+        margin:5px 0 0;
+        }
+      
+      .icon{    
+        background-color:#bdc3c7;
+        border:0;
+        @include border-radius(50%);
+        
+        width:32px;
+        height:32px;
+        display:inline-block;
+        vertical-align:top;  
+        overflow:hidden;
+        position:relative;
+        
+        margin-left:10px;
+        
+        &:first-child{
+          margin:0;
+        }
+        
+        &:before{
+          @include transition(all .500s cubic-bezier(.19, 1, .22, 1)); 
+          @include border-radius(16px);
+          
+          content: "";
+          width:32px;
+          height:32px;
+          display:block;
+          position:absolute;
+          top:0;
+          left:0;
+          z-index:1;
+        }
+
+
+
+.card{
+  .card-info{
+    hr{
+      margin:0 0 15px;
+    }
+  }
+}
+
+.pointer{
+  cursor:pointer;
+}
+.accordian-link h3{
+  font-size:clamp(18px,2vw,30px);
+}
+.user_image{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  background:#00000030;
+  border-radius:50%;
+  padding:.20rem;
+}
+.review_answer{
+  max-height:150px;
+  overflow-y:auto;
+}
+/*scrollbar width */
+.review_answer::-webkit-scrollbar {
+  width: 10px;
+}
+
+/*scrollbar Track */
+.review_answer::-webkit-scrollbar-track {
+  background: rgb(189, 190, 189);
+  border-radius: 8px;
+}
+
+.review_answer::-webkit-scrollbar-thumb {
+  background-color: green;
+  outline: 1px solid darkgreen;
+  border-radius: 8px;
+}
+  @import url('https://fonts.googleapis.com/css?family=Mukta:700');
+
+$bg: #f3f8fa;
+$white: #fff;
+$black: #282936;
+
+@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
+  transition: $property $duration $ease;
+}
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}

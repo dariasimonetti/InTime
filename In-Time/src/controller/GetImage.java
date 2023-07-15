@@ -2,39 +2,84 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+
 /**
- * Servlet implementation class GetImage
+ * Servlet implementation class GetImagesServlet
  */
-@WebServlet("/GetImage")
+@WebServlet("/getImages")
 public class GetImage extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Ottieni il percorso relativo dell'immagine dalla richiesta
-        String imageRelativePath = request.getParameter("image");
-        String baseDirectory="/img";
+    private static final long serialVersionUID = 1L;
+    
 
-        // Costruisci il percorso completo dell'immagine nel server
-        String imageServerPath = baseDirectory + File.separator + imageRelativePath;
-        System.out.println(imageServerPath);
-        // Leggi il file immagine dal server come array di byte
-        File imageFile = new File(imageServerPath);
-        byte[] imageData = Files.readAllBytes(imageFile.toPath());
-
-        // Imposta il tipo di contenuto dell'immagine nella risposta HTTP
-        String contentType = getServletContext().getMimeType(imageServerPath);
-        response.setContentType(contentType);
-
-        // Scrivi i dati dell'immagine nella risposta HTTP
-        OutputStream outputStream = response.getOutputStream();
-        outputStream.write(imageData);
-        outputStream.close();
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public GetImage() {
+        super();
+        // TODO Auto-generated constructor stub
     }
+
+    public void init() throws ServletException {
+        super.init();
+      
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String subdirectory = request.getParameter("subdirectory");
+        List<String> imagePaths = getImagePaths(subdirectory);
+
+        JsonObject responseData = new JsonObject();
+        responseData.add("imagePaths", new Gson().toJsonTree(imagePaths));
+
+        // Impostare il tipo di contenuto della risposta come JSON
+        response.setContentType("application/json");
+        // Scrivere i dati JSON come risposta
+        response.getWriter().write(responseData.toString());
+        }
+    
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
+    
+    private List<String> getImagePaths(String subdirectory) throws IOException {
+        List<String> imagePaths = new ArrayList<>();
+        ServletContext servletContext = getServletContext();
+        String contextPath = servletContext.getContextPath();
+
+        String basePath = servletContext.getRealPath("/");
+        Path directoryPath = Paths.get(basePath, "img", subdirectory);
+
+        if (Files.isDirectory(directoryPath)) {
+            Files.walk(directoryPath)
+                    .filter(Files::isRegularFile)
+                    .map(Path::toString)
+                    .map(path -> path.replace(basePath, contextPath + "/"))
+                    .forEach(imagePaths::add);
+        }
+
+        return imagePaths;
+    }
+
 }

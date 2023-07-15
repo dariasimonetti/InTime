@@ -10,7 +10,6 @@ import java.nio.file.StandardCopyOption;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -61,6 +60,7 @@ public class AddImages extends HttpServlet {
 
 		 // Verifica se il percorso fornito dall'utente è una sottodirectory della directory di base
 		    String fullSavePath = baseDirectory + File.separator + savePath;
+		    
 
 		    // Crea la sottodirectory se non esiste
 		    File directory = new File(fullSavePath);
@@ -80,7 +80,7 @@ public class AddImages extends HttpServlet {
 		    String filePath = fullSavePath + File.separator + fileName;
 		    Files.copy(imageInputStream, Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
 
-		    RequestDispatcher view = request.getRequestDispatcher("Inventory.jsp");
+		    RequestDispatcher view = request.getRequestDispatcher("Inventory");
 			view.forward(request, response);
 		}
 

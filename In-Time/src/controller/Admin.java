@@ -1,9 +1,11 @@
 package controller;
 
 import model.AdminManager;
-import model.DriverManagerConnection;
+
 import model.OrderBean;
-import model.ProductBean;
+
+import model.UserBean;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -13,12 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Servlet implementation class Admin
@@ -41,21 +39,25 @@ public class Admin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		ArrayList<Double> info=new ArrayList<Double>();
+		ArrayList<Float> info=new ArrayList<Float>();
 		ArrayList <OrderBean> ordini = new ArrayList<OrderBean>();
+		ArrayList <UserBean> utenti=new ArrayList<UserBean>();
 		
 		AdminManager am = new AdminManager();
 		
 		info = am.getInfo();
 		ordini = am.getOrdini();
+		utenti = am.getUtenti();
+		
 		
 		request.setAttribute("informazioni", info);
 		request.setAttribute("ordini", ordini);
+		request.setAttribute("utenti", utenti);
+		
+		HttpSession session= request.getSession();
 		
 		RequestDispatcher view = request.getRequestDispatcher("Admin.jsp");
 		view.forward(request, response);
-
-
 		 
 	}
 

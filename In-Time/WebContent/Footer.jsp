@@ -16,7 +16,7 @@
 
   <div class="footer-container">
     <div class="footer-column">
-      <h3>Informazioni</h3>
+      <h3>Chi Siamo</h3>
       <ul>
        <li><form action="Catalogo"> <button class="bt">Chi siamo </button></form> </li>
         <li><form action="Catalogo"> <button class="bt">Contattaci </button></form> </li>
@@ -26,8 +26,8 @@
     <div class="footer-column">
       <h3>Cataloghi</h3>
       <ul>
-       <li><form action="Catalogo"> <button class="bt">Donna </button></form> </li>
-       <li><form action="Catalogo"> <button class="bt">Uomo </button></form> </li>
+       <li><form action="CatalogoDonna"> <button class="bt">Donna </button></form> </li>
+       <li><form action="CatalogoUomo"> <button class="bt">Uomo </button></form> </li>
         <li><form action="Catalogo"> <button class="bt">Completo </button></form> </li>
         
       </ul>
@@ -35,20 +35,20 @@
     <div class="footer-column">
       <h3>Assistenza</h3>
       <ul>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Ordine</a></li>
-        <li><a href="#">Resi</a></li>
+        <li><form action="Catalogo"> <button class="bt"><a>FAQ</a></button></form></li>
+        <li><form action="Catalogo"> <button class="bt"><a>Ordine</a></button></form></li>
+        <li><form action="Catalogo"> <button class="bt"><a>Resi</a></button></form></li>
       </ul>
       </div>
       <div class="footer-column">
-      <h3 style="align:center; padding-left:13px">Seguici</h3>
+      <h3 style="align:center; padding-left:13px">Social</h3>
       
       <ul class="social-media-icons">
       
       
-        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
-        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        <li><a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="https://twitter.com/"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon></a></li>
       </ul>
     
     </div>

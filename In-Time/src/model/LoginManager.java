@@ -1,5 +1,7 @@
 package model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,36 +22,78 @@ public class LoginManager {
 			PreparedStatement ps = newConnection.prepareStatement(query);
 			
 			ps.setString( 1 , email);
-			ps.setString( 2 , pass);
+			String encryptedPassword = encryptSHA512(pass);
+	        ps.setString(2, encryptedPassword);
+	        
+	        System.out.println(ps.toString());
 			
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
+			System.out.println("prova accedi");
+			while (rs.next()) {
 				
-				String queryNome = "select nome from utente where Email = ?";
-				PreparedStatement ps2 = newConnection.prepareStatement(queryNome);
-				ps2.setString( 1 , email);
+				rs.getString("nome");
 				
-				ResultSet rs2 = ps2.executeQuery();
 				
-				rs2.next();
 				
-				String nome = rs2.getString("nome");
+				session.setAttribute("id", rs.getInt("id"));
+				session.setAttribute("name", rs.getString("nome"));
+				session.setAttribute("cognome", rs.getString("cognome"));
+				session.setAttribute("email", rs.getString("email"));
 				
-				System.out.println("Il nome è:" + nome);
+				System.out.println("prova");
 				
-				session.setAttribute("name", nome);
 				
-				System.out.println("Sessione nome" + session.getAttribute("name"));
-				return 1;
-			} else {
-				return 0;
-			}
+				if(rs.getBoolean("isAdmin")==false) {
+					return 1;
+				}else if(rs.getBoolean("isAdmin")== true) {
+					session.setAttribute("admin", rs.getBoolean("isAdmin"));
+					return 2;
+				}
+				
+			} 
+			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 			return -1;
 			
 		}
+			return 0;
 		
+	}
+	
+	private String encryptSHA512(String password) throws NoSuchAlgorithmException {
+	    MessageDigest md = MessageDigest.getInstance("SHA-512");
+	    byte[] hashedPassword = md.digest(password.getBytes());
+	    
+	    StringBuilder sb = new StringBuilder();
+	    for (byte b : hashedPassword) {
+	        sb.append(String.format("%02x", b));
+	    }
+	    
+	    return sb.toString();
+	}
+	
+	public boolean isAdmin(String id) {
+		boolean admin=false;
+		
+		Connection con=null;
+		try {
+
+			con = DriverManagerConnection.createDBConnection();
+			String query = "select *  from utente where Id=?";
+			
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			ps.setString( 1 , id);
+			
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				admin=rs.getBoolean("isAdmin");
+			}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		return admin;
 	}
 }
