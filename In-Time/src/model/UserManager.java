@@ -79,14 +79,10 @@ public class UserManager {
 		catch(Exception e) {
 			e.printStackTrace();
 			return -1;
-		}  finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}   finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 	}
 	
@@ -152,13 +148,9 @@ public class UserManager {
 			e.printStackTrace();
 			return -1;
 	} finally {
-	    try {
-	    	
-	    	DriverManagerConnection.releaseConnection(con);
-	    	
-	    } catch (Exception e) {
-	        System.out.println("Error closing connection: " + e.getMessage());
-	    }
+		
+		DriverManagerConnection.releaseConnection(con);
+	    
 	}
 
 	}
@@ -186,14 +178,10 @@ public class UserManager {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}finally {
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		return ds;
 	}
@@ -223,13 +211,9 @@ public class UserManager {
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		return card;
 		
@@ -260,13 +244,9 @@ public UserBean getUtente(int id) {
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		return utente;
 		

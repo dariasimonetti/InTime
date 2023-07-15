@@ -22,14 +22,10 @@ public class ProductManager {
           }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;
@@ -76,14 +72,10 @@ public class ProductManager {
           }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;
@@ -102,14 +94,10 @@ public class ProductManager {
           }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;
@@ -128,14 +116,10 @@ public class ProductManager {
           }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;
@@ -155,14 +139,10 @@ public class ProductManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 			
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;
@@ -182,14 +162,10 @@ public class ProductManager {
           }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;
@@ -212,14 +188,10 @@ public class ProductManager {
 		 
 		} catch (Exception e) {
 			 e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(c);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(c);
+		    
 		}
 		
 		
@@ -243,14 +215,10 @@ public class ProductManager {
       		   }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return ordini;
@@ -271,14 +239,10 @@ public class ProductManager {
           }
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+		}  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 		
 		return catalogo;

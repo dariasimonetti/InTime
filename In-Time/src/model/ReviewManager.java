@@ -37,14 +37,10 @@ public class ReviewManager {
                     }
         } catch(Exception e){
         	e.printStackTrace();
-        } finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+        }  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
         
         return reviewsForProduct;
@@ -68,14 +64,10 @@ public class ReviewManager {
                     }
         } catch(Exception e){
         	e.printStackTrace();
-        } finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(newConnection);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+        }  finally {
+			
+			DriverManagerConnection.releaseConnection(newConnection);
+		    
 		}
 	}
 	

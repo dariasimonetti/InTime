@@ -73,13 +73,9 @@ public class CheckoutManager {
 		}catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 	}
 	
@@ -137,13 +133,9 @@ public class CheckoutManager {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		
 	}
@@ -242,13 +234,9 @@ public class CheckoutManager {
 		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 	}
 

@@ -31,13 +31,9 @@ public class AdminManager {
 		} catch(Exception e){
 			
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		
 		return prodotti;
@@ -78,13 +74,9 @@ public class AdminManager {
 		} catch (NumberFormatException e) {
 		    System.out.println("Invalid id format: " + e.getMessage());
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 	}
 	
@@ -119,13 +111,9 @@ public class AdminManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		
 	}
@@ -196,13 +184,9 @@ public class AdminManager {
 		} catch (Exception e){
 			System.out.println(e);
 	} finally {
-	    try {
-	    	
-	    	DriverManagerConnection.releaseConnection(con);
-	    	
-	    } catch (Exception e) {
-	        System.out.println("Error closing connection: " + e.getMessage());
-	    }
+		
+		DriverManagerConnection.releaseConnection(con);
+	    
 	}
 }
 	
@@ -255,13 +239,9 @@ public class AdminManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		
 		 return info;
@@ -293,13 +273,9 @@ public class AdminManager {
 			e.printStackTrace();
 			
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		
 		return ordini;
@@ -324,13 +300,9 @@ public class AdminManager {
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
-		    try {
-		    	
-		    	DriverManagerConnection.releaseConnection(con);
-		    	
-		    } catch (Exception e) {
-		        System.out.println("Error closing connection: " + e.getMessage());
-		    }
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
 		}
 		return utenti;
 	}
