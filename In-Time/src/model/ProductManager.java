@@ -21,7 +21,15 @@ public class ProductManager {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;
@@ -67,7 +75,15 @@ public class ProductManager {
               catalogo.add(new CatalogoBean(rs.getInt("id"), rs.getString("nome"), rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;
@@ -85,7 +101,15 @@ public class ProductManager {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;
@@ -103,7 +127,15 @@ public class ProductManager {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;
@@ -121,7 +153,16 @@ public class ProductManager {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
+			e.printStackTrace();
 			
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;
@@ -140,7 +181,15 @@ public class ProductManager {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;
@@ -162,7 +211,15 @@ public class ProductManager {
 		 }
 		 
 		} catch (Exception e) {
-			 System.out.println(e);
+			 e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(c);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		
@@ -185,7 +242,15 @@ public class ProductManager {
         	   ordini.add(new OrderBean(rs.getInt("Id"),rs.getInt("Id_Cliente"), rs.getFloat("PrezzoTotale"),rs.getDate("DataO")));
       		   }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return ordini;
@@ -205,7 +270,15 @@ public class ProductManager {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		
 		return catalogo;

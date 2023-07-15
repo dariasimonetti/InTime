@@ -30,16 +30,12 @@ public class AdminManager {
 			
 		} catch(Exception e){
 			
-		}finally {
+		} finally {
 		    try {
-		        if (s != null) {
-		            s.close();
-		        }
-		        if (con != null) {
-		        	DriverManagerConnection.releaseConnection(con);
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -83,13 +79,10 @@ public class AdminManager {
 		    System.out.println("Invalid id format: " + e.getMessage());
 		} finally {
 		    try {
-		        if (ps != null) {
-		            ps.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -125,15 +118,12 @@ public class AdminManager {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 		    try {
-		        if (ps != null) {
-		            ps.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -205,19 +195,16 @@ public class AdminManager {
 			
 		} catch (Exception e){
 			System.out.println(e);
-	}finally {
+	} finally {
 	    try {
-	        if (ps != null) {
-	            ps.close();
-	        }
-	        if (con != null) {
-	            con.close();
-	        }
-	    } catch (SQLException e) {
+	    	
+	    	DriverManagerConnection.releaseConnection(con);
+	    	
+	    } catch (Exception e) {
 	        System.out.println("Error closing connection: " + e.getMessage());
 	    }
 	}
-	}
+}
 	
 	
 	public ArrayList<Float> getInfo() {
@@ -267,15 +254,12 @@ public class AdminManager {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 		    try {
-		        if (s != null) {
-		            s.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -308,15 +292,12 @@ public class AdminManager {
 			
 			e.printStackTrace();
 			
-		}finally {
+		} finally {
 		    try {
-		        if (s != null) {
-		            s.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -342,15 +323,12 @@ public class AdminManager {
 			
 		} catch (Exception e){
 			e.printStackTrace();
-		}finally {
+		} finally {
 		    try {
-		        if (s != null) {
-		            s.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}

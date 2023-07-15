@@ -79,13 +79,14 @@ public class UserManager {
 		catch(Exception e) {
 			e.printStackTrace();
 			return -1;
-		} finally {
-			try {
-				newConnection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		}  finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 	}
 	
@@ -148,15 +149,16 @@ public class UserManager {
 			
 			
 		} catch (Exception e){
-			System.out.println(e);
-			return -1;
-	}finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+			return -1;
+	} finally {
+	    try {
+	    	
+	    	DriverManagerConnection.releaseConnection(con);
+	    	
+	    } catch (Exception e) {
+	        System.out.println("Error closing connection: " + e.getMessage());
+	    }
 	}
 
 	}
@@ -184,6 +186,14 @@ public class UserManager {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		return ds;
 	}
@@ -212,6 +222,14 @@ public class UserManager {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		return card;
 		
@@ -241,6 +259,14 @@ public UserBean getUtente(int id) {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 		return utente;
 		

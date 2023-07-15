@@ -72,15 +72,12 @@ public class CheckoutManager {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 		    try {
-		        if (ps != null) {
-		            ps.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -139,15 +136,12 @@ public class CheckoutManager {
 			
 		} catch(Exception e){
 			e.printStackTrace();
-		}finally {
+		} finally {
 		    try {
-		        if (ps != null) {
-		            ps.close();
-		        }
-		        if (con != null) {
-		            con.close();
-		        }
-		    } catch (SQLException e) {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
 		        System.out.println("Error closing connection: " + e.getMessage());
 		    }
 		}
@@ -247,6 +241,14 @@ public class CheckoutManager {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(con);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 	}
 

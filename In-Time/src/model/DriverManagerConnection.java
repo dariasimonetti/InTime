@@ -8,20 +8,23 @@ import java.util.*;
 
 public class DriverManagerConnection  {
 	
-	private DriverManagerConnection() {
-		
-	}
-
 	private static List<Connection> freeDbConnections;
 
-	static {
-		freeDbConnections = new LinkedList<>();
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} 
-	}
+    static {
+        freeDbConnections = new LinkedList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } 
+    }
+
+    private DriverManagerConnection() {
+        
+    }
+	
+
+    
 	
 	public static synchronized Connection createDBConnection() throws SQLException {
 		Connection newConnection = null;
@@ -44,6 +47,9 @@ public class DriverManagerConnection  {
 	}
 
 	public static synchronized void releaseConnection(Connection connection) {
-		if(connection != null) freeDbConnections.add(connection);
-	}
+        if (connection != null) {
+            // Add the released connection back to the pool
+            freeDbConnections.add(connection);
+        }
+    }
 }

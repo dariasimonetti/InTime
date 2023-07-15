@@ -57,6 +57,14 @@ public class LoginManager {
 			e.printStackTrace();
 			return -1;
 			
+		} finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
 		}
 			return 0;
 		
@@ -93,6 +101,14 @@ public class LoginManager {
 			}
 			}catch(Exception e) {
 				e.printStackTrace();
+			} finally {
+			    try {
+			    	
+			    	DriverManagerConnection.releaseConnection(con);
+			    	
+			    } catch (Exception e) {
+			        System.out.println("Error closing connection: " + e.getMessage());
+			    }
 			}
 		return admin;
 	}

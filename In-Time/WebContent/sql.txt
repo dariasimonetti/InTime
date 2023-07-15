@@ -107,7 +107,7 @@ INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
 VALUES (0, 'Antonio', 'Ferraro', '0987654321', 'a', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
 
 INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
-VALUES (0, 'Angelo', 'DeLuca', '5555555555', 'a', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
+VALUES (0, 'Angelo', 'DeLuca', '5555555555', 'ad', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
 
 INSERT INTO Utente (isAdmin, Nome, Cognome, Telefono, Email, Pass)
 VALUES (0, 'Carmine', 'Iaucci', '7777777777', 'c', '2c1ee68372215b1ce064426b5cdbd4ef2581ace0dd3b21fa2be27f364827242e83f68b68be03f5b3e24be5d1b4315f98a0a96d19713fb3a19dc455fb6adc3431');
@@ -134,19 +134,19 @@ VALUES (5, 'Anna', 'Gialli', '50', 'Via Torino', 10100, 'Torino');
 
 
 INSERT INTO MetodoPagamento (IdUtente, NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
-VALUES (1, '1234567890123456', 'Daria','Simonetti', '12/25');
+VALUES (1,  'Daria','Simonetti','1234567890123456', '12/25');
 
 INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
-VALUES (2, '9876543210987654','Antonio','Ferraro', '06/24');
+VALUES (2, 'Antonio','Ferraro','9876543210987654', '06/24');
 
 INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
-VALUES (3, '1111222233334444','Carmine','Iaucci', '09/23');
+VALUES (3, 'Carmine','Iaucci','1111222233334444', '09/23');
 
 INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
-VALUES (4, '5555666677778888','Angelo','DeLuca', '03/26');
+VALUES (4, 'Angelo','DeLuca', '5555666677778888', '03/26');
 
 INSERT INTO MetodoPagamento (IdUtente,NomeTitolare, CognomeTitolare, NumeroCarta, Scadenza)
-VALUES (5, '9999000011112222','Rita','Francese', '07/27');
+VALUES (5, 'Rita','Francese','9999000011112222', '07/27');
 
 
 

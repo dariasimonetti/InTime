@@ -36,8 +36,16 @@ public class ReviewManager {
                         reviewsForProduct.add(new ReviewBean(utente,recensione,voto));
                     }
         } catch(Exception e){
-        	
-        }
+        	e.printStackTrace();
+        } finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
+		}
         
         return reviewsForProduct;
     }
@@ -59,9 +67,18 @@ public class ReviewManager {
                         System.out.println("La query di inserimento non ha avuto successo.");
                     }
         } catch(Exception e){
-        	
-        }
+        	e.printStackTrace();
+        } finally {
+		    try {
+		    	
+		    	DriverManagerConnection.releaseConnection(newConnection);
+		    	
+		    } catch (Exception e) {
+		        System.out.println("Error closing connection: " + e.getMessage());
+		    }
+		}
 	}
+	
 	public String ListToStringJSON(Collection<ReviewBean> list) {
 		 
 		Gson gson = new Gson();
