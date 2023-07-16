@@ -80,7 +80,11 @@
       
             <li class="totalRow"><span class="label">Di cui Iva:</span><span class="value">22%</span></li>
             <li class="totalRow final"><span class="label">Totale:</span><span class="value"><%= sum+5 %> &euro;</span></li>
-      <li class="totalRow"><form action="Checkout" method="post"><button class="bt">Checkout</button></form></li>
+      <li class="totalRow">
+      <%if(session.getAttribute("id")!=null){%><form action="Checkout" method="post"><button class="bt">Checkout</button></form><%}else{ %>
+      <div style="font-size: 22px;font-weight: bold;color: black; cursor: default;">Accedi per il Checkout</div>
+      
+      <%} %></li>
     </ul>
     <% } %>
   </div>
@@ -97,5 +101,6 @@
 
 <%}} %>
 
+<script src="JS/index2.js"></script>
 </body>
 </html>
