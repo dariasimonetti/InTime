@@ -106,12 +106,6 @@
 					<label for="">Password*</label>                  
 				</div>
 				
-				<!--   REINSERISCI PASSWORD
-				<div class="inputbox">
-					<ion-icon name="lock-closed-outline"></ion-icon>
-					<input type="password" name="repassword" required>
-					<label for="">Reinserisci Password</label>                  
-				</div> -->
 				
 				<div class="inputbox">
 					<ion-icon name="phone-portrait-outline"></ion-icon>

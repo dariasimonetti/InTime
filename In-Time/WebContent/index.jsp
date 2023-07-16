@@ -24,7 +24,10 @@
 
 	 <%@ include file="header.jsp" %>
 
-  <video class="video-bg" src="VideoSfondoOrizzontale.mp4" autoplay muted loop></video>
+  <video class="video-bg" src="VideoSfondoOrizzontale.mp4" autoplay muted loop>
+    <track kind="subtitles" src="subtitles.vtt" srclang="en" label="English Subtitles"></track>
+  <track kind="description" src="description.vtt" srclang="en" label="Video Description"></track>
+  </video>
   <div class="section watch">
     <h1 class="title">InTime</h1>
   </div>

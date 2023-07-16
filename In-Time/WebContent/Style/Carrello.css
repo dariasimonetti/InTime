@@ -123,10 +123,12 @@ img {
 .cart .items .cartSection {
   display: table-cell;
   vertical-align: middle;
-}
-.cart .items .cartSection {
-  display: table-cell;
-  vertical-align: right;
+    width: 2em;
+  text-align: center;
+  font-size: 1em;
+  padding: 0.25em;
+  margin: 1em 0.5em 0 0;
+ 
 }
 .cart .items .cartSection .itemNumber {
   font-size: 0.75em;
@@ -160,8 +162,11 @@ img {
   color: #F69679;
 }
 .cart .items .cartSection .itemImg {
-  width: 4em;
+
   float: left;
+    width: 8em;
+  display: inline;
+  padding-right: 1em;
 }
 .cart .items .cartSection.qtyWrap, .cart .items .cartSection.prodTotal {
   text-align: center;
@@ -170,18 +175,8 @@ img {
   font-weight: bold;
   font-size: 1.25em;
 }
-.cart .items .cartSection {
-  width: 2em;
-  text-align: center;
-  font-size: 1em;
-  padding: 0.25em;
-  margin: 1em 0.5em 0 0;
-}
-.cart .items .cartSection .itemImg {
-  width: 8em;
-  display: inline;
-  padding-right: 1em;
-}
+
+
 
 .bt{
 	background: black;
