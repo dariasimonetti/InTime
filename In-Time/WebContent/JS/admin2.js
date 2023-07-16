@@ -28,8 +28,8 @@ const closeModal2 = function() {
 
 button.addEventListener('click', openModal, false)
 
-for (let i = 0; i < b2.length; i++) {
-  b2[i].addEventListener('click', opModal2, false);
+for (const element of b2) {
+  element.addEventListener('click', opModal2, false);
 }
 
 close.addEventListener('click', closeModal, false)

@@ -69,12 +69,12 @@ const closeModal5 = function() {
 
 button.addEventListener('click', openModal, false)
 
-for (let i = 0; i < b2.length; i++) {
-  b2[i].addEventListener('click', opModal2, false);
+for (const element of b2) {
+  element.addEventListener('click', opModal2, false);
 }
 
-for (let i = 0; i < b3.length; i++) {
-	  b3[i].addEventListener('click', opModal3, false);
+for (const element of b3) {
+	  element.addEventListener('click', opModal3, false);
 	}
 
 b4.addEventListener('click', openModal4, false)

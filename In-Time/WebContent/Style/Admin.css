@@ -117,7 +117,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: #393e46;
-  ;
+  
 }
 
 .profile-dropdown-list-item button {
@@ -359,9 +359,6 @@ main{
 .card-header
 {
   padding: 1rem;
-}
-
-.card-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -486,6 +483,7 @@ td .status{
 
   .sidebar{
     width: 70px ;
+    left: -100% !important;
   }
   .sidebar .sidebar-brand,
   .sidebar li 
@@ -496,6 +494,7 @@ td .status{
   #nav-toggle:checked + .sidebar li a
   {
     padding-left: 0rem;
+    padding-left: 1rem;
   }
   .sidebar .sidebar-brand h1 span:last-child,
   .sidebar li a span:last-child{
@@ -505,6 +504,8 @@ td .status{
   
   .main-content {
   margin-left: 70px;
+  width: 100%;
+    margin-left: 0rem;
 
   }
   .main-content  header{
@@ -523,13 +524,11 @@ td .status{
   .search-wrapper{
     display: none;
   }
-  .sidebar {
-    
-    left: -100% !important;
-  }
+  
   header h2{
     display: flex;
     align-items: center;
+    font-size: 1.1rem;
   }
   header h2 label{
     display: inline-block;
@@ -548,13 +547,8 @@ td .status{
     text-align: center;
     padding-right: 0rem;
   }
-  header h2{
-    font-size: 1.1rem;
-  }
-  .main-content{
-    width: 100%;
-    margin-left: 0rem;
-  }
+  
+ 
   header{
     width: 100% !important;
     left: 0 !important;
@@ -575,10 +569,7 @@ td .status{
     text-align: left;
   }
 
-  #nav-toggle:checked + .sidebar li a
-  {
-    padding-left: 1rem;
-  }
+
   #nav-toggle:checked  + .sidebar .sidebar-brand h1 span:last-child,
   #nav-toggle:checked + .sidebar li a span:last-child{
     display: inline;
@@ -636,6 +627,8 @@ td .status{
 	visibility: hidden;
 	box-shadow: 2px 2px 10px 0px rgba(99, 106, 119, 0.6);
 	border-radius: 5px;
+		display: flex;
+	flex-direction: column;
 }
 
 
@@ -756,10 +749,7 @@ td .status{
 /*  modal form layout  */
 /***********************/
 
-.modal-content {
-	display: flex;
-	flex-direction: column;
-}
+
 
 .modal-header {
 	display: flex;

@@ -19,9 +19,9 @@
 
 	close.addEventListener('click', closeModal, false)
 
-	for (let i = 0; i < clickable.length; i++) {
-    	clickable[i].addEventListener('click', openModal, false)
-	}
+	for (const element of clickable) {
+  element.addEventListener('click', openModal, false);
+}
 
 	window.onclick = function(event) {
 		  if (event.target == modal) {

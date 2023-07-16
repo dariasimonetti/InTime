@@ -1,7 +1,7 @@
   //Gestione aggiunto o rimozione del placeholder"
    
 // Seleziona tutti gli input con la classe ".place"
-var inputElements = document.querySelectorAll('.place');
+let inputElements = document.querySelectorAll('.place');
 
 // Gestore di eventi a ciascun input
 inputElements.forEach(function(inputElement) {

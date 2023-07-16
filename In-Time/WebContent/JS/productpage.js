@@ -1,10 +1,10 @@
-var recensioni = []
+let recensioni = []
 function CartAjaxFunction() {
-  var bcart = document.getElementById("bottonecarrello");
-  var valorecart = bcart.value;
+  let bcart = document.getElementById("bottonecarrello");
+  let valorecart = bcart.value;
 
   // Effettua la richiesta AJAX
-  var xhr = new XMLHttpRequest();
+  let xhr = new XMLHttpRequest();
   xhr.open("POST", "AddCart", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function () {
@@ -18,11 +18,11 @@ function CartAjaxFunction() {
 }
 
 function submitReview() {
-	   var form = document.getElementById('reviewForm');
-	   var formData = new FormData(form);
-	   var url = form.action + '?' + new URLSearchParams(formData).toString();
+	   let form = document.getElementById('reviewForm');
+	   let formData = new FormData(form);
+	   let url = form.action + '?' + new URLSearchParams(formData).toString();
 
-	   var xhr = new XMLHttpRequest();
+	   let xhr = new XMLHttpRequest();
 	   xhr.open('GET', url);
 	   xhr.onreadystatechange = function() {
 	     if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -43,66 +43,66 @@ document.getElementById('reviewForm').addEventListener('submit', function(event)
 	   submitReview();
 	 });
 function ReviewAjaxFunction() {
-var idValue = document.getElementById("bottonecarrello").value;
+let idValue = document.getElementById("bottonecarrello").value;
 // Effettua la richiesta AJAX
-var xhr = new XMLHttpRequest();
+let xhr = new XMLHttpRequest();
 xhr.open("GET", "Review?id=" + encodeURIComponent(idValue), true);
 xhr.onreadystatechange = function () {
  if (xhr.readyState === 4 && xhr.status === 200) {
-   var reviews = JSON.parse(xhr.responseText);	     
+   let reviews = JSON.parse(xhr.responseText);	     
                     removeReview();
 				    // Creazione della tabella delle recensioni
 				    reviews.reverse();
 				    // Aggiunta delle righe alla tabella
-				    for (var i = 0; i < reviews.length; i++) {
-				      var review = reviews[i];
-				      var containerDiv = document.createElement("div");
-				      containerDiv.className = "container";
+				    for (const review of reviews) {
+				    	  let containerDiv = document.createElement("div");
+				    	  containerDiv.className = "container";
 
-				      var rowDiv = document.createElement("div");
-				      rowDiv.className = "row";
+				    	  let rowDiv = document.createElement("div");
+				    	  rowDiv.className = "row";
 
-				      var colDiv = document.createElement("div");
-				      colDiv.className = "col-xs-12";
+				    	  let colDiv = document.createElement("div");
+				    	  colDiv.className = "col-xs-12";
 
-				      var cardDiv = document.createElement("div");
-				      cardDiv.className = "card";
+				    	  let cardDiv = document.createElement("div");
+				    	  cardDiv.className = "card";
 
-				      var cardInfoDiv = document.createElement("div");
-				      cardInfoDiv.className = "card-info";
+				    	  let cardInfoDiv = document.createElement("div");
+				    	  cardInfoDiv.className = "card-info";
 
-				      var nameDiv = document.createElement("div");
-				      nameDiv.className = "name";
+				    	  let nameDiv = document.createElement("div");
+				    	  nameDiv.className = "name";
 
-				      var nameText = document.createElement("b");
-				      var nameParagraph = document.createElement("p");
-				      nameParagraph.textContent = review.utente +" - voto  " + review.voto + "/6" ;
-				      nameText.appendChild(nameParagraph);
-				      nameDiv.appendChild(nameText);
+				    	  let nameText = document.createElement("b");
+				    	  let nameParagraph = document.createElement("p");
+				    	  nameParagraph.textContent = review.utente + " - voto " + review.voto + "/6";
+				    	  nameText.appendChild(nameParagraph);
+				    	  nameDiv.appendChild(nameText);
 
-				      var hrElement = document.createElement("hr");
+				    	  let hrElement = document.createElement("hr");
 
-				      var contentDiv = document.createElement("div");
-				      contentDiv.className = "content";
-				      var contentParagraph = document.createElement("p");
-				      contentParagraph.textContent = review.testo;
-				      contentDiv.appendChild(contentParagraph);
+				    	  let contentDiv = document.createElement("div");
+				    	  contentDiv.className = "content";
+				    	  let contentParagraph = document.createElement("p");
+				    	  contentParagraph.textContent = review.testo;
+				    	  contentDiv.appendChild(contentParagraph);
 
-				      cardInfoDiv.appendChild(nameDiv);
-				      cardInfoDiv.appendChild(hrElement);
-				      cardInfoDiv.appendChild(contentDiv);
+				    	  cardInfoDiv.appendChild(nameDiv);
+				    	  cardInfoDiv.appendChild(hrElement);
+				    	  cardInfoDiv.appendChild(contentDiv);
 
-				      cardDiv.appendChild(cardInfoDiv);
+				    	  cardDiv.appendChild(cardInfoDiv);
 
-				      colDiv.appendChild(cardDiv);
+				    	  colDiv.appendChild(cardDiv);
 
-				      rowDiv.appendChild(colDiv);
+				    	  rowDiv.appendChild(colDiv);
 
-				      containerDiv.appendChild(rowDiv);
-                      var reviewsContainer = document.getElementById("reviews-container");
-                      reviewsContainer.appendChild(containerDiv);
-				       
-				    }
+				    	  containerDiv.appendChild(rowDiv);
+
+				    	  let reviewsContainer = document.getElementById("reviews-container");
+				    	  reviewsContainer.appendChild(containerDiv);
+				    	}
+
                     
 				 
 		
@@ -113,7 +113,7 @@ xhr.onreadystatechange = function () {
 }
 
 function removeReview(){
-    var container = document.getElementById('reviews-container');
+    let container = document.getElementById('reviews-container');
     while (container.firstChild) {
       container.removeChild(container.firstChild);
     }

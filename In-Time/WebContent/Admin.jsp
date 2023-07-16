@@ -289,7 +289,7 @@ int numPagine = (int) Math.ceil(ordini.size() / (double) righePerPagina); // Cal
       <div class="card-body">
         <div id="tabella-paginata" class="table-responsive">
           <% for (int pagina = 0; pagina < numPagine; pagina++) { %>
-            <table id="pagina<%= pagina + 1 %>" class="pagina-tabella" data-tabella="tabella1" width="100%" style="text-align:center">
+            <table id="pagina<%= pagina + 1 %>" class="pagina-tabella" data-tabella="tabella1"  style="text-align:center; width:100%">
             <caption style="color:transparent; cursor: default;">Ordini</caption>
               <thead>
                 <tr>
@@ -351,7 +351,7 @@ int numPagine2 = (int) Math.ceil(utenti.size() / (double) righePerPagina2); %>
       <div class="card-body">
         <div id="tabella-paginata2" class="table-responsive">
           <% for (int pagina = 0; pagina < numPagine2; pagina++) { %>
-            <table id="pagina<%= pagina + 1 %>" class="pagina-tabella" data-tabella="tabella2" width="100%" style="text-align:center">
+            <table id="pagina<%= pagina + 1 %>" class="pagina-tabella" data-tabella="tabella2"  style="text-align:center; width:100%">
             <caption style="color:transparent; cursor: default;">Ordini</caption>
               <thead>
                 <tr>

@@ -48,7 +48,7 @@
 
            <% List<String> imagePaths = (List<String>) request.getAttribute("imagePaths"); %>
 			
-          <!--   </form>-->
+          
         </div>
         <img class="immagines" id="immagineSopra" src="<%=imagePaths.get(0) %>" style="border-radius:50px" alt="" />
       </div>
@@ -69,7 +69,7 @@
   
     
 	<br>
-	<hr color="#c3c3c3">
+	<hr style="color:#c3c3c3">
 	
     <!-- Large Text -->
     <section id="about" class="section-b">
@@ -87,7 +87,7 @@
       </div>
     </section>
     
-    <hr color="#c3c3c3">
+    <hr style="color:#c3c3c3">
     
     <br>
    <script >

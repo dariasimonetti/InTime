@@ -284,24 +284,24 @@
               
               <div class="card-body">
                 <div class="table-responsive">
-                  <table width="100%" style="text-align:center">
-                  <caption>Articoli</caption>
+                  <table  style="text-align:center;  width:100%">
+                  <caption style="color:transparent">Articoli</caption>
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Descrizione</th>
-                      <th>Prezzo</th>
-                      <th>Materiale</th>
-                      <th>Misura</th>
-                      <th>Marca</th>
-                      <th>Genere</th>
-                      <th>Tipo</th>
-                      <th>Sconto</th>
-                      <th>Quantit&agrave;</th>
-                      <th style="color: #6b6e70">Immagini</th>
-                      <th style="color: #6b6e70">Modifica</th>
-                      <th style="color: #6b6e70">Elimina</th>
+                      <th style="font-size: 13px">ID</th>
+                      <th style="font-size: 13px">Nome</th>
+                      <th style="font-size: 13px">Descrizione</th>
+                      <th style="font-size: 13px">Prezzo</th>
+                      <th style="font-size: 13px">Materiale</th>
+                      <th style="font-size: 13px">Misura</th>
+                      <th style="font-size: 13px">Marca</th>
+                      <th style="font-size: 13px">Genere</th>
+                      <th style="font-size: 13px">Tipo</th>
+                      <th style="font-size: 13px">Sconto</th>
+                      <th style="font-size: 13px">Quantit&agrave;</th>
+                      <th style="color: #6b6e70; font-size: 13px">Immagini</th>
+                      <th style="color: #6b6e70; font-size: 13px">Modifica</th>
+                      <th style="color: #6b6e70; font-size: 13px">Elimina</th>
                       
 
                     </tr>
