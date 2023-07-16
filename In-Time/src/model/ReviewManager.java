@@ -2,7 +2,6 @@ package model;
  
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class ReviewManager {
 
-	private static final Logger logger = Logger.getLogger(ReviewManager.class.getName());
+
 	
 	public List<ReviewBean> getReviewsForProduct(int idArticolo) {
 		
