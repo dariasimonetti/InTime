@@ -210,17 +210,24 @@ public class CheckoutManager {
 
 		        // Stampa dei prodotti unici con le rispettive quantità
 		        for (ProductBeanCounter prodottoCounter : prodottiUniciList) {
-		            		            
+		            
+		        	String query3="UPDATE Articolo Set Quantita= Quantita - ? Where Id=?";
+		        	ps=con.prepareStatement(query3);
+		        	
+		        	int quantita= prodottoCounter.getQuantity();
+		        	int idArticolo=prodottoCounter.getProduct().getId();
+		        	ps.setInt(1, quantita);
+		        	ps.setInt(2, idArticolo);
+		        	ps.executeUpdate();
+		        	
 		            String query2="Insert into Contiene (Id_Ordine,Id_Articolo, Id_Cliente, Quantita_Ordinata, Prezzo_Articolo)"
 		            		+ "values (?,?,?, ?, ?)";
 		            
 		            ps= con.prepareStatement(query2);
 		            
 		            ps.setInt(1, idOrdine);
-		            int idArticolo=prodottoCounter.getProduct().getId();
 		            ps.setInt(2, idArticolo);
 		            ps.setInt(3,  id);
-		            int quantita= prodottoCounter.getQuantity();
 		            ps.setInt(4, quantita);
 		            float prezzo= prodottoCounter.getProduct().getPrezzo();
 		            ps.setFloat(5, prezzo);
