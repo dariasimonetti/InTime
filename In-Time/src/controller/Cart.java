@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.CheckoutManager;
 import model.CookieManager;
 import model.ProductBean;
 
@@ -36,13 +37,15 @@ public class Cart extends HttpServlet {
 		Cookie[] cookies = request.getCookies();
 		CookieManager cm = new CookieManager();	 
 		Cookie cartCookie = cm.findCookie(cookies, "cart");
-		
+		CheckoutManager chm= new CheckoutManager();
 		if (cartCookie != null) {
 		String encodedValue = cartCookie.getValue();
 		
    	    ArrayList<ProductBean> cart = (ArrayList<ProductBean>) cm.jSONStringToList(encodedValue);
    	    
-   	    request.setAttribute("carrello",cart);
+   	    ArrayList<ProductBean> nuovo= (ArrayList<ProductBean>) chm.disponibilita(cart);
+   	    
+   	    request.setAttribute("carrello",nuovo);
 		} else {
 			request.setAttribute("carrello", null);
 			}

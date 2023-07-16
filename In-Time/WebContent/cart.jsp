@@ -31,6 +31,7 @@
   <div class="cart">
     <ul class="cartWrap">
     <%
+    		boolean corretto=true;
     		float sum = 0;
             ArrayList<ProductBean> products = new ArrayList<>();
              products = (ArrayList<ProductBean>) request.getAttribute("carrello");
@@ -44,8 +45,10 @@
         <img src="Sfondo 3.png" alt="" class="itemImg" />
           <p class="itemNumber">#<%= p.getId() %></p>
           <h3><%= p.getNome() %></h3>
-        
-          <p class="stockStatus"> In Stock</p>
+        	<%if (p.getQuantita()>=1){ %>
+          <p class="stockStatus"> In Stock</p><%} else { %>
+          <p class="stockStatus" style="color: red;"> Out of Stock</p>
+          <% corretto= false; } %>
         </div>  
 
         <div class="prodTotal cartSection">
@@ -81,9 +84,10 @@
             <li class="totalRow"><span class="label">Di cui Iva:</span><span class="value">22%</span></li>
             <li class="totalRow final"><span class="label">Totale:</span><span class="value"><%= sum+5 %> &euro;</span></li>
       <li class="totalRow">
-      <%if(session.getAttribute("id")!=null){%><form action="Checkout" method="post"><button class="bt">Checkout</button></form><%}else{ %>
+      <%if(session.getAttribute("id")!=null){ if(corretto){%><form action="Checkout" method="post"><button class="bt">Checkout</button></form><%}else{ %>
+      <div style="font-size: 22px;font-weight: bold;color: black; cursor: default;">Rimuovi Prodotti Non Disponibili</div>
+      <%}} else{ %>
       <div style="font-size: 22px;font-weight: bold;color: black; cursor: default;">Accedi per il Checkout</div>
-      
       <%} %></li>
     </ul>
     <% } %>

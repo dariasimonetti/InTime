@@ -248,8 +248,41 @@ public class CheckoutManager {
 		    
 		}
 	}
+	
+	public List <ProductBean> disponibilita(List<ProductBean>carrello){
+		ArrayList<ProductBean> nuovo= new ArrayList<>();
+		Connection con=null;
+		PreparedStatement ps=null;
+		try {
+		for(ProductBean p: carrello) {
+			
+			con=DriverManagerConnection.createDBConnection();
+			
+			String query="Select * from Articolo where Id=?";
+			ps=con.prepareStatement(query);
+			
+			int id= p.getId();
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				nuovo.add(new ProductBean(rs.getInt("Id"), rs.getString("Nome"), rs.getString("Descrizione"), rs.getFloat("Prezzo"), rs.getString("Materiale"), rs.getString("Misura"), rs.getString("Marca"), rs.getString("Genere"), rs.getString("Tipo"), rs.getFloat("Sconto"), rs.getInt("Quantita")));
+			}
+		}
+		}catch(Exception e) {
+			logger.severe(e.getMessage());
+		} finally {
+			
+			DriverManagerConnection.releaseConnection(con);
+		    
+		}
+		return nuovo;
+		
+		
+	}
 
 }
+
 
 class ProductBeanCounter {
     private ProductBean product;

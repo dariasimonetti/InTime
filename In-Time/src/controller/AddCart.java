@@ -44,6 +44,8 @@ public class AddCart extends HttpServlet {
 	     ProductManager pm = new ProductManager();	
 	     CookieManager cm = new CookieManager();
 	     ProductBean p = pm.getProduct(id);
+	     
+	     
 	     Cookie[] cookies = request.getCookies();
 	     Cookie cartCookie = cm.findCookie(cookies, "cart");
 	     if (cartCookie == null) {
