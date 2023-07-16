@@ -11,10 +11,11 @@ import java.util.Collection;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.util.logging.Logger;
 
 public class ReviewManager {
 
-
+	private static final Logger logger = Logger.getLogger(ReviewManager.class.getName());
 	
 	public List<ReviewBean> getReviewsForProduct(int idArticolo) {
 		
@@ -40,7 +41,7 @@ public class ReviewManager {
                     }
                     
         } catch(Exception e){
-        	e.printStackTrace();
+        	logger.severe(e.getMessage());
         }  finally {
         	try {
         		if (p != null) {
@@ -48,7 +49,7 @@ public class ReviewManager {
                 }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -72,7 +73,7 @@ public class ReviewManager {
                     
                     
         } catch(Exception e){
-        	e.printStackTrace();
+        	logger.severe(e.getMessage());
         }  finally {
         	try {
         		if (p != null) {
@@ -80,7 +81,7 @@ public class ReviewManager {
                 }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -107,7 +108,7 @@ public class ReviewManager {
 			
 		} catch (UnsupportedEncodingException e) {
 			
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}
 		
     	 return new ArrayList<>();

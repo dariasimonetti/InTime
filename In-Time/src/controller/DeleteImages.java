@@ -11,11 +11,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
+import java.util.logging.Logger;
+
 @WebServlet("/deleteImages")
 public class DeleteImages extends HttpServlet {
     /**
 	 * 
 	 */
+	
+	private static final Logger logger = Logger.getLogger(DeleteImages.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +42,7 @@ public class DeleteImages extends HttpServlet {
             try {
                 Files.deleteIfExists(imageToDelete);
             } catch (IOException e) {
-                e.printStackTrace();
+            	logger.severe(e.getMessage());
                 // Gestione dell'errore in caso di problemi durante la cancellazione dell'immagine
             }
         }

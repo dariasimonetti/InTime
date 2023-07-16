@@ -6,11 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 
 public class LoginManager {
-	
+	private static final Logger logger = Logger.getLogger(LoginManager.class.getName());
 	public int accedi (String email, String pass, HttpSession session) {
 		
 		Connection newConnection = null;
@@ -55,7 +55,7 @@ public class LoginManager {
 			
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			return -1;
 			
 		} finally {
@@ -100,7 +100,7 @@ public class LoginManager {
 			}
 			
 			}catch(Exception e) {
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			} finally {
 				try {
 					if (ps != null) {
@@ -108,7 +108,7 @@ public class LoginManager {
 		            }
 				} catch (SQLException e) {
 					
-					e.printStackTrace();
+					logger.severe(e.getMessage());
 				}
 				DriverManagerConnection.releaseConnection(con);
 			    

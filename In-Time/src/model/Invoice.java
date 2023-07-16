@@ -10,13 +10,15 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
-
+import java.util.logging.Logger;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
 // ...
 
 public class Invoice {
+	
+	private static final Logger logger = Logger.getLogger(Invoice.class.getName());
 	
 	public byte[] generatePDF(String orderId) throws IOException {
 		
@@ -68,7 +70,7 @@ public class Invoice {
 			}
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);

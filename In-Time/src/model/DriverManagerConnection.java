@@ -3,10 +3,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import java.sql.SQLException;
-
+import java.util.logging.Logger;
 import java.util.*;
 
 public class DriverManagerConnection  {
+	private static final Logger logger = Logger.getLogger(DriverManagerConnection.class.getName());
 	
 	private static List<Connection> freeDbConnections;
 
@@ -15,7 +16,7 @@ public class DriverManagerConnection  {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        	logger.severe(e.getMessage());
         } 
     }
 
@@ -23,10 +24,11 @@ public class DriverManagerConnection  {
         
     }
 	
-
-    
-	
 	public static synchronized Connection createDBConnection() throws SQLException {
+		if (!freeDbConnections.isEmpty()) {
+            // If there are free connections, remove and return one
+            return freeDbConnections.remove(0);
+        }
 		Connection newConnection = null;
         String ip = "localhost";
         String port = "3306";
@@ -38,7 +40,7 @@ public class DriverManagerConnection  {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        	logger.severe(e.getMessage());
         }
         newConnection = DriverManager.getConnection("jdbc:mysql://"+ ip+":"+ port+"/"+db+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", username, password);
 

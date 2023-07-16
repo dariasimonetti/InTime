@@ -7,13 +7,14 @@ import java.util.List;
 
 import model.ProductBean;
 import javax.servlet.http.Cookie;
-
+import java.util.logging.Logger;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 
  
 public class CookieManager {
+	private static final Logger logger = Logger.getLogger(CookieManager.class.getName());
 	
 	public String listToStringJSON(List<ProductBean> cartArray) {
 		 
@@ -25,7 +26,7 @@ public class CookieManager {
 			return cart;
 		} catch (UnsupportedEncodingException e) {
 			
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}
 	 return null;
 	}
@@ -40,7 +41,7 @@ public class CookieManager {
 			
 		} catch (UnsupportedEncodingException e) {
 			
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}
      
     	 return null;

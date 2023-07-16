@@ -28,7 +28,7 @@ public class ProductManager {
           }
           
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			try {
 				if (s != null) {
@@ -36,7 +36,7 @@ public class ProductManager {
 	            }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -96,7 +96,7 @@ public class ProductManager {
 	            }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -127,7 +127,7 @@ public class ProductManager {
 	            }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -151,7 +151,7 @@ public class ProductManager {
           
           
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			try {
 				if (s != null) {
@@ -159,7 +159,7 @@ public class ProductManager {
 	            }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -183,7 +183,7 @@ public class ProductManager {
           
           
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			
 		}  finally {
 			try {
@@ -192,7 +192,7 @@ public class ProductManager {
 	            }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -217,7 +217,7 @@ public class ProductManager {
           
           
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			try {
 				if (s != null) {
@@ -225,7 +225,7 @@ public class ProductManager {
 	            }
 			} catch (SQLException e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
@@ -250,7 +250,7 @@ public class ProductManager {
 		 }
 		 
 		} catch (Exception e) {
-			 e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			
 			DriverManagerConnection.releaseConnection(c);
@@ -277,7 +277,7 @@ public class ProductManager {
         	   ordini.add(new OrderBean(rs.getInt("Id"),rs.getInt("Id_Cliente"), rs.getFloat("PrezzoTotale"),rs.getDate("DataO")));
       		   }
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -303,7 +303,7 @@ public class ProductManager {
           
           
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			try {
 				if (s != null) {
@@ -311,7 +311,7 @@ public class ProductManager {
 	            }
 			} catch (Exception e) {
 				
-				e.printStackTrace();
+				logger.severe(e.getMessage());
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    

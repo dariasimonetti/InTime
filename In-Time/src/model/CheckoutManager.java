@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class CheckoutManager {
-	
+	private static final Logger logger = Logger.getLogger(CheckoutManager.class.getName());
 	public void nuovaSpedizione(int id, String nome, String cognome, String via, String civico, String cap, String citta) {
 		
 		Connection con=null;
@@ -71,7 +72,7 @@ public class CheckoutManager {
 			}
 			
 		}catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -133,7 +134,7 @@ public class CheckoutManager {
 			}
 			
 		} catch(Exception e){
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -233,7 +234,7 @@ public class CheckoutManager {
 			}
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);

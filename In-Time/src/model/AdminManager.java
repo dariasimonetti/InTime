@@ -74,7 +74,7 @@ public class AdminManager {
 
 			    ps2.executeUpdate();
 			    } catch(Exception e1) {
-			    	e1.printStackTrace();
+			    	logger.severe(e1.getMessage());
 			    }
 		    
 		} catch (NumberFormatException e) {
@@ -115,7 +115,7 @@ public class AdminManager {
 			ps.executeUpdate();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -247,7 +247,7 @@ public class AdminManager {
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -280,7 +280,7 @@ public class AdminManager {
 			
 		} catch (Exception e) {
 			
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			
 		} finally {
 			
@@ -307,7 +307,7 @@ public class AdminManager {
 			}
 			
 		} catch (Exception e){
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);

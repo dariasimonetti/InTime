@@ -19,7 +19,7 @@
 <div class="wrap cf">
   <h1 class="projTitle">&Egrave; L'Ora Giusta<span> -per?</span> Acquistare!</h1>
   <div class="heading cf">
-  <% if (request.getAttribute("carrello") == null){
+  <% if (request.getAttribute("carrello")==null){
 	  %>
 	  <h1>Il Mio Carrello &egrave; Ancora Vuoto</h1>
     <a href="index.jsp" class="continue">Continua lo Shopping</a>

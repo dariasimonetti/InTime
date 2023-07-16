@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.http.HttpSession;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -82,7 +81,7 @@ public class UserManager {
 			
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			return -1;
 		}   finally {
 			
@@ -170,7 +169,7 @@ public class UserManager {
 			
 			
 		} catch (Exception e){
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 			return -1;
 	} finally {
 		
@@ -202,7 +201,7 @@ public class UserManager {
 			
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -234,7 +233,7 @@ public class UserManager {
 			
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -267,7 +266,7 @@ public UserBean getUtente(int id) {
 			
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
