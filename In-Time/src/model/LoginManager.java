@@ -95,6 +95,7 @@ public class LoginManager {
 			if (rs.next()) {
 				admin=rs.getBoolean("isAdmin");
 			}
+			ps.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			} finally {

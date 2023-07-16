@@ -35,6 +35,7 @@ public class ReviewManager {
                         
                         reviewsForProduct.add(new ReviewBean(utente,recensione,voto));
                     }
+                    p.close();
         } catch(Exception e){
         	e.printStackTrace();
         }  finally {
@@ -62,6 +63,7 @@ public class ReviewManager {
                     } else {
                         System.out.println("La query di inserimento non ha avuto successo.");
                     }
+                    p.close();
         } catch(Exception e){
         	e.printStackTrace();
         }  finally {

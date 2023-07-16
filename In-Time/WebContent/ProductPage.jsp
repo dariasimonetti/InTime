@@ -4,7 +4,7 @@
 
     
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -58,7 +58,7 @@
     <% if (imagePaths != null) {
            for (String imagePath : imagePaths) { %>
                <li class=" watch fade-in">
-                   <img class="img_outer"src="<%= imagePath %>" onclick="scambiaImmagine(this)"/>
+                   <img class="img_outer"src="<%= imagePath %>" onclick="scambiaImmagine(this)" alt="immagine prodotto">
                </li>
     <%     }
        } %>
@@ -90,11 +90,6 @@
     <hr color="#c3c3c3">
     
     <br>
-   <table id= "reviews-container">
-   <tbody>
-   
-   </tbody>
-   </table>
    <script >
    $(function() {
        const $gallery = $('.gallery a').simpleLightbox();

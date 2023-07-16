@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
  <%@ page import="model.CatalogoBean, model.*" %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="Style/AreaUtente.css">
@@ -136,7 +136,7 @@ ArrayList <OrderBean> cart= (ArrayList <OrderBean>) request.getAttribute("ordini
     	<form action="AggiornaAreaUtente" method="post">
     	
     	<div class="card">
-   			<img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card">
+   			<img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card" alt="logo Visa">
  		<label class="label">Numero Della Carta:</label>
  		<% if(card!=null){ %>
  			<input type="text" maxlength="16" class="input cardnumber"  placeholder="<%= card.getnCarta() %>" value="<%= card.getnCarta() %>" name="numC"><%} else { %>
@@ -185,7 +185,7 @@ ArrayList <OrderBean> cart= (ArrayList <OrderBean>) request.getAttribute("ordini
 				
 			 %>
     <div class="cardOrder">
-  		<img style="height:150px; width:150px;" src="Prova.png"/>
+  		<img style="height:150px; width:150px;" src="Prova.png" alt="Immagine prodotto">
   		 <div class="text">Id Ordine: <%= p.getId() %><br>
         <h4>Totale: <%= p.getPrezzo() %> &euro;</h4>
         <h5>DataOrdine: <%= p.getDataOrd() %></h5>

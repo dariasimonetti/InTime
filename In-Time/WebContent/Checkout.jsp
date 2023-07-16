@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
  <%@ page import="model.*" %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <meta charset="ISO-8859-1">
 <title>Checkout</title>
@@ -91,7 +91,7 @@
     <h3 class="h3Title">   Gestisci il Metodo Di Pagamento <ion-icon name="card-outline"></ion-icon></h3>
     	
     	<div class="card">
-   			<img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card">
+   			<img src="https://seeklogo.com/images/V/VISA-logo-62D5B26FE1-seeklogo.com.png" class="logo-card" alt="logo Visa">
  		<label class="label">Numero Della Carta:</label>
  		<% if(card!=null){ %>
  			<input type="text" maxlength="16" class="input cardnumber"  placeholder="<%= card.getnCarta() %>" value="<%= card.getnCarta() %>" name="numC"><%} else { %>
@@ -139,7 +139,7 @@
 				
 			 %>
     <div class="cardOrder">
-  		<img style="height:100px; width:100px;" src="Prova.png"/>
+  		<img style="height:100px; width:100px;" src="Prova.png" alt="Immagine Prodotto">
   		 <div class="text"><%= p.getNome() %><br>
         <h4><%= p.getPrezzo()%>&euro;</h4></div>
   	</div>

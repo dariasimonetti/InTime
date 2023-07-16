@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
  <%@ page import="model.ProductBean" %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -285,22 +285,23 @@
               <div class="card-body">
                 <div class="table-responsive">
                   <table width="100%" style="text-align:center">
+                  <caption>Articoli</caption>
                   <thead>
                     <tr>
-                      <td>ID</td>
-                      <td>Nome</td>
-                      <td>Descrizione</td>
-                      <td>Prezzo</td>
-                      <td>Materiale</td>
-                      <td>Misura</td>
-                      <td>Marca</td>
-                      <td>Genere</td>
-                      <td>Tipo</td>
-                      <td>Sconto</td>
-                      <td>Quantit&agrave;</td>
-                      <td style="color: #6b6e70">Immagini</td>
-                      <td style="color: #6b6e70">Modifica</td>
-                      <td style="color: #6b6e70">Elimina</td>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Descrizione</th>
+                      <th>Prezzo</th>
+                      <th>Materiale</th>
+                      <th>Misura</th>
+                      <th>Marca</th>
+                      <th>Genere</th>
+                      <th>Tipo</th>
+                      <th>Sconto</th>
+                      <th>Quantit&agrave;</th>
+                      <th style="color: #6b6e70">Immagini</th>
+                      <th style="color: #6b6e70">Modifica</th>
+                      <th style="color: #6b6e70">Elimina</th>
                       
 
                     </tr>

@@ -134,7 +134,7 @@
 }
 
 .profile-dropdown-list-item a i {
-  margin-right: 0.8rem;
+
   font-size: 1.1rem;
   width: 2.3rem;
   height: 2.3rem;
@@ -541,7 +541,6 @@ td .status{
     width: 40px;
     border-radius: 50%;
     color: #fff;
-    display: flex;
     align-items: center;
     justify-content: center !important;
   }

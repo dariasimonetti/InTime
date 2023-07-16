@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
  <%@ page import="model.CatalogoBean" %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
 	<link rel="stylesheet" href="Style/Catalogo.css">
 	<meta charset="ISO-8859-1">
@@ -141,7 +141,7 @@
    
     <div class="card">
       <div class="front">
-      <img src="scatola.png"/>
+      <img src="scatola.png" alt="preview del prodotto">
       </div>
       <div class="back">
         <h3><%= p.getNome() %></h3>

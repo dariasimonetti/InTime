@@ -290,13 +290,14 @@ int numPagine = (int) Math.ceil(ordini.size() / (double) righePerPagina); // Cal
         <div id="tabella-paginata" class="table-responsive">
           <% for (int pagina = 0; pagina < numPagine; pagina++) { %>
             <table id="pagina<%= pagina + 1 %>" class="pagina-tabella" data-tabella="tabella1" width="100%" style="text-align:center">
+            <caption style="color:transparent; cursor: default;">Ordini</caption>
               <thead>
                 <tr>
-                  <td>ID Ordine</td>
-                  <td>ID Cliente</td>
-                  <td>Prezzo</td>
-                  <td>Data Ordine</td>
-                  <td>Fattura</td>
+                  <th>ID Ordine</th>
+                  <th>ID Cliente</th>
+                  <th>Prezzo</th>
+                  <th>Data Ordine</th>
+                  <th>Fattura</th>
                 </tr>
               </thead>
               <tbody>
@@ -351,13 +352,14 @@ int numPagine2 = (int) Math.ceil(utenti.size() / (double) righePerPagina2); %>
         <div id="tabella-paginata2" class="table-responsive">
           <% for (int pagina = 0; pagina < numPagine2; pagina++) { %>
             <table id="pagina<%= pagina + 1 %>" class="pagina-tabella" data-tabella="tabella2" width="100%" style="text-align:center">
+            <caption style="color:transparent; cursor: default;">Ordini</caption>
               <thead>
                 <tr>
-                  <td>ID Utente</td>
-                  <td>Nome</td>
-                  <td>Cognome</td>
-                  <td>Email</td>
-                  <td>Telefono</td>
+                  <th>ID Utente</th>
+                  <th>Nome</th>
+                  <th>Cognome</th>
+                  <th>Email</th>
+                  <th>Telefono</th>
                 </tr>
               </thead>
               <tbody>

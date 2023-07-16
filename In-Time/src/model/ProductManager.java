@@ -25,6 +25,7 @@ public class ProductManager {
           while(rs.next()) {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
+          s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -75,6 +76,8 @@ public class ProductManager {
           while (rs.next()) {
               catalogo.add(new CatalogoBean(rs.getInt("id"), rs.getString("nome"), rs.getFloat("prezzo")));
           }
+          
+          ps.close();
 		} catch (Exception e) {
 			 logger.log(Level.SEVERE, "Si è verificato un errore", e);
 		}  finally {
@@ -97,6 +100,7 @@ public class ProductManager {
           while(rs.next()) {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
+          s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -119,6 +123,8 @@ public class ProductManager {
           while(rs.next()) {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
+          
+          s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -141,6 +147,8 @@ public class ProductManager {
           while(rs.next()) {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
+          
+          s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			
@@ -165,6 +173,8 @@ public class ProductManager {
           while(rs.next()) {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
+          
+          s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
@@ -242,6 +252,8 @@ public class ProductManager {
           while(rs.next()) {
         	   catalogo.add(new CatalogoBean(rs.getInt("id"),rs.getString("nome"),rs.getFloat("prezzo")));
           }
+          
+          s.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
