@@ -75,7 +75,7 @@ let reviews = JSON.parse(xhr.responseText);
 
 				    	  let nameText = document.createElement("b");
 				    	  let nameParagraph = document.createElement("p");
-				    	  nameParagraph.textContent = review.utente + " - voto " + review.voto + "/6";
+				    	  nameParagraph.textContent = review.utente + " - voto " + review.voto + "/5";
 				    	  nameText.appendChild(nameParagraph);
 				    	  nameDiv.appendChild(nameText);
 
@@ -121,4 +121,10 @@ function removeReview(){
 
 document.addEventListener('DOMContentLoaded', function() {
 	  ReviewAjaxFunction();
+	});
+
+
+document.getElementById('reviewForm').addEventListener('submit', function(event) {
+	  document.getElementById('rewiew_message').value = ''; // Cancella il contenuto della textarea
+	  document.getElementById('reviewForm').reset();
 	});

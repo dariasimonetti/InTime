@@ -2,13 +2,11 @@ package controller;
 
 import model.ProductManager;
 
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -43,18 +41,19 @@ public class Catalogo extends HttpServlet {
 		
 		ProductManager pm = new ProductManager();
 		ArrayList<CatalogoBean> catalogo = (ArrayList<CatalogoBean>) pm.getCatalogo();
-		request.setAttribute("prodotti", catalogo);
+		
 		 // Ottenere i nomi delle sottodirectory dal catalogo
         List<String> subdirectories = new ArrayList<>();
         for (CatalogoBean prodotto : catalogo) {
             String subdirectory = String.valueOf(prodotto.getId());   
             subdirectories.add(subdirectory);
         }
+        
+        
+        ServletContext servletContext = getServletContext();
         // Ottenere i percorsi delle prime immagini per ogni sottodirectory
-        List<String> firstImagePaths = getFirstImagePaths(subdirectories);
-        for(String f: firstImagePaths) {
-        	System.out.println(f);
-        }
+        List<String> firstImagePaths = pm.getFirstImagePaths(subdirectories, servletContext);
+        
         request.setAttribute("prodotti", catalogo);
         request.setAttribute("firstImagePaths", firstImagePaths);
         RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
@@ -71,29 +70,6 @@ public class Catalogo extends HttpServlet {
 		
 		doGet(request, response);
 	}
-	private List<String> getFirstImagePaths(List<String> subdirectories) throws IOException {
-	    List<String> firstImagePaths = new ArrayList<>();
-	    ServletContext servletContext = getServletContext();
-	    String contextPath = servletContext.getContextPath();
-	    String basePath = servletContext.getRealPath("/");
-
-	    for (String subdirectory : subdirectories) {
-	        Path directoryPath = Paths.get(basePath, "img", subdirectory);
-
-	        if (Files.isDirectory(directoryPath)) {
-	            Optional<Path> firstImagePath = Files.walk(directoryPath)
-	                    .filter(Files::isRegularFile)
-	                    .findFirst();
-
-	            if (firstImagePath.isPresent()) {
-	                String imagePath = firstImagePath.get().toString();
-	                imagePath = imagePath.replace(basePath, contextPath + "/");
-	                firstImagePaths.add(imagePath);
-	            }
-	        }
-	    }
-
-	    return firstImagePaths;
-	}
+	
 
 }

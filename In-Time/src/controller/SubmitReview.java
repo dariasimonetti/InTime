@@ -32,7 +32,7 @@ public class SubmitReview extends HttpServlet {
 		String testo = request.getParameter("testo");
 	    int idArticolo = Integer.parseInt(request.getParameter("idArticolo"));
 	    int idUtente = Integer.parseInt(request.getParameter("idUtente"));
-	    double voto = Double.parseDouble(request.getParameter("voto"));
+	    Double voto = Double.parseDouble(request.getParameter("voto"));
 	   
 	    ReviewBean review = new ReviewBean(idUtente,idArticolo,voto,testo);
 	    ReviewManager rm = new ReviewManager();

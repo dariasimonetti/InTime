@@ -144,7 +144,7 @@
    
     <div class="card">
       <div class="front">
-      <img src="<%= img %>"/>
+      <img src="<%= img %>" alt="immagine prodotto">
       </div>
       <div class="back">
         <h3><%= p.getNome() %></h3>

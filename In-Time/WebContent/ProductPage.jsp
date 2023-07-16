@@ -99,18 +99,64 @@
       <form id="reviewForm" action="SubmitReview" >
          
           <div class="container">
-            <h2 class="secondary-color py-2 f-24"> Add Your Review </h2>
+            <h2 class="section-b-inner py-5"> Aggiungi una Recensione </h2>
+            <br>
             <div class="input-group">
-              <textarea name="testo" aria-label="With textarea" rows="4" cols="150%" id="rewiew_message" placeholder="Scrivi la tua recensione" class="form-control mt-3 w-100 rounded-0" required></textarea>
+              <textarea class="arearec" name="testo" aria-label="With textarea" rows="4"  id="rewiew_message" placeholder="Scrivi la tua recensione" class="form-control mt-3 w-100 rounded-0" required></textarea>
                 <input type="hidden" name="idArticolo" value="<%= p.getId() %>">
                 <input type="hidden" name="idUtente" value="<%= session.getAttribute("id") %>">
-                <input type="number" name="voto" min="0" max="5" placeholder= "voto">
-                <button class='button -dark center'>Invia la tua recensione</button>
+                <br>
+                <h3 class="section-b-inner py-5"> Aggiungi un Voto </h3>
+                <div class="radio-buttons-container">
+    <div class="radio-button">
+        <input name="voto" id="1" class="radio-button__input" type="radio" value="1">
+        <label for="1" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            1
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="voto" id="2" class="radio-button__input" type="radio" value="2">
+        <label for="2" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            2
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="voto" id="3" class="radio-button__input" type="radio" value="3">
+        <label for="3" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            3
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="voto" id="4" class="radio-button__input" type="radio" value="4">
+        <label for="4" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            4
+        </label>
+    </div>
+    
+    <div class="radio-button">
+        <input name="voto" id="5" class="radio-button__input" type="radio" value="5">
+        <label for="5" class="radio-button__label">
+            <span class="radio-button__custom"></span>
+            5
+        </label>
+    </div>
+</div>
+              <br>
+                <button class="box b section-b-inner">Invia la tua recensione</button>
               </div>
             </div>
     </form>
      </section><% } %> 
     <div id="reviews-container"></div>
+    
+  
    
    <script >
    $(function() {

@@ -1,4 +1,9 @@
 package model;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,8 +11,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.servlet.ServletContext;
 
 
 
@@ -318,5 +326,30 @@ public class ProductManager {
 		}
 		
 		return catalogo;
+	}
+	
+	public List<String> getFirstImagePaths(List<String> subdirectories, ServletContext servletContext) throws IOException {
+	    List<String> firstImagePaths = new ArrayList<>();
+	    
+	    String contextPath = servletContext.getContextPath();
+	    String basePath = servletContext.getRealPath("/");
+
+	    for (String subdirectory : subdirectories) {
+	        Path directoryPath = Paths.get(basePath, "img", subdirectory);
+
+	        if (Files.isDirectory(directoryPath)) {
+	            Optional<Path> firstImagePath = Files.walk(directoryPath)
+	                    .filter(Files::isRegularFile)
+	                    .findFirst();
+
+	            if (firstImagePath.isPresent()) {
+	                String imagePath = firstImagePath.get().toString();
+	                imagePath = imagePath.replace(basePath, contextPath +File.separator);
+	                firstImagePaths.add(imagePath);
+	            }
+	        }
+	    }
+
+	    return firstImagePaths;
 	}
 }

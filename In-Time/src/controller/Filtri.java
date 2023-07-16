@@ -2,8 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,9 +45,22 @@ public class Filtri extends HttpServlet {
     	
 		ProductManager pm = new ProductManager();
 		ArrayList<CatalogoBean> catalogo = (ArrayList<CatalogoBean>) pm.getCatalogoFiltrato(partire, fino, tipo , genere);
-		request.setAttribute("prodotti", catalogo);
-		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
-		view.forward(request, response);
+		 // Ottenere i nomi delle sottodirectory dal catalogo
+        List<String> subdirectories = new ArrayList<>();
+        for (CatalogoBean prodotto : catalogo) {
+            String subdirectory = String.valueOf(prodotto.getId());   
+            subdirectories.add(subdirectory);
+        }
+        
+        
+        ServletContext servletContext = getServletContext();
+        // Ottenere i percorsi delle prime immagini per ogni sottodirectory
+        List<String> firstImagePaths = pm.getFirstImagePaths(subdirectories, servletContext);
+        
+        request.setAttribute("prodotti", catalogo);
+        request.setAttribute("firstImagePaths", firstImagePaths);
+        RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
+        view.forward(request, response);
 		 
 	}
 
