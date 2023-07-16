@@ -135,95 +135,56 @@ public class AdminManager {
 			
 			con=DriverManagerConnection.createDBConnection();
 			
-			String query = "UPDATE articolo SET ";
-			List<String> updates = new ArrayList<>();
-
-			if (!prezzo.isEmpty()) {
-			    updates.add("Prezzo = ?");
+			String set="SET ";
+			
+			if(!prezzo.isEmpty()) {
+				set=set+"Prezzo = '"+ prezzo + "',";
+				
 			}
-			if (!descrizione.isEmpty()) {
-			    updates.add("Descrizione = ?");
+			if(!descrizione.isEmpty()) {
+				set=set+"Descrizione = '"+ descrizione + "',";
+				
 			}
-			if (!nome.isEmpty()) {
-			    updates.add("Nome = ?");
+			if(!nome.isEmpty()) {
+				set=set+"Nome = '"+ nome + "',";
+				
 			}
 			if(!materiale.isEmpty()) {
-				updates.add("Materiale = ?");
+				set=set+"Materiale = '"+ materiale + "',";
 				
 			}
 			if(!misura.isEmpty()) {
-				updates.add("Misura = ?");
+				set=set+"Misura = '"+ misura + "',";
 				
 			}
 			if(!quantita.isEmpty()) {
-				updates.add("Quantita = ?");
+				set=set+"Quantita = '"+ quantita + "',";
 				
 			}
 			if(!marca.isEmpty()) {
-				updates.add("Marca = ?");
+				set=set+"Marca = '"+ marca + "',";
 				
 			}
 			if(!sconto.isEmpty()) {
-				updates.add("Sconto = ?");
+				set=set+"Sconto = '"+ sconto + "',";
 				
 			}
 			if(!genere.isEmpty()) {
-				updates.add("Genere = ?");
+				set=set+"Genere = '"+ genere + "',";
 				
 			}
 			if(!tipo.isEmpty()) {
-				updates.add("Prezzo = ?");
+				set=set+"Prezzo = '"+ prezzo + "',";
 				
 			}
 			
-
-			query += String.join(", ", updates);
-			query += " WHERE Id = ?";
-
-			ps = con.prepareStatement(query);
-
-			int paramIndex = 1;
-
-			if (!prezzo.isEmpty()) {
-			    ps.setString(paramIndex++, prezzo);
-			}
-			if (!descrizione.isEmpty()) {
-			    ps.setString(paramIndex++, descrizione);
-			}
-			if (!nome.isEmpty()) {
-			    ps.setString(paramIndex++, nome);
-			}
-			if(!materiale.isEmpty()) {
-				ps.setString(paramIndex++, materiale);
-				
-			}
-			if(!misura.isEmpty()) {
-				ps.setString(paramIndex++, misura);
-				
-			}
-			if(!quantita.isEmpty()) {
-				ps.setString(paramIndex++, quantita);
-				
-			}
-			if(!marca.isEmpty()) {
-				ps.setString(paramIndex++, marca);
-				
-			}
-			if(!sconto.isEmpty()) {
-				ps.setString(paramIndex++, sconto);
-				
-			}
-			if(!genere.isEmpty()) {
-				ps.setString(paramIndex++, genere);
-				
-			}
-			if(!tipo.isEmpty()) {
-				ps.setString(paramIndex++, tipo);
-				
-			}
-			// Imposta altri parametri per gli altri campi che desideri aggiornare
-
-			ps.setString(paramIndex, id);
+			set=set.substring(0,  set.length() - 1);
+			
+			
+			String query="UPDATE articolo "+set+" WHERE Id=?";
+			ps=con.prepareStatement(query);
+			
+			ps.setString(1, id);
 			
 			
 			
@@ -329,8 +290,7 @@ public class AdminManager {
 		
 		return ordini;
 	}
-	
-	public List<UserBean> getUtenti(){
+		public List<UserBean> getUtenti(){
 		ArrayList<UserBean> utenti= new ArrayList<>();
 		Connection con=null;
 		Statement s= null;
