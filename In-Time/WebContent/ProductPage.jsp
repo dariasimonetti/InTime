@@ -125,9 +125,7 @@ function scambiaImmagine(imgCliccata) {
 	  immagineSopra.src = srcCliccata;
 	}
 	
-document.addEventListener('DOMContentLoaded', function() {
-	  ReviewAjaxFunction();
-	});
+
 	
 	</script>
 	

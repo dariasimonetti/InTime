@@ -118,3 +118,7 @@ function removeReview(){
    container.removeChild(container.firstChild);
  }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+	  ReviewAjaxFunction();
+	});
