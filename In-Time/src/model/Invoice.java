@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import java.util.logging.Logger;
+
+import javax.servlet.ServletContext;
+
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
@@ -20,7 +23,7 @@ public class Invoice {
 	
 	private static final Logger logger = Logger.getLogger(Invoice.class.getName());
 	
-	public byte[] generatePDF(String orderId) throws IOException {
+	public byte[] generatePDF(String orderId, ServletContext servletContext) throws IOException {
 		
 		Connection con= null;
 		PreparedStatement ps= null;
@@ -83,7 +86,7 @@ public class Invoice {
 	    try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
 	    	
 	    	//Importa il PDF con il modello della fattura non riuscivo a usare un url diverso
-	    	String filePath = "C:\\Users\\simon\\git\\InTime\\In-Time\\WebContent\\Fattura.pdf";
+	    	String filePath = servletContext.getRealPath("/Fattura.pdf");
 	    	PDDocument document = PDDocument.load(new File(filePath));
 	    	
 	    	//Modulo del documento

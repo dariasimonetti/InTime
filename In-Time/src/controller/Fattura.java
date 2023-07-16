@@ -3,6 +3,7 @@ package controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -49,10 +50,11 @@ public class Fattura extends HttpServlet {
 		  reader.close();
 
 		  
+		  ServletContext servletContext = getServletContext();
 
 		  // Utilizza l'ID dell'ordine per generare la fattura corrispondente
 		  Invoice fattura = new Invoice();
-		    byte[] fatturaPDFBytes = fattura.generatePDF(orderId);
+		    byte[] fatturaPDFBytes = fattura.generatePDF(orderId, servletContext);
 
 		  // Imposta il tipo di contenuto della risposta come PDF
 		    response.setContentType("application/pdf");

@@ -16,7 +16,10 @@
     <url-pattern>/uploadImage</url-pattern>
 </servlet-mapping>
 
-
+<mime-mapping>
+    <extension>pdf</extension>
+    <mime-type>application/pdf</mime-type>
+</mime-mapping>
 
   
   
