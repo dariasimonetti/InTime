@@ -163,7 +163,7 @@ public class ProductManager {
 	public ArrayList<CatalogoBean> getCatalogoCinturino(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
-		Statement s=null;
+		Statement s = null;
 		try {
           newConnection = DriverManagerConnection.createDBConnection();
           String q = "SELECT Id,Prezzo,Nome FROM intime.articolo WHERE Tipo='Cinturino'";
@@ -195,7 +195,7 @@ public class ProductManager {
 	public ArrayList<CatalogoBean> getCatalogoOrologio(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
-		Statement  s=null;
+		Statement  s = null;
 		try {
           newConnection = DriverManagerConnection.createDBConnection();
           String q = "SELECT Id,Prezzo,Nome FROM intime.articolo WHERE Tipo='Orologio'";
@@ -211,7 +211,7 @@ public class ProductManager {
 		}  finally {
 			try {
 				s.close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -251,7 +251,7 @@ public class ProductManager {
 	public ArrayList<OrderBean> getOrdini(int id){
 		ArrayList<OrderBean> ordini= new ArrayList<>();
 		Connection newConnection = null;
-		PreparedStatement ps=null;
+		PreparedStatement ps;
 		try {
           newConnection = DriverManagerConnection.createDBConnection();
           String q = "SELECT * FROM ordine where Id_cliente=?";
@@ -293,7 +293,12 @@ public class ProductManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
-			
+			try {
+				s.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
 		}
