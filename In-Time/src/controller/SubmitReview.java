@@ -22,7 +22,7 @@ public class SubmitReview extends HttpServlet {
      */
     public SubmitReview() {
         super();
-        
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,19 +33,18 @@ public class SubmitReview extends HttpServlet {
 	    int idArticolo = Integer.parseInt(request.getParameter("idArticolo"));
 	    int idUtente = Integer.parseInt(request.getParameter("idUtente"));
 	    double voto = Double.parseDouble(request.getParameter("voto"));
-	    
+	    System.out.println(idArticolo);
 	    ReviewBean review = new ReviewBean(idUtente,idArticolo,voto,testo);
 	    ReviewManager rm = new ReviewManager();
 	    rm.IsertReview(review);
-	    
-		
+		 
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+ 
 		doGet(request, response);
 	}
 
