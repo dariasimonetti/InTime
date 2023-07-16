@@ -29,7 +29,7 @@ public class Review extends HttpServlet {
      */
     public Review() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -42,14 +42,13 @@ public class Review extends HttpServlet {
 		  String idS = request.getParameter("id");
 		  int id =Integer.parseInt(idS);
 	      List<ReviewBean> recensioni;
-	      String JsnonRece;
+	      String jsnonRece;
 	      ReviewManager rm = new ReviewManager();
 	      recensioni = rm.getReviewsForProduct(id);
-	      JsnonRece = rm.ListToStringJSON(recensioni);
-	      System.out.println(JsnonRece);
+	      jsnonRece = rm.ListToStringJSON(recensioni);
 	      response.setContentType("application/json");
           PrintWriter out = response.getWriter();
-          out.print(JsnonRece);
+          out.print(jsnonRece);
           out.flush();
 	      
 	      
@@ -59,7 +58,7 @@ public class Review extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 
+	  doGet(request, response);
 	}
 
 }

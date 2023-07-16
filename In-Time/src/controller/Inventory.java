@@ -25,7 +25,7 @@ public class Inventory extends HttpServlet {
      */
     public Inventory() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -33,9 +33,9 @@ public class Inventory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList <ProductBean> prodotti= new ArrayList <ProductBean>();
+		
 		AdminManager am = new AdminManager();
-		prodotti = am.getCatalogo();
+		ArrayList <ProductBean> prodotti = am.getCatalogo();
 		
 		request.setAttribute("prodotti", prodotti);
 		RequestDispatcher view = request.getRequestDispatcher("Inventory.jsp");
@@ -47,7 +47,7 @@ public class Inventory extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

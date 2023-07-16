@@ -35,7 +35,7 @@ public class GetImage extends HttpServlet {
      */
     public GetImage() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
     public void init() throws ServletException {

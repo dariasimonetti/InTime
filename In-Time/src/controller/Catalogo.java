@@ -27,16 +27,16 @@ public class Catalogo extends HttpServlet {
      */ 
     public Catalogo() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
-		ProductManager Pm = new ProductManager();
-		catalogo = Pm.getCatalogo();
+		
+		ProductManager pm = new ProductManager();
+		ArrayList<CatalogoBean> catalogo = pm.getCatalogo();
 		request.setAttribute("prodotti", catalogo);
 		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);
@@ -49,7 +49,7 @@ public class Catalogo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

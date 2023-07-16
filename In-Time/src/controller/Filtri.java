@@ -25,7 +25,7 @@ public class Filtri extends HttpServlet {
      */
     public Filtri() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -39,20 +39,13 @@ public class Filtri extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		String genere = request.getParameter("genere");
 		
-		System.out.println(partire);
-		System.out.println(fino);
-		System.out.println(tipo);
-		System.out.println(genere);
 		
-		
-    	ArrayList<CatalogoBean> catalogo = new ArrayList<>();
-		ProductManager Pm = new ProductManager();
-		catalogo = Pm.getCatalogoFiltrato(partire, fino, tipo , genere);
+    	
+		ProductManager pm = new ProductManager();
+		ArrayList<CatalogoBean> catalogo = pm.getCatalogoFiltrato(partire, fino, tipo , genere);
 		request.setAttribute("prodotti", catalogo);
 		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);
-
-
 		 
 	}
 
@@ -60,7 +53,7 @@ public class Filtri extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

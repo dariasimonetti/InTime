@@ -25,22 +25,23 @@ public class AddProduct extends HttpServlet {
      */
     public AddProduct() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
 		AdminManager am= new AdminManager();
 		String nome= request.getParameter("nome");
 		String descrizione= request.getParameter("descrizione");

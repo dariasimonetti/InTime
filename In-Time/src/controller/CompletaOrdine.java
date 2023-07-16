@@ -30,22 +30,23 @@ public class CompletaOrdine extends HttpServlet {
      */
     public CompletaOrdine() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		CheckoutManager chm= new CheckoutManager();
 		
 		CookieManager cm = new CookieManager();
@@ -58,7 +59,19 @@ public class CompletaOrdine extends HttpServlet {
 		int id= (Integer) session.getAttribute("id");
 	
 		
-		String nomeS, cognomeS, email, via, civico, cap, citta, numC, nomeC, cognomeC, datascad, cvc;
+		String nomeS; 
+		String cognomeS;
+		String email;
+		String via;
+		String civico;
+		String cap;
+		String citta;
+		String numC;
+		String nomeC;
+		String cognomeC;
+		String datascad;
+		String cvc;
+		
 		DatiSpedizioneBean ds=null;
 		PagamentoBean carta=null;
 		
@@ -75,13 +88,15 @@ public class CompletaOrdine extends HttpServlet {
 		datascad=request.getParameter("datascad");
 		cvc=request.getParameter("cvc");
 		
-		int errD=0, errC=0;
+		int errD=0;
+		int errC=0;
+		int errore=0;
 		
 		if(nomeS==null &&cognomeS==null && email==null && via==null && civico==null && cap==null && citta==null) {
 			ds= (DatiSpedizioneBean) request.getAttribute("datiS");		
 			if(ds==null) {
 				errD=1;
-				request.setAttribute("errore", -1);
+				
 			}
 		} else {
 			chm.nuovaSpedizione(id, nomeS, cognomeS, via, civico, cap, citta);
@@ -89,15 +104,15 @@ public class CompletaOrdine extends HttpServlet {
 		
 		if(numC==null && nomeC==null && cognomeC==null && datascad==null && cvc==null) {
 			carta= (PagamentoBean) request.getAttribute("carta");
-			if(cart==null) {
+			if(carta==null) {
 				errC=1;
-				request.setAttribute("errore", -1);
+				
 			}
 		} else {
 			chm.nuovaCarta(id, nomeC, cognomeC, numC, datascad);
 		} 
 		
-		System.out.println("prova1");
+		
 		
 		if(errC==0 && errD==0) { //i dati di sped e il metodo di pagamento ci sono
 			//riempire tabella ordine e contiene nel db
@@ -106,14 +121,17 @@ public class CompletaOrdine extends HttpServlet {
 			cartCookie.setMaxAge(0);
 			response.addCookie(cartCookie);
 			//ritornare alla pagina carrello che di conseguenza si è svuotata puoi imporstare l'attribbuto errore a 1 per segnalare il successo e far uscire un alter con un messaggio di successo (vedi alert di aggunta al carrello)
-			request.setAttribute("errore", 0);
-			RequestDispatcher view = request.getRequestDispatcher("cart.jsp");
-			view.forward(request, response);
+			errore=0;
+			
 		} else {
 			//ritorni sempre nella pagina carrello considerando che se sei entrato in questo if hai l'attributo errore con valore -1 che quindi all'interno del carrello puoi controllare per farti uscire il messaggio di errore
-			RequestDispatcher view = request.getRequestDispatcher("cart.jsp");
-			view.forward(request, response);
+			errore=-1;
+			
 		}
+		
+		request.setAttribute("errore", errore);
+		RequestDispatcher view = request.getRequestDispatcher("cart.jsp");
+		view.forward(request, response);
 		
 		
 		

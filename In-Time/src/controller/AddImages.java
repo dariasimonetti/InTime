@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Servlet implementation class AddImages
  */
@@ -28,25 +33,28 @@ public class AddImages extends HttpServlet {
      */
     public AddImages() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
     public void init() throws ServletException {
         super.init();
        baseDirectory = getServletContext().getRealPath("/img");
     }
+    
+    private static final Logger logger = Logger.getLogger(AddImages.class.getName());
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		
 		    // Ottieni l'input stream dell'immagine
 		    Part imagePart = request.getPart("image");
@@ -67,7 +75,7 @@ public class AddImages extends HttpServlet {
 		    if (!directory.exists()) {
 		        boolean created = directory.mkdir();
 		        if (!created) {
-		            System.out.println("ERRORE NELLA CREAZIONE DELLA DIRECTORY");
+		            logger.log(Level.WARNING, "Errore nella creazione della directory");
 		            return;
 		        }
 		    }

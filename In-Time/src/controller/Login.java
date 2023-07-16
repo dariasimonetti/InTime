@@ -27,30 +27,31 @@ public class Login extends HttpServlet {
      */
     public Login() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String email= request.getParameter("email");
 		String password= request.getParameter("password");
 		HttpSession session = request.getSession();
 		
-		LoginManager LM = new LoginManager();
+		LoginManager lM = new LoginManager();
 		
 		
-		int admin=LM.Accedi(email, password,session);
+		int admin=lM.Accedi(email, password,session);
 		
 		
 

@@ -31,15 +31,16 @@ public class FiltroClienti extends HttpServlet {
      */
     public FiltroClienti() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
@@ -52,9 +53,6 @@ public class FiltroClienti extends HttpServlet {
 		 int idCliente = Integer.parseInt(idClienteParam);
          ArrayList<UserBean> clientiFiltrati = filtraUtentiPerIDCliente(idCliente);
          
-         for (UserBean cliente: clientiFiltrati) {
-        	 System.out.println(cliente.getId()+cliente.getNome()+cliente.getCognome()+cliente.getEmail()+cliente.getTelefono());
-         }
 
          // Invia i risultati filtrati come risposta JSON
          response.setContentType("application/json");

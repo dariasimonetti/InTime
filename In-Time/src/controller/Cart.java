@@ -26,7 +26,7 @@ public class Cart extends HttpServlet {
      */
     public Cart() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
@@ -45,7 +45,7 @@ public class Cart extends HttpServlet {
    	    request.setAttribute("carrello",cart);
 		} else {
 			request.setAttribute("carrello", null);
-			};
+			}
    	    RequestDispatcher view = request.getRequestDispatcher("cart.jsp");
 		view.forward(request, response);
 		
@@ -57,8 +57,6 @@ public class Cart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        doGet(request,response);
  
-		
-	
 	}
 
 }

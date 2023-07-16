@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 
 /**
@@ -30,7 +30,7 @@ public class Admin extends HttpServlet {
      */
     public Admin() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
@@ -38,23 +38,19 @@ public class Admin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		ArrayList<Float> info=new ArrayList<Float>();
-		ArrayList <OrderBean> ordini = new ArrayList<OrderBean>();
-		ArrayList <UserBean> utenti=new ArrayList<UserBean>();
-		
 		AdminManager am = new AdminManager();
 		
-		info = am.getInfo();
-		ordini = am.getOrdini();
-		utenti = am.getUtenti();
+		ArrayList<Float> info=am.getInfo();
+		ArrayList <OrderBean> ordini = am.getOrdini();
+		ArrayList <UserBean> utenti=am.getUtenti();
+		
 		
 		
 		request.setAttribute("informazioni", info);
 		request.setAttribute("ordini", ordini);
 		request.setAttribute("utenti", utenti);
 		
-		HttpSession session= request.getSession();
+
 		
 		RequestDispatcher view = request.getRequestDispatcher("Admin.jsp");
 		view.forward(request, response);
@@ -65,7 +61,7 @@ public class Admin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

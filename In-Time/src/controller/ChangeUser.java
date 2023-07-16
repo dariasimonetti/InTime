@@ -25,15 +25,16 @@ public class ChangeUser extends HttpServlet {
      */
     public ChangeUser() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
@@ -61,7 +62,8 @@ public class ChangeUser extends HttpServlet {
 
 		if (nome != null && !nome.equals("")) {
 		    request.getSession().setAttribute("name", nome);
-		}if (cognome != null && !cognome.equals("")) {
+		}
+		if (cognome != null && !cognome.equals("")) {
 		    request.getSession().setAttribute("cognome", cognome);
 		}
 		
@@ -71,9 +73,9 @@ public class ChangeUser extends HttpServlet {
 		
 		
 		
-		if(admin==true) {
+		if(admin) {
 			response.sendRedirect("Admin");
-		} else if(admin==false){
+		} else if(!admin){
 			request.setAttribute("successoProfilo", 1);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/AreaUtente");
 		    dispatcher.forward(request, response);

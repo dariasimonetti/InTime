@@ -31,7 +31,10 @@ public class AddCart extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      
+		 // Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
+		
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +47,7 @@ public class AddCart extends HttpServlet {
 	     Cookie[] cookies = request.getCookies();
 	     Cookie cartCookie = cm.findCookie(cookies, "cart");
 	     if (cartCookie == null) {
-	    	 ArrayList<ProductBean> cart = new ArrayList<ProductBean>();
+	    	 ArrayList<ProductBean> cart = new ArrayList<>();
 	    	 cart.add(p);
 	    	 String encodedValue = cm.ListToStringJSON(cart);
 	    	 cartCookie = new Cookie("cart",encodedValue);

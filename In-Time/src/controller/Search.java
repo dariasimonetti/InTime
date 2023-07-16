@@ -27,18 +27,18 @@ public class Search extends HttpServlet {
      */
     public Search() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String cerca= request.getParameter("cerca");
-		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
-		ProductManager Pm = new ProductManager();
-		catalogo = Pm.getCatalogoSearch(cerca);
+		
+		ProductManager pm = new ProductManager();
+		ArrayList<CatalogoBean> catalogo = pm.getCatalogoSearch(cerca);
 		request.setAttribute("prodotti", catalogo);
 		
 		
@@ -51,7 +51,7 @@ public class Search extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

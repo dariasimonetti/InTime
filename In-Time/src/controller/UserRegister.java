@@ -25,23 +25,23 @@ public class UserRegister extends HttpServlet {
      */
     public UserRegister() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Questo metodo doGet è vuoto perché la servlet non supporta richieste GET.
+	    // Le operazioni di gestione delle richieste HTTP saranno implementate in altri metodi.
+		throw new UnsupportedOperationException("Metodo doGet non supportato per questa servlet");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		
 		String nome= request.getParameter("nome");
 		String cognome= request.getParameter("cognome");
@@ -55,10 +55,10 @@ public class UserRegister extends HttpServlet {
 	    }
 		HttpSession session = request.getSession();
 		
-UserManager UM = new UserManager();
+UserManager uM = new UserManager();
 
 		
-		if (UM.Registrati(nome, cognome, admin, cellulare, email, password,session)!= -2) {
+		if (uM.Registrati(nome, cognome, admin, cellulare, email, password,session)!= -2) {
 			session.setAttribute("name", nome);
 			session.setAttribute("cognome", cognome);
 			session.setAttribute("email", email);
