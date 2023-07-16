@@ -1,35 +1,35 @@
 package model;
 
 public class CatalogoBean {
-     private int Id;
-     private String Nome;
-     private float Prezzo;
+     private int id;
+     private String nome;
+     private float prezzo;
      
      
      
 	public CatalogoBean(int id, String nome, float prezzo) {
-		Id = id;
-		Nome = nome;
-		Prezzo = prezzo;
+		this.id = id;
+		this.nome = nome;
+		this.prezzo = prezzo;
 	}
 	
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 	public float getPrezzo() {
-		return Prezzo;
+		return prezzo;
 	}
 	public void setPrezzo(float prezzo) {
-		Prezzo = prezzo;
+		this.prezzo = prezzo;
 	}
      
      

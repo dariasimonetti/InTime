@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginManager;
-import model.UserBean;
-import model.UserManager;
+
 
 
 /**
@@ -51,7 +50,7 @@ public class Login extends HttpServlet {
 		LoginManager lM = new LoginManager();
 		
 		
-		int admin=lM.Accedi(email, password,session);
+		int admin=lM.accedi(email, password,session);
 		
 		
 

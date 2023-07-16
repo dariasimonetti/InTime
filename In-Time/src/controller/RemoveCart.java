@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -48,7 +48,7 @@ public class RemoveCart extends HttpServlet {
 		Cookie cartCookie = cm.findCookie(cookies, "cart");
 		String encodedValue = cartCookie.getValue();
 		ProductBean removedProduct= null;
-		ArrayList<ProductBean> cart = cm.JSONStringToList(encodedValue);
+		ArrayList<ProductBean> cart = (ArrayList<ProductBean>) cm.jSONStringToList(encodedValue);
 		for(ProductBean p:cart) {
 			if(id==p.getId()) {
 				   removedProduct = p;
@@ -58,7 +58,7 @@ public class RemoveCart extends HttpServlet {
 		if(cart.isEmpty()) {
 			cartCookie.setMaxAge(0);
 		}else {
-			encodedValue = cm.ListToStringJSON(cart);
+			encodedValue = cm.listToStringJSON(cart);
 	   	    cartCookie = new Cookie("cart", encodedValue);
 	   	    
 		}

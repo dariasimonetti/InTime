@@ -53,7 +53,7 @@ public class CompletaOrdine extends HttpServlet {
 		Cookie[] cookies = request.getCookies();
 		Cookie cartCookie = cm.findCookie(cookies, "cart");
 		String encodedValue = cartCookie.getValue();
-		ArrayList<ProductBean> cart = cm.JSONStringToList(encodedValue);
+		ArrayList<ProductBean> cart = (ArrayList<ProductBean>) cm.jSONStringToList(encodedValue);
 		
 		HttpSession session= request.getSession();
 		int id= (Integer) session.getAttribute("id");

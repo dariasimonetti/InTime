@@ -35,7 +35,7 @@ public class Inventory extends HttpServlet {
 		
 		
 		AdminManager am = new AdminManager();
-		ArrayList <ProductBean> prodotti = am.getCatalogo();
+		ArrayList <ProductBean> prodotti = (ArrayList<ProductBean>) am.getCatalogo();
 		
 		request.setAttribute("prodotti", prodotti);
 		RequestDispatcher view = request.getRequestDispatcher("Inventory.jsp");

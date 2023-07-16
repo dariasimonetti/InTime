@@ -40,7 +40,7 @@ public class Cart extends HttpServlet {
 		if (cartCookie != null) {
 		String encodedValue = cartCookie.getValue();
 		
-   	    ArrayList<ProductBean> cart = cm.JSONStringToList(encodedValue);
+   	    ArrayList<ProductBean> cart = (ArrayList<ProductBean>) cm.jSONStringToList(encodedValue);
    	    
    	    request.setAttribute("carrello",cart);
 		} else {

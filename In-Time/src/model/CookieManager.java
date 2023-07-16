@@ -3,24 +3,19 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.List;
 
-import model.CatalogoBean;
 import model.ProductBean;
-import model.ProductManager;
 import javax.servlet.http.Cookie;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.net.URLEncoder;
-import model.CatalogoBean;
-import model.ProductBean;
-import model.ProductManager;
-import javax.servlet.http.Cookie;
+
  
 public class CookieManager {
 	
-	public String ListToStringJSON(ArrayList<ProductBean> cartArray) {
+	public String listToStringJSON(List<ProductBean> cartArray) {
 		 
 		Gson gson = new Gson();
    	    String json = gson.toJson(cartArray);
@@ -29,23 +24,22 @@ public class CookieManager {
 			cart = URLEncoder.encode(json, "UTF-8");
 			return cart;
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	 return null;
 	}
 	
-	public ArrayList<ProductBean> JSONStringToList(String Cart){
+	public List<ProductBean> jSONStringToList(String cart){
 		 
     	 String cartString;
 		try {
-			cartString = URLDecoder.decode(Cart, "UTF-8");
+			cartString = URLDecoder.decode(cart, "UTF-8");
 			Gson gson = new Gson();
-	    	 ArrayList<ProductBean> cartList = gson.fromJson(cartString, new TypeToken<ArrayList<ProductBean>>() {}.getType());
-	    	 return cartList;
+			return gson.fromJson(cartString, new TypeToken<ArrayList<ProductBean>>() {}.getType());
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
      

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 public class LoginManager {
 	
-	public int Accedi (String email, String pass, HttpSession session) {
+	public int accedi (String email, String pass, HttpSession session) {
 		
 		Connection newConnection = null;
 		
@@ -26,10 +26,10 @@ public class LoginManager {
 			String encryptedPassword = encryptSHA512(pass);
 	        ps.setString(2, encryptedPassword);
 	        
-	        System.out.println(ps.toString());
+	        
 			
 			ResultSet rs = ps.executeQuery();
-			System.out.println("prova accedi");
+			
 			while (rs.next()) {
 				
 				rs.getString("nome");
@@ -41,13 +41,13 @@ public class LoginManager {
 				session.setAttribute("cognome", rs.getString("cognome"));
 				session.setAttribute("email", rs.getString("email"));
 				
-				System.out.println("prova");
+				boolean admin=rs.getBoolean("isAdmin");
 				
 				
-				if(rs.getBoolean("isAdmin")==false) {
+				if(!admin) {
 					return 1;
-				}else if(rs.getBoolean("isAdmin")== true) {
-					session.setAttribute("admin", rs.getBoolean("isAdmin"));
+				}else if(admin) {
+					session.setAttribute("admin", admin);
 					return 2;
 				}
 				
@@ -107,7 +107,7 @@ public class LoginManager {
 		                ps.close();
 		            }
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				DriverManagerConnection.releaseConnection(con);

@@ -18,11 +18,11 @@ function CartAjaxFunction() {
 }
 
 function submitReview() {
-	   var form = document.getElementById('reviewForm');
-	   var formData = new FormData(form);
-	   var url = form.action + '?' + new URLSearchParams(formData).toString();
+	   let form = document.getElementById('reviewForm');
+	   let formData = new FormData(form);
+	   let url = form.action + '?' + new URLSearchParams(formData).toString();
 
-	   var xhr = new XMLHttpRequest();
+	   let xhr = new XMLHttpRequest();
 	   xhr.open('GET', url);
 	   xhr.onreadystatechange = function() {
 	     if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -43,48 +43,48 @@ document.getElementById('reviewForm').addEventListener('submit', function(event)
 	   submitReview();
 	 });
 function ReviewAjaxFunction() {
-var idValue = document.getElementById("bottonecarrello").value;
+let idValue = document.getElementById("bottonecarrello").value;
 //Effettua la richiesta AJAX
-var xhr = new XMLHttpRequest();
+let xhr = new XMLHttpRequest();
 xhr.open("GET", "Review?id=" + encodeURIComponent(idValue), true);
 xhr.onreadystatechange = function () {
 if (xhr.readyState === 4 && xhr.status === 200) {
-var reviews = JSON.parse(xhr.responseText);	     
+let reviews = JSON.parse(xhr.responseText);	     
                  removeReview();
 				    // Creazione della tabella delle recensioni
 				    reviews.reverse();
 				    // Aggiunta delle righe alla tabella
-				    for (var i = 0; i < reviews.length; i++) {
-				      var review = reviews[i];
-				      var containerDiv = document.createElement("div");
+				    for (let i = 0; i < reviews.length; i++) {
+				      let review = reviews[i];
+				      let containerDiv = document.createElement("div");
 				      containerDiv.className = "container";
 
-				      var rowDiv = document.createElement("div");
+				      let rowDiv = document.createElement("div");
 				      rowDiv.className = "row";
 
-				      var colDiv = document.createElement("div");
+				      let colDiv = document.createElement("div");
 				      colDiv.className = "col-xs-12";
 
-				      var cardDiv = document.createElement("div");
+				      let cardDiv = document.createElement("div");
 				      cardDiv.className = "card";
 
-				      var cardInfoDiv = document.createElement("div");
+				      let cardInfoDiv = document.createElement("div");
 				      cardInfoDiv.className = "card-info";
 
-				      var nameDiv = document.createElement("div");
+				      let nameDiv = document.createElement("div");
 				      nameDiv.className = "name";
 
-				      var nameText = document.createElement("b");
-				      var nameParagraph = document.createElement("p");
+				      let nameText = document.createElement("b");
+				      let nameParagraph = document.createElement("p");
 				      nameParagraph.textContent = review.utente +" - voto  " + review.voto + "/6" ;
 				      nameText.appendChild(nameParagraph);
 				      nameDiv.appendChild(nameText);
 
-				      var hrElement = document.createElement("hr");
+				      let hrElement = document.createElement("hr");
 
-				      var contentDiv = document.createElement("div");
+				      let contentDiv = document.createElement("div");
 				      contentDiv.className = "content";
-				      var contentParagraph = document.createElement("p");
+				      let contentParagraph = document.createElement("p");
 				      contentParagraph.textContent = review.testo;
 				      contentDiv.appendChild(contentParagraph);
 
@@ -99,7 +99,7 @@ var reviews = JSON.parse(xhr.responseText);
 				      rowDiv.appendChild(colDiv);
 
 				      containerDiv.appendChild(rowDiv);
-                   var reviewsContainer = document.getElementById("reviews-container");
+                   let reviewsContainer = document.getElementById("reviews-container");
                    reviewsContainer.appendChild(containerDiv);
 				       
 				    }
@@ -113,7 +113,7 @@ var reviews = JSON.parse(xhr.responseText);
 }
 
 function removeReview(){
- var container = document.getElementById('reviews-container');
+ let container = document.getElementById('reviews-container');
  while (container.firstChild) {
    container.removeChild(container.firstChild);
  }

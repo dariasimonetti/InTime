@@ -1,15 +1,13 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CheckoutManager {
@@ -17,7 +15,9 @@ public class CheckoutManager {
 	public void nuovaSpedizione(int id, String nome, String cognome, String via, String civico, String cap, String citta) {
 		
 		Connection con=null;
-		PreparedStatement ps=null, ps1=null, ps3=null;
+		PreparedStatement ps=null;
+		PreparedStatement ps1=null;
+		PreparedStatement ps3=null;
 		
 		try {
 			
@@ -140,7 +140,7 @@ public class CheckoutManager {
 		
 	}
 	
-	public void inserisciOrdine(int id, ArrayList<ProductBean> carrello) {
+	public void inserisciOrdine(int id, List<ProductBean> carrello) {
 		Connection con=null;
 		PreparedStatement ps=null;
 		
@@ -179,7 +179,7 @@ public class CheckoutManager {
 			    }
 			}
 			
-			System.out.println("Last Inserted ID: " + idOrdine);
+			
 			if(idOrdine!=-1) {
 				
 				Map<Integer, ProductBeanCounter> prodottiUnici = new HashMap<>();
@@ -203,12 +203,11 @@ public class CheckoutManager {
 		        // Creazione di una lista di prodotti unici con le rispettive quantità
 		        ArrayList<ProductBeanCounter> prodottiUniciList = new ArrayList<>(prodottiUnici.values());
 		        
-		        PreparedStatement ps2 = null;
+		        
 
 		        // Stampa dei prodotti unici con le rispettive quantità
 		        for (ProductBeanCounter prodottoCounter : prodottiUniciList) {
-		            System.out.println("Prodotto: " + prodottoCounter.getProduct() + ", Quantità: " + prodottoCounter.getQuantity());
-		            
+		            		            
 		            String query2="Insert into Contiene (Id_Ordine,Id_Articolo, Id_Cliente, Quantita_Ordinata, Prezzo_Articolo)"
 		            		+ "values (?,?,?, ?, ?)";
 		            

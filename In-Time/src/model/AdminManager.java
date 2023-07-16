@@ -1,15 +1,20 @@
 package model;
 import java.sql.Connection;
-import java.sql.DriverManager;
+
+import java.util.logging.Logger;
+
 
 import java.sql.SQLException;
 import java.sql.*;
 import java.util.*;
 
+
 public class AdminManager {
-	public ArrayList <ProductBean> getCatalogo(){
+	
+	private static final Logger logger = Logger.getLogger(AdminManager.class.getName());
+	public List <ProductBean> getCatalogo(){
 		
-		ArrayList <ProductBean> prodotti= new ArrayList <ProductBean>();
+		ArrayList <ProductBean> prodotti= new ArrayList <>();
 		
 		Connection con = null;
 		Statement s=null;
@@ -29,7 +34,7 @@ public class AdminManager {
 			
 			
 		} catch(Exception e){
-			
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -41,7 +46,8 @@ public class AdminManager {
 	
 	public void removeProduct(String id) {
 		Connection con = null;
-		PreparedStatement ps = null, ps2=null;
+		PreparedStatement ps = null;
+		PreparedStatement ps2=null;
 
 		try {
 		    con = DriverManagerConnection.createDBConnection();
@@ -52,12 +58,12 @@ public class AdminManager {
 		    ps = con.prepareStatement(query);
 		    ps.setInt(1, idd);
 
-		    int i=ps.executeUpdate();
+		    ps.executeUpdate();
 
 		    
 
 		} catch (SQLException e) {
-		    System.out.println("Error executing query: " + e.getMessage());
+			logger.severe("Error executing query: " + e.getMessage());
 		    try {
 
 			    
@@ -72,7 +78,7 @@ public class AdminManager {
 			    }
 		    
 		} catch (NumberFormatException e) {
-		    System.out.println("Invalid id format: " + e.getMessage());
+			logger.severe(e.getMessage());
 		} finally {
 			
 			DriverManagerConnection.releaseConnection(con);
@@ -155,6 +161,10 @@ public class AdminManager {
 				set=set+"Quantita = '"+ quantita + "',";
 				
 			}
+			if(!marca.isEmpty()) {
+				set=set+"Marca = '"+ marca + "',";
+				
+			}
 			if(!sconto.isEmpty()) {
 				set=set+"Sconto = '"+ sconto + "',";
 				
@@ -182,7 +192,7 @@ public class AdminManager {
 
 			
 		} catch (Exception e){
-			System.out.println(e);
+			logger.severe(e.getMessage());
 	} finally {
 		
 		DriverManagerConnection.releaseConnection(con);
@@ -191,9 +201,9 @@ public class AdminManager {
 }
 	
 	
-	public ArrayList<Float> getInfo() {
+	public List<Float> getInfo() {
 		
-		ArrayList <Float> info=new ArrayList<Float>();
+		ArrayList <Float> info=new ArrayList<>();
 		Connection con=null;
 		PreparedStatement s=null;
 		try {
@@ -247,9 +257,9 @@ public class AdminManager {
 		 return info;
 	}
 	
-	public ArrayList<OrderBean> getOrdini(){
+	public List<OrderBean> getOrdini(){
 		
-		ArrayList<OrderBean> ordini = new ArrayList<OrderBean>();
+		ArrayList<OrderBean> ordini = new ArrayList<>();
 		
 		Connection con=null;
 		Statement s=null;
@@ -281,8 +291,8 @@ public class AdminManager {
 		return ordini;
 	}
 	
-	public ArrayList<UserBean> getUtenti(){
-		ArrayList<UserBean> utenti= new ArrayList<UserBean>();
+	public List<UserBean> getUtenti(){
+		ArrayList<UserBean> utenti= new ArrayList<>();
 		Connection con=null;
 		Statement s= null;
 		

@@ -40,9 +40,9 @@ public class Admin extends HttpServlet {
 		
 		AdminManager am = new AdminManager();
 		
-		ArrayList<Float> info=am.getInfo();
-		ArrayList <OrderBean> ordini = am.getOrdini();
-		ArrayList <UserBean> utenti=am.getUtenti();
+		ArrayList<Float> info=(ArrayList<Float>) am.getInfo();
+		ArrayList <OrderBean> ordini = (ArrayList<OrderBean>) am.getOrdini();
+		ArrayList <UserBean> utenti=(ArrayList<UserBean>) am.getUtenti();
 		
 		
 		

@@ -9,16 +9,8 @@ import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.ServletContext;
-
-// Importa le classi necessarie
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
@@ -30,7 +22,17 @@ public class Invoice {
 		
 		Connection con= null;
 		PreparedStatement ps= null;
-		String idCl="", tot="", dataO="", nome="", cognome="", via="", civico="", cap="", citta="";
+		
+		String idCl="";
+		String tot="";
+		String dataO="";
+		String nome="";
+		String cognome="";
+		String via="";
+		String civico="";
+		String cap="";
+		String citta="";
+		
 		ArrayList <String> idArt= new ArrayList<>();
 		ArrayList <String> quantita= new ArrayList<>();
 		ArrayList <String> prezzi= new ArrayList<>();
@@ -79,7 +81,8 @@ public class Invoice {
 	    try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
 	    	
 	    	//Importa il PDF con il modello della fattura non riuscivo a usare un url diverso
-	    	PDDocument document = PDDocument.load(new File("C:\\Users\\simon\\git\\InTime\\In-Time\\WebContent\\Fattura.pdf"));
+	    	String filePath = "C:\\Users\\simon\\git\\InTime\\In-Time\\WebContent\\Fattura.pdf";
+	    	PDDocument document = PDDocument.load(new File(filePath));
 	    	
 	    	//Modulo del documento
 	    	PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();

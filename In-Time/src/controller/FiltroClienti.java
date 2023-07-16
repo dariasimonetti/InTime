@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.AdminManager;
-import model.OrderBean;
+
 import model.UserBean;
 
 /**
@@ -64,7 +64,7 @@ public class FiltroClienti extends HttpServlet {
 	 private ArrayList<UserBean> filtraUtentiPerIDCliente(int idCliente) {
 	        ArrayList<UserBean> clientiFiltrati = new ArrayList<>();
 	        AdminManager am = new AdminManager();
-	        ArrayList<UserBean> clienti = am.getUtenti();
+	        ArrayList<UserBean> clienti = (ArrayList<UserBean>) am.getUtenti();
 
 	        for (UserBean cliente : clienti) {
 	            if (cliente.getId() == idCliente) {

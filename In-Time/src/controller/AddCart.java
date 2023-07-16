@@ -49,16 +49,16 @@ public class AddCart extends HttpServlet {
 	     if (cartCookie == null) {
 	    	 ArrayList<ProductBean> cart = new ArrayList<>();
 	    	 cart.add(p);
-	    	 String encodedValue = cm.ListToStringJSON(cart);
+	    	 String encodedValue = cm.listToStringJSON(cart);
 	    	 cartCookie = new Cookie("cart",encodedValue);
 	    	 cartCookie.setMaxAge(60*60*24*7);
 	     
 	     }  else {
 	    	 String encodedValue = cartCookie.getValue();
-	    	 ArrayList<ProductBean> cart = cm.JSONStringToList(encodedValue);
+	    	 ArrayList<ProductBean> cart = (ArrayList<ProductBean>) cm.jSONStringToList(encodedValue);
 	    	 cart.add(p);
 	     
-	    	 encodedValue = cm.ListToStringJSON(cart);
+	    	 encodedValue = cm.listToStringJSON(cart);
 	    	 cartCookie = new Cookie("cart", encodedValue);
 	    	 cartCookie.setMaxAge(60*60*24*7);
 	    	 

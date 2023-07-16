@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.sql.Date;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,7 +77,7 @@ public class FiltroOrdini extends HttpServlet {
     private ArrayList<OrderBean> filtraOrdiniPerIDCliente(int idCliente) {
         ArrayList<OrderBean> ordiniFiltrati = new ArrayList<>();
         AdminManager am = new AdminManager();
-        ArrayList<OrderBean> ordini = am.getOrdini();
+        ArrayList<OrderBean> ordini = (ArrayList<OrderBean>) am.getOrdini();
 
         for (OrderBean ordine : ordini) {
             if (ordine.getIdCliente() == idCliente) {
@@ -93,7 +93,7 @@ public class FiltroOrdini extends HttpServlet {
         List<OrderBean> ordiniFiltrati = new ArrayList<>();
 
         AdminManager am = new AdminManager();
-        ArrayList<OrderBean> ordini = am.getOrdini();
+        ArrayList<OrderBean> ordini = (ArrayList<OrderBean>) am.getOrdini();
 
         for (OrderBean ordine : ordini) {
         	LocalDate dataOrdine = ordine.getDataOrd().toLocalDate();

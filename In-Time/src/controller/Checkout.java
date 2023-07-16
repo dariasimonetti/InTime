@@ -63,7 +63,7 @@ public class Checkout extends HttpServlet {
 		
 		String encodedValue = cartCookie.getValue();
 		
-   	    ArrayList<ProductBean> cart = cm.JSONStringToList(encodedValue);
+   	    ArrayList<ProductBean> cart = (ArrayList<ProductBean>) cm.jSONStringToList(encodedValue);
    	    
    	    request.setAttribute("carrello",cart);
    	    
