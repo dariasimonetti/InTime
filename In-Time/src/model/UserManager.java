@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.http.HttpSession;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -108,33 +111,53 @@ public class UserManager {
 			
 			con=DriverManagerConnection.createDBConnection();
 			
-			String set="SET ";
-			
-			if(!nome.isEmpty()) {
-				set=set+"Nome = '"+ nome + "',";	
+
+			String query = "UPDATE utente SET ";
+			List<String> updates = new ArrayList<>();
+
+			if (!nome.isEmpty()) {
+			    updates.add("Nome = ?");
 			}
-			if(!cognome.isEmpty()) {
-				set=set+"Cognome = '"+ cognome + "',";	
+			if (!cognome.isEmpty()) {
+			    updates.add("Cognome = ?");
 			}
-			if(!telefono.isEmpty()) {
-				set=set+"Telefono = '"+ telefono + "',";	
+			if (!telefono.isEmpty()) {
+			    updates.add("Telefono = ?");
 			}
 			if(!email.isEmpty()) {
-				set=set+"Email = '"+ email + "',";
+				updates.add("Email = ?");
+				
 			}
 			if(!password.isEmpty()) {
-				String encryptedPassword = encryptSHA512(password);
-				set=set+"Pass = '"+ encryptedPassword + "',";
+				updates.add("Pass = ?");
 			}
 			
-			set=set.substring(0,  set.length() - 1);
-			
-			String query="UPDATE utente "+set+" WHERE Id=?";
-			ps=con.prepareStatement(query);
-			
-			
-			
-			ps.setString(1, id);
+
+			query += String.join(", ", updates);
+			query += " WHERE Id = ?";
+
+			ps = con.prepareStatement(query);
+
+			int paramIndex = 1;
+			if (!nome.isEmpty()) {
+				ps.setString(paramIndex++, nome);
+			}
+			if (!cognome.isEmpty()) {
+				ps.setString(paramIndex++, cognome);
+			}
+			if (!telefono.isEmpty()) {
+				ps.setString(paramIndex++, telefono);
+			}
+			if(!email.isEmpty()) {
+				ps.setString(paramIndex++,email);
+				
+			}
+			if(!password.isEmpty()) {
+				ps.setString(paramIndex++, password);
+			}
+
+
+			ps.setString(paramIndex, id);
 			
 			
 			int count = ps.executeUpdate();
