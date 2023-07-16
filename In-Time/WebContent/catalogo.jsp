@@ -129,19 +129,22 @@
 	<div class="grid">
 		
           <%
-          	
-            ArrayList<CatalogoBean> products = new ArrayList<>();
+          	 int i = 0;
+             ArrayList<CatalogoBean> products = new ArrayList<>();
              products = (ArrayList<CatalogoBean>)  request.getAttribute("prodotti");
+             ArrayList<String> imgs = new ArrayList<>();         
+             imgs = (ArrayList<String>)  request.getAttribute("firstImagePaths");
 			for (CatalogoBean p : products){
-				
-				
+				 
+				String img = imgs.get(i);
+				i++;
 			 %>
 			 <form action="Product" method="post">
    <div class="container watch fade-in">
    
     <div class="card">
       <div class="front">
-      <img src="scatola.png" alt="preview del prodotto">
+      <img src="<%= img %>"/>
       </div>
       <div class="back">
         <h3><%= p.getNome() %></h3>
@@ -156,7 +159,8 @@
     
   </div>
 			  	
-    <% } %>
+    <%
+    } %>
     
     </div>
     </div>	
