@@ -181,18 +181,15 @@ public class AdminManager {
 			set=set.substring(0,  set.length() - 1);
 			
 			
-			String query="UPDATE articolo "+set+" WHERE Id=?";
-			try{ps=con.prepareStatement(query);
+			String query="UPDATE articolo ? WHERE Id=?";
+			ps=con.prepareStatement(query);
 			
-			ps.setString(1, id);
+			ps.setString(1, set);
+			ps.setString(2, id);
 			
 			
 			
 			ps.executeUpdate();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			
 
 			
 		} catch (Exception e){
