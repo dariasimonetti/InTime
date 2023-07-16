@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 
@@ -82,12 +83,14 @@ public class LoginManager {
 		boolean admin=false;
 		
 		Connection con=null;
+		PreparedStatement ps=null;
+		
 		try {
 
 			con = DriverManagerConnection.createDBConnection();
 			String query = "select *  from utente where Id=?";
 			
-			PreparedStatement ps = con.prepareStatement(query);
+			ps = con.prepareStatement(query);
 			
 			ps.setString( 1 , id);
 			
@@ -95,11 +98,16 @@ public class LoginManager {
 			if (rs.next()) {
 				admin=rs.getBoolean("isAdmin");
 			}
-			ps.close();
+			
 			}catch(Exception e) {
 				e.printStackTrace();
 			} finally {
-				
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				DriverManagerConnection.releaseConnection(con);
 			    
 			}

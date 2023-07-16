@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -18,13 +19,14 @@ public class ReviewManager {
 	public List<ReviewBean> getReviewsForProduct(int idArticolo) {
         List<ReviewBean> reviewsForProduct = new ArrayList<>();
         Connection newConnection = null;
+        PreparedStatement p=null;
         try {
         	newConnection = DriverManagerConnection.createDBConnection();
             String query = "SELECT r.Testo AS Recensione, r.Voto, CONCAT(u.Nome, ' ', u.Cognome) AS Utente\r\n" + 
             		"FROM Recensione r\r\n" + 
             		"JOIN Utente u ON r.Id_Utente = u.Id\r\n" + 
             		"WHERE r.Id_Articolo = ?";
-                    PreparedStatement p = newConnection.prepareStatement(query);
+                    p = newConnection.prepareStatement(query);
                     p.setInt(1,idArticolo);
                     ResultSet resultSet = p.executeQuery();
                     while (resultSet.next()) {
@@ -35,11 +37,16 @@ public class ReviewManager {
                         
                         reviewsForProduct.add(new ReviewBean(utente,recensione,voto));
                     }
-                    p.close();
+                    
         } catch(Exception e){
         	e.printStackTrace();
         }  finally {
-			
+        	try {
+				p.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
 		}
@@ -49,10 +56,11 @@ public class ReviewManager {
 	
 	public void IsertReview(ReviewBean review) {
         Connection newConnection = null;
+        PreparedStatement p= null;
         try {
         	newConnection = DriverManagerConnection.createDBConnection();
             String query = "INSERT INTO `intime`.`recensione` (`Id_Utente`, `Id_Articolo`, `Voto`, `Testo`) VALUES (?,?,?,?); ";
-                    PreparedStatement p = newConnection.prepareStatement(query);
+                    p = newConnection.prepareStatement(query);
                     p.setInt(1,review.getIdUtente());
                     p.setInt(2, review.getIdArticolo());
                     p.setDouble(3, review.getVoto());
@@ -63,11 +71,16 @@ public class ReviewManager {
                     } else {
                         System.out.println("La query di inserimento non ha avuto successo.");
                     }
-                    p.close();
+                    
         } catch(Exception e){
         	e.printStackTrace();
         }  finally {
-			
+        	try {
+				p.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
 		}
