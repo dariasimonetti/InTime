@@ -37,7 +37,7 @@ public class Search extends HttpServlet {
 		String cerca= request.getParameter("cerca");
 		
 		ProductManager pm = new ProductManager();
-		ArrayList<CatalogoBean> catalogo = pm.getCatalogoSearch(cerca);
+		ArrayList<CatalogoBean> catalogo = (ArrayList<CatalogoBean>) pm.getCatalogoSearch(cerca);
 		request.setAttribute("prodotti", catalogo);
 		
 		

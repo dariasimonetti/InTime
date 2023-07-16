@@ -82,7 +82,9 @@ public class CheckoutManager {
 	public void nuovaCarta(int id, String nometit, String cognometit, String numc, String scad) {
 		
 		Connection con= null;
-		PreparedStatement ps = null, ps1=null, ps3=null;
+		PreparedStatement ps = null;
+		PreparedStatement ps1=null;
+		PreparedStatement ps3=null;
 		
 		try {
 			

@@ -54,55 +54,55 @@ let reviews = JSON.parse(xhr.responseText);
 				    // Creazione della tabella delle recensioni
 				    reviews.reverse();
 				    // Aggiunta delle righe alla tabella
-				    for (let i = 0; i < reviews.length; i++) {
-				      let review = reviews[i];
-				      let containerDiv = document.createElement("div");
-				      containerDiv.className = "container";
+				    for (const review of reviews) {
+				    	  let containerDiv = document.createElement("div");
+				    	  containerDiv.className = "container";
 
-				      let rowDiv = document.createElement("div");
-				      rowDiv.className = "row";
+				    	  let rowDiv = document.createElement("div");
+				    	  rowDiv.className = "row";
 
-				      let colDiv = document.createElement("div");
-				      colDiv.className = "col-xs-12";
+				    	  let colDiv = document.createElement("div");
+				    	  colDiv.className = "col-xs-12";
 
-				      let cardDiv = document.createElement("div");
-				      cardDiv.className = "card";
+				    	  let cardDiv = document.createElement("div");
+				    	  cardDiv.className = "card";
 
-				      let cardInfoDiv = document.createElement("div");
-				      cardInfoDiv.className = "card-info";
+				    	  let cardInfoDiv = document.createElement("div");
+				    	  cardInfoDiv.className = "card-info";
 
-				      let nameDiv = document.createElement("div");
-				      nameDiv.className = "name";
+				    	  let nameDiv = document.createElement("div");
+				    	  nameDiv.className = "name";
 
-				      let nameText = document.createElement("b");
-				      let nameParagraph = document.createElement("p");
-				      nameParagraph.textContent = review.utente +" - voto  " + review.voto + "/6" ;
-				      nameText.appendChild(nameParagraph);
-				      nameDiv.appendChild(nameText);
+				    	  let nameText = document.createElement("b");
+				    	  let nameParagraph = document.createElement("p");
+				    	  nameParagraph.textContent = review.utente + " - voto " + review.voto + "/6";
+				    	  nameText.appendChild(nameParagraph);
+				    	  nameDiv.appendChild(nameText);
 
-				      let hrElement = document.createElement("hr");
+				    	  let hrElement = document.createElement("hr");
 
-				      let contentDiv = document.createElement("div");
-				      contentDiv.className = "content";
-				      let contentParagraph = document.createElement("p");
-				      contentParagraph.textContent = review.testo;
-				      contentDiv.appendChild(contentParagraph);
+				    	  let contentDiv = document.createElement("div");
+				    	  contentDiv.className = "content";
+				    	  let contentParagraph = document.createElement("p");
+				    	  contentParagraph.textContent = review.testo;
+				    	  contentDiv.appendChild(contentParagraph);
 
-				      cardInfoDiv.appendChild(nameDiv);
-				      cardInfoDiv.appendChild(hrElement);
-				      cardInfoDiv.appendChild(contentDiv);
+				    	  cardInfoDiv.appendChild(nameDiv);
+				    	  cardInfoDiv.appendChild(hrElement);
+				    	  cardInfoDiv.appendChild(contentDiv);
 
-				      cardDiv.appendChild(cardInfoDiv);
+				    	  cardDiv.appendChild(cardInfoDiv);
 
-				      colDiv.appendChild(cardDiv);
+				    	  colDiv.appendChild(cardDiv);
 
-				      rowDiv.appendChild(colDiv);
+				    	  rowDiv.appendChild(colDiv);
 
-				      containerDiv.appendChild(rowDiv);
-                   let reviewsContainer = document.getElementById("reviews-container");
-                   reviewsContainer.appendChild(containerDiv);
-				       
-				    }
+				    	  containerDiv.appendChild(rowDiv);
+
+				    	  let reviewsContainer = document.getElementById("reviews-container");
+				    	  reviewsContainer.appendChild(containerDiv);
+				    	}
+
                  
 				 
 		

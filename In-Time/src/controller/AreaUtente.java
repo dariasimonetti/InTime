@@ -61,7 +61,7 @@ public class AreaUtente extends HttpServlet {
 		PagamentoBean carta= uM.metodopag(idi);
 		request.setAttribute("carta", carta);
 		
-		ArrayList<OrderBean> ordini = pM.getOrdini(id);
+		ArrayList<OrderBean> ordini = (ArrayList<OrderBean>) pM.getOrdini(id);
 		request.setAttribute("ordini", ordini);
 		
 		RequestDispatcher view = request.getRequestDispatcher("AreaUtente.jsp");

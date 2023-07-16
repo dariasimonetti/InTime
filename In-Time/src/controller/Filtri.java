@@ -42,7 +42,7 @@ public class Filtri extends HttpServlet {
 		
     	
 		ProductManager pm = new ProductManager();
-		ArrayList<CatalogoBean> catalogo = pm.getCatalogoFiltrato(partire, fino, tipo , genere);
+		ArrayList<CatalogoBean> catalogo = (ArrayList<CatalogoBean>) pm.getCatalogoFiltrato(partire, fino, tipo , genere);
 		request.setAttribute("prodotti", catalogo);
 		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);

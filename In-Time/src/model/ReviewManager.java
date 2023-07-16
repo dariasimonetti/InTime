@@ -2,7 +2,7 @@ package model;
  
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,11 +12,13 @@ import java.util.Collection;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 public class ReviewManager {
-	private List<ReviewBean> recensioni;
-	
+
+	private static final Logger logger = Logger.getLogger(ReviewManager.class.getName());
 	
 	public List<ReviewBean> getReviewsForProduct(int idArticolo) {
+		
         List<ReviewBean> reviewsForProduct = new ArrayList<>();
         Connection newConnection = null;
         PreparedStatement p=null;
@@ -46,7 +48,7 @@ public class ReviewManager {
                     p.close();
                 }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -56,7 +58,7 @@ public class ReviewManager {
         return reviewsForProduct;
     }
 	
-	public void IsertReview(ReviewBean review) {
+	public void insertReview(ReviewBean review) {
         Connection newConnection = null;
         PreparedStatement p= null;
         try {
@@ -69,9 +71,11 @@ public class ReviewManager {
                     p.setString(4,review.getTesto() );
                     int rowsAffected = p.executeUpdate();
                     if (rowsAffected > 0) {
-                        System.out.println("La query di inserimento è stata eseguita con successo. Numero di righe interessate: " + rowsAffected);
+                    	logger.severe("La query di inserimento è stata eseguita con successo. Numero di righe interessate: " + rowsAffected);
+                        
                     } else {
-                        System.out.println("La query di inserimento non ha avuto successo.");
+                    	logger.severe("La query di inserimento non ha avuto successo.");
+
                     }
                     
         } catch(Exception e){
@@ -82,7 +86,7 @@ public class ReviewManager {
                     p.close();
                 }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -90,30 +94,30 @@ public class ReviewManager {
 		}
 	}
 	
-	public String ListToStringJSON(Collection<ReviewBean> list) {
+	public String listToStringJSON(Collection<ReviewBean> list) {
 		 
 		Gson gson = new Gson();
-   	    String json = gson.toJson(list);
+   	    return gson.toJson(list);
    	   
-	    return json;
+	   
 	 
 	}
 	
-	public ArrayList<ReviewBean> JSONStringToList(String Cart){
+	public List<ReviewBean> jSONStringToList(String cart){
 		 
     	 String recensioni;
 		try {
-			recensioni = URLDecoder.decode(Cart, "UTF-8");
+			recensioni = URLDecoder.decode(cart, "UTF-8");
 			Gson gson = new Gson();
-	    	 ArrayList<ReviewBean> recensioniL = gson.fromJson(recensioni, new TypeToken<ArrayList<ReviewBean>>() {}.getType());
-	    	 return recensioniL;
+	    	return gson.fromJson(recensioni, new TypeToken<ArrayList<ReviewBean>>() {}.getType());
+	    	 
 			
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-     
-    	 return null;
+		ArrayList<ReviewBean> array=null;
+    	 return array;
 		
 	}
 }

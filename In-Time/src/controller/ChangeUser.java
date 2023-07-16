@@ -53,7 +53,7 @@ public class ChangeUser extends HttpServlet {
 		String email = request.getParameter("email");
 		String password =  request.getParameter("password");
 		
-		um.Modifica(id, nome, cognome, telefono, email, password);
+		um.modifica(id, nome, cognome, telefono, email, password);
 		
 		LoginManager lm= new LoginManager();
 		boolean admin= lm.isAdmin(id);

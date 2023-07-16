@@ -34,7 +34,7 @@ public class CatalogoUomo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ProductManager pm = new ProductManager();
-		ArrayList<CatalogoBean> catalogo = pm.getCatalogoUomo();
+		ArrayList<CatalogoBean> catalogo = (ArrayList<CatalogoBean>) pm.getCatalogoUomo();
 		request.setAttribute("prodotti", catalogo);
 		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);

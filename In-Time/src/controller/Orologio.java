@@ -34,7 +34,7 @@ public class Orologio extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ProductManager pm = new ProductManager();
-		ArrayList<CatalogoBean> catalogo = pm.getCatalogoOrologio();
+		ArrayList<CatalogoBean> catalogo = (ArrayList<CatalogoBean>) pm.getCatalogoOrologio();
 		request.setAttribute("prodotti", catalogo);
 		RequestDispatcher view = request.getRequestDispatcher("catalogo.jsp");
 		view.forward(request, response);

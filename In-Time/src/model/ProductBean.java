@@ -2,16 +2,16 @@ package model;
 
 public class ProductBean {
     private int id;
-    private String Nome;
-    private String Descrizione;
-    private float  Prezzo;
-    private String Materiale;
-    private String Misura;
-    private String Marca;
-    private String Genere;
-    private String Tipo;
-    private float Sconto;
-    private int Quantita;
+    private String nome;
+    private String descrizione;
+    private float  prezzo;
+    private String materiale;
+    private String misura;
+    private String marca;
+    private String genere;
+    private String tipo;
+    private float sconto;
+    private int quantita;
     
     
    
@@ -19,16 +19,16 @@ public class ProductBean {
 	public ProductBean(int id, String nome, String descrizione, float prezzo, String materiale, String misura,
             String marca, String genere,String tipo, float sconto, int quantita) {
         this.id = id;
-        Nome = nome;
-        Descrizione = descrizione;
-        Prezzo = prezzo;
-        Materiale = materiale;
-        Misura = misura;
-        Marca = marca;
-        Genere = genere;
-        Tipo =tipo;
-        Sconto = sconto;
-        Quantita = quantita;
+        this.nome = nome;
+        this.descrizione = descrizione;
+        this.prezzo = prezzo;
+        this.materiale = materiale;
+        this.misura = misura;
+        this.marca = marca;
+        this.genere = genere;
+        this.tipo =tipo;
+        this.sconto = sconto;
+        this.quantita = quantita;
     }
     public int getId() {
         return id;
@@ -37,65 +37,65 @@ public class ProductBean {
         this.id = id;
     }
     public String getNome() {
-        return Nome;
+        return nome;
     }
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
     public String getDescrizione() {
-        return Descrizione;
+        return descrizione;
     }
     public void setDescrizione(String descrizione) {
-        Descrizione = descrizione;
+        this.descrizione = descrizione;
     }
     public float getPrezzo() {
-        return Prezzo;
+        return prezzo;
     }
     public void setPrezzo(float prezzo) {
-        Prezzo = prezzo;
+        this.prezzo = prezzo;
     }
     public String getMateriale() {
-        return Materiale;
+        return materiale;
     }
     public void setMateriale(String materiale) {
-        Materiale = materiale;
+        this.materiale = materiale;
     }
     public String getMisura() {
-        return Misura;
+        return misura;
     }
     public void setMisura(String misura) {
-        Misura = misura;
+        this.misura = misura;
     }
     public String getMarca() {
-        return Marca;
+        return marca;
     }
     public void setMarca(String marca) {
-        Marca = marca;
+        this.marca = marca;
     }
     public String getGenere() {
-        return Genere;
+        return genere;
     }
     public void setGenere(String genere) {
-        Genere = genere;
+        this.genere = genere;
     }
     public String getTipo() {
-        return Tipo;
+        return tipo;
     }
     public void setTipo(String tipo) {
-        Tipo = tipo;
+        this.tipo = tipo;
     }
    
     public float getSconto() {
-        return Sconto;
+        return sconto;
     }
     public void setSconto(float sconto) {
-        Sconto = sconto;
+        this.sconto = sconto;
     }
     public int getQuantita() {
-        return Quantita;
+        return quantita;
     }
     public void setQuantita(int quantita) {
-        Quantita = quantita;
+        this.quantita = quantita;
     }
      
     

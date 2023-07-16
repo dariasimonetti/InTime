@@ -4,14 +4,15 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.http.HttpSession;
-
+import java.util.logging.Logger;
 
 
 public class UserManager {
+	
+	private static final Logger logger = Logger.getLogger(UserManager.class.getName());
 
-	public int Registrati(String nome, String cognome, boolean isadmin, String telefono, String email,String password, HttpSession session ){
+	public int registrati(String nome, String cognome, boolean isadmin, String telefono, String email,String password, HttpSession session ){
 		Connection newConnection = null;
 		PreparedStatement ps= null;
 		PreparedStatement ps2= null;
@@ -29,7 +30,8 @@ public class UserManager {
 			while (rs3.next()) {
 				
 				if ( email.equalsIgnoreCase(rs3.getString("email"))){
-					System.out.println("email gia presente");
+					logger.severe("email gia presente");
+					
 					return -2;
 				}
 				
@@ -47,7 +49,7 @@ public class UserManager {
 			String encryptedPassword = encryptSHA512(password);
 	        ps.setString(6, encryptedPassword);
 			
-	        System.out.println("La passswordss" + encryptedPassword);
+	        
 			int count = ps.executeUpdate();
 			
 			
@@ -98,7 +100,7 @@ public class UserManager {
 	    return sb.toString();
 	}
 	
-	public int Modifica(String id, String nome, String cognome, String telefono, String email,String password) {
+	public int modifica(String id, String nome, String cognome, String telefono, String email,String password) {
 		Connection con=null;
 		PreparedStatement ps=null;
 		

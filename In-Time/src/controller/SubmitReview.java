@@ -36,7 +36,7 @@ public class SubmitReview extends HttpServlet {
 	   
 	    ReviewBean review = new ReviewBean(idUtente,idArticolo,voto,testo);
 	    ReviewManager rm = new ReviewManager();
-	    rm.IsertReview(review);
+	    rm.insertReview(review);
 		 
 	}
 

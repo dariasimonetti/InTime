@@ -2,7 +2,9 @@ package model;
 
 public class ReviewBean {
     private int id;
-    private String utente;
+    
+
+	private String utente;
     private int idUtente;
     private int idArticolo;
     private double voto;
@@ -71,4 +73,12 @@ public class ReviewBean {
     public void setTesto(String testo) {
         this.testo = testo;
     }
+    
+    public String getUtente() {
+		return utente;
+	}
+
+	public void setUtente(String utente) {
+		this.utente = utente;
+	}
 }

@@ -58,7 +58,7 @@ public class UserRegister extends HttpServlet {
 UserManager uM = new UserManager();
 
 		
-		if (uM.Registrati(nome, cognome, admin, cellulare, email, password,session)!= -2) {
+		if (uM.registrati(nome, cognome, admin, cellulare, email, password,session)!= -2) {
 			session.setAttribute("name", nome);
 			session.setAttribute("cognome", cognome);
 			session.setAttribute("email", email);

@@ -41,7 +41,7 @@ public class Review extends HttpServlet {
 	      String jsnonRece;
 	      ReviewManager rm = new ReviewManager();
 	      recensioni = rm.getReviewsForProduct(id);
-	      jsnonRece = rm.ListToStringJSON(recensioni);
+	      jsnonRece = rm.listToStringJSON(recensioni);
 	      response.setContentType("application/json");
           PrintWriter out = response.getWriter();
           out.print(jsnonRece);

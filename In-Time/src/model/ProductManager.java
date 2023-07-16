@@ -1,11 +1,11 @@
 package model;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class ProductManager {
 	private static final Logger logger = Logger.getLogger(ProductManager.class.getName());
 
-	public ArrayList<CatalogoBean> getCatalogo(){
+	public List<CatalogoBean> getCatalogo(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		Statement s=null;
@@ -35,7 +35,7 @@ public class ProductManager {
 	                s.close();
 	            }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -45,14 +45,14 @@ public class ProductManager {
 		return catalogo;
 	}
 	
-	public ArrayList<CatalogoBean> getCatalogoFiltrato(float partire, float fino, String tipo, String genere){
+	public List<CatalogoBean> getCatalogoFiltrato(float partire, float fino, String tipo, String genere){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		PreparedStatement ps=null;
 		try {
           newConnection = DriverManagerConnection.createDBConnection();
           String q = null;
-          ps = null;
+          
 
           if (tipo != null && genere != null) {
               q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ? AND Tipo = ? AND Genere = ?";
@@ -61,13 +61,13 @@ public class ProductManager {
               ps.setFloat(2, fino);
               ps.setString(3, tipo);
               ps.setString(4, genere);
-          } else if (tipo != null && genere == null) {
+          } else if (tipo != null) {
               q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ? AND Tipo = ?";
               ps = newConnection.prepareStatement(q);
               ps.setFloat(1, partire);
               ps.setFloat(2, fino);
               ps.setString(3, tipo);
-          } else if (genere != null && tipo == null) {
+          } else if (genere != null) {
               q = "SELECT Id, Prezzo, Nome FROM intime.articolo WHERE Prezzo > ? AND Prezzo < ? AND Genere = ?";
               ps = newConnection.prepareStatement(q);
               ps.setFloat(1, partire);
@@ -95,7 +95,7 @@ public class ProductManager {
 	                ps.close();
 	            }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -105,7 +105,7 @@ public class ProductManager {
 		return catalogo;
 	}
 	
-	public ArrayList<CatalogoBean> getCatalogoUomo(){
+	public List<CatalogoBean> getCatalogoUomo(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		Statement s= null;
@@ -126,7 +126,7 @@ public class ProductManager {
 	                s.close();
 	            }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -136,7 +136,7 @@ public class ProductManager {
 		return catalogo;
 	}
 	
-	public ArrayList<CatalogoBean> getCatalogoDonna(){
+	public List<CatalogoBean> getCatalogoDonna(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		Statement  s=null;
@@ -158,7 +158,7 @@ public class ProductManager {
 	                s.close();
 	            }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -168,7 +168,7 @@ public class ProductManager {
 		return catalogo;
 	}
 	
-	public ArrayList<CatalogoBean> getCatalogoCinturino(){
+	public List<CatalogoBean> getCatalogoCinturino(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		Statement s = null;
@@ -191,7 +191,7 @@ public class ProductManager {
 	                s.close();
 	            }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -202,7 +202,7 @@ public class ProductManager {
 	}
 	
 	
-	public ArrayList<CatalogoBean> getCatalogoOrologio(){
+	public List<CatalogoBean> getCatalogoOrologio(){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		Statement  s = null;
@@ -224,7 +224,7 @@ public class ProductManager {
 	                s.close();
 	            }
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
@@ -240,13 +240,13 @@ public class ProductManager {
 		Connection c = null;
 		try {
 		c = DriverManagerConnection.createDBConnection();
-		PreparedStatement Ps = c.prepareStatement("SELECT * FROM intime.articolo WHERE id=?");
-		Ps.setInt(1, id);
+		PreparedStatement ps = c.prepareStatement("SELECT * FROM intime.articolo WHERE id=?");
+		ps.setInt(1, id);
 		 
-		ResultSet rs=  Ps.executeQuery();
+		ResultSet rs=  ps.executeQuery();
 		 while(rs.next()) {
-			 ProductBean p = new ProductBean(id,rs.getString("nome"),rs.getString("descrizione"),rs.getFloat("Prezzo"),rs.getString("Materiale"),rs.getString("misura"),rs.getString("marca"),rs.getString("genere"),rs.getString("tipo"),rs.getFloat("sconto"),rs.getInt("quantita"));
-			 return p;
+			 return new ProductBean(id,rs.getString("nome"),rs.getString("descrizione"),rs.getFloat("Prezzo"),rs.getString("Materiale"),rs.getString("misura"),rs.getString("marca"),rs.getString("genere"),rs.getString("tipo"),rs.getFloat("sconto"),rs.getInt("quantita"));
+			
 		 }
 		 
 		} catch (Exception e) {
@@ -260,7 +260,7 @@ public class ProductManager {
 		
 		return null;
 	}
-	public ArrayList<OrderBean> getOrdini(int id){
+	public List<OrderBean> getOrdini(int id){
 		ArrayList<OrderBean> ordini= new ArrayList<>();
 		Connection newConnection = null;
 		PreparedStatement ps;
@@ -287,7 +287,7 @@ public class ProductManager {
 		return ordini;
 	}
 	
-	public ArrayList<CatalogoBean> getCatalogoSearch(String cerca){
+	public List<CatalogoBean> getCatalogoSearch(String cerca){
 		ArrayList<CatalogoBean> catalogo = new ArrayList<>();
 		Connection newConnection = null;
 		PreparedStatement s = null;
@@ -310,7 +310,7 @@ public class ProductManager {
 	                s.close();
 	            }
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			DriverManagerConnection.releaseConnection(newConnection);
