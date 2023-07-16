@@ -293,12 +293,7 @@ public class ProductManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  finally {
-			try {
-				s.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 			DriverManagerConnection.releaseConnection(newConnection);
 		    
 		}
