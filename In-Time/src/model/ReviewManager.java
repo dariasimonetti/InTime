@@ -110,7 +110,7 @@ public class ReviewManager {
 			e.printStackTrace();
 		}
 		
-    	 return new ArrayList<ReviewBean>();
+    	 return new ArrayList<>();
 		
 	}
 }
