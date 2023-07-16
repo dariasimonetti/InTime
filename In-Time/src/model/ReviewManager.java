@@ -109,8 +109,8 @@ public class ReviewManager {
 			
 			e.printStackTrace();
 		}
-		ArrayList<ReviewBean> array=null;
-    	 return array;
+		
+    	 return new ArrayList<ReviewBean>();
 		
 	}
 }
