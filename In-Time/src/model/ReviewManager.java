@@ -69,14 +69,8 @@ public class ReviewManager {
                     p.setInt(2, review.getIdArticolo());
                     p.setDouble(3, review.getVoto());
                     p.setString(4,review.getTesto() );
-                    int rowsAffected = p.executeUpdate();
-                    if (rowsAffected > 0) {
-                    	logger.severe("La query di inserimento è stata eseguita con successo. Numero di righe interessate: " + rowsAffected);
-                        
-                    } else {
-                    	logger.severe("La query di inserimento non ha avuto successo.");
-
-                    }
+                    p.executeUpdate();
+                    
                     
         } catch(Exception e){
         	e.printStackTrace();
