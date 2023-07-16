@@ -119,7 +119,7 @@ public class ProductManager {
           }
           
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.severe(e.getMessage());
 		}  finally {
 			try {
 				if (s != null) {
