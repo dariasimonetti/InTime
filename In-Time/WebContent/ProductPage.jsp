@@ -12,6 +12,8 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="Style/ProductPage.css">
 <title>Prodotto</title>
+
+<script src="JS/productpage.js"></script>
 </head>
 <%@ include file="header.jsp" %>
 <body class="body-background">
@@ -90,6 +92,29 @@
     <hr style="color:#c3c3c3">
     
     <br>
+    
+    <% if (session != null && session.getAttribute("id") != null){ %> 
+    <div class="review-container">
+     
+        <section class="faq_dynamic-main">
+         <form id="reviewForm" action="SubmitReview" method="post">
+          <div class="container">
+            <h2 class="secondary-color py-2 f-24"> Add Your Review </h2>
+            <div class="input-group">
+              <textarea name="testo" aria-label="With textarea" rows="4" cols="150%" id="rewiew_message" placeholder="Scrivi la tua recensione" class="form-control mt-3 w-100 rounded-0" required></textarea>
+                <input type="hidden" name="idArticolo" value="<%= p.getId() %>">
+                <input type="hidden" name="idUtente" value="<%= session.getAttribute("id") %>">
+                <input type="hidden" name="voto" value="3">
+                <button class='button -dark center'>Invia la tua recensione</button>
+              </div>
+            </div>
+     </form>
+    </section>
+    </div>
+   <% } %> <div id="reviews-container"></div>
+   
+   
+    <script>ReviewAjaxFunction()</script>
    <script >
    $(function() {
        const $gallery = $('.gallery a').simpleLightbox();
@@ -103,13 +128,9 @@ function scambiaImmagine(imgCliccata) {
 	  immagineSopra.src = srcCliccata;
 	}
 	
-    var bottne= document.getElementById("bottonecarrello");
-    var id= bottne.value;
-    
-    createReviewsTable(1);
 	</script>
 	
-<script src="JS/productpage.js"></script>
+
 <script src="JS/index.js"></script>
 
 
