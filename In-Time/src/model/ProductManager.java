@@ -31,7 +31,9 @@ public class ProductManager {
 			e.printStackTrace();
 		}  finally {
 			try {
-				s.close();
+				if (s != null) {
+	                s.close();
+	            }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -89,7 +91,9 @@ public class ProductManager {
 			 logger.log(Level.SEVERE, "Si è verificato un errore", e);
 		}  finally {
 			try {
-				ps.close();
+				if (ps != null) {
+	                ps.close();
+	            }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -118,7 +122,9 @@ public class ProductManager {
 			e.printStackTrace();
 		}  finally {
 			try {
-				s.close();
+				if (s != null) {
+	                s.close();
+	            }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -148,7 +154,9 @@ public class ProductManager {
 			e.printStackTrace();
 		}  finally {
 			try {
-				s.close();
+				if (s != null) {
+	                s.close();
+	            }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -179,7 +187,9 @@ public class ProductManager {
 			
 		}  finally {
 			try {
-				s.close();
+				if (s != null) {
+	                s.close();
+	            }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -210,8 +220,10 @@ public class ProductManager {
 			e.printStackTrace();
 		}  finally {
 			try {
-				s.close();
-			} catch (Exception e) {
+				if (s != null) {
+	                s.close();
+	            }
+			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -290,11 +302,13 @@ public class ProductManager {
           }
           
           
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}  finally {
 			try {
-				s.close();
+				if (s != null) {
+	                s.close();
+	            }
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

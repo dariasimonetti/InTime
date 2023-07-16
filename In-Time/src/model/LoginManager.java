@@ -103,7 +103,9 @@ public class LoginManager {
 				e.printStackTrace();
 			} finally {
 				try {
-					ps.close();
+					if (ps != null) {
+		                ps.close();
+		            }
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

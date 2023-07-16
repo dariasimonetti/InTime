@@ -42,7 +42,9 @@ public class ReviewManager {
         	e.printStackTrace();
         }  finally {
         	try {
-				p.close();
+        		if (p != null) {
+                    p.close();
+                }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,7 +78,9 @@ public class ReviewManager {
         	e.printStackTrace();
         }  finally {
         	try {
-				p.close();
+        		if (p != null) {
+                    p.close();
+                }
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
